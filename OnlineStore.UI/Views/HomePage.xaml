@@ -1,0 +1,192 @@
+﻿<Page
+    x:Class="OnlineStore.UI.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OnlineStore.UI.Views"
+    xmlns:models="using:OnlineStore.UI.Models"
+    xmlns:viewModels="using:OnlineStore.UI.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <viewModels:HomeViewModel />
+    </Page.DataContext>
+    <Grid
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Center">
+        
+        
+        
+        
+        <!--
+<Grid.ColumnDefinitions>
+    <ColumnDefinition Width="*" />
+    <ColumnDefinition Width="*" />
+    <ColumnDefinition Width="*" />
+</Grid.ColumnDefinitions>
+-->
+
+        <!-- CollectionView to display a list of people -->
+        <!--<ListView 
+    ItemsSource="{Binding Product}" 
+    Margin="20"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch">
+    -->
+        <!--<ListView.ItemsPanel>
+        <ItemsPanelTemplate>
+            <WrapGrid 
+                Orientation="Horizontal" 
+                MaximumRowsOrColumns="3"
+                />
+        </ItemsPanelTemplate>
+    </ListView.ItemsPanel>-->
+        <!--
+    
+    <ListView.ItemTemplate>
+        <DataTemplate x:DataType="localrre:Product">
+            <Grid>
+                <Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10">
+                    <StackPanel Margin="10" Background="White" BorderBrush="Gray" BorderThickness="1" Padding="10">
+                        <Image 
+                        Stretch="UniformToFill" 
+                    Source="{Binding ImageUrl}"
+                        Width="300"
+                HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"/>
+                        <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" Margin="0,10,0,0" />
+                        <TextBlock Text="{Binding Price}" FontSize="14" Foreground="Gray" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+    -->
+        <!-- Use VariableSizedWrapGrid for adaptable grid layout -->
+        <!--
+ 
+</ListView>-->
+        <RelativePanel
+            RelativePanel.AlignHorizontalCenterWithPanel="true"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center">
+            <ScrollViewer
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True">
+                <StackPanel
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock
+                        Name="Text1"
+                        RelativePanel.AlignHorizontalCenterWithPanel="true"
+                        FontSize="35"
+                        FontStyle="Normal"
+                        TextWrapping="WrapWholeWords"
+                        FontWeight="Bold"
+                        TextAlignment="Center"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="#1e3050"
+                        RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="CoverImage" 
+                        Text="{Binding Title}" />
+                    <ListView
+                        ItemsSource="{Binding Category}"
+                        SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
+                        IsItemClickEnabled="True"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                        RelativePanel.AlignVerticalCenterWithPanel="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Category">
+                                <!--<Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10">
+                        <StackPanel Margin="10" Background="White" BorderBrush="Gray" BorderThickness="1" Padding="10">-->
+                                <Grid
+                                    RelativePanel.AlignTopWithPanel="True" 
+                                    RelativePanel.RightOf="CoverImage" 
+                                    RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image 
+                                        RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="CoverImage" 
+                                        RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="1"
+                                        Source="{Binding ImageUrl}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Height="Auto"
+                                        Width="175" 
+                                        FlowDirection="RightToLeft">            
+                                        <Image.RenderTransform>
+                                            <RotateTransform Angle="0" />
+                                        </Image.RenderTransform>
+                                    </Image>
+                                    <TextBlock
+                                        RelativePanel.AlignHorizontalCenterWithPanel="true"
+                                        Foreground="#1e3050"
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="1"
+                                        Text="{Binding Name}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        TextWrapping="WrapWholeWords"
+                                        FontWeight="Bold"
+                                        TextAlignment="Center"
+                                        RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="CoverImage" >
+                                    </TextBlock>
+                                </Grid>
+                                <!--</StackPanel>
+                    </Border>-->
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapGrid
+                                    RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="CoverImage" 
+                                    RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal" 
+                                    MaximumRowsOrColumns="3"
+                                    ItemWidth="200" 
+                                    ItemHeight="200" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Background="#1e3050"
+                        CornerRadius="2"                
+                        Name="Button2"
+                        Foreground="#FFFFFF"
+                        FontSize="20"
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Center"
+                        Content="Regresar"
+                        Margin="0, 0, 0, 0"
+                        Height="80"
+                        Width="200"
+                        Command="{Binding CommandGoBack}">
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
+        </RelativePanel>
+    </Grid>
+</Page>

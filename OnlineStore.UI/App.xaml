@@ -1,0 +1,13 @@
+﻿<Application
+    x:Class="OnlineStore.UI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OnlineStore.UI" 
+    xmlns:service="using:OnlineStore.UI.Services"
+    xmlns:helper="using:OnlineStore.UI.Helpers">
+    <Application.Resources>
+        <!-- Define your resources here -->
+        <service:NavigationService x:Key="NavigationService" />
+        <helper:StringToStringConverter x:Key="StringConverter"/>
+    </Application.Resources>
+</Application>
