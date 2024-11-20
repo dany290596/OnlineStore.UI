@@ -32,13 +32,14 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="0"
-                        Grid.ColumnSpan="2"
+                        Grid.ColumnSpan="3"
                         Name="Text1"
                         RelativePanel.AlignHorizontalCenterWithPanel="true"
                         FontSize="45"
@@ -52,7 +53,7 @@
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
-                        Grid.ColumnSpan="2"
+                        Grid.ColumnSpan="3"
                         Name="Text2"
                         RelativePanel.AlignHorizontalCenterWithPanel="true"
                         FontSize="20'"
@@ -64,7 +65,7 @@
                         HorizontalAlignment="Center"
                         Text="{Binding Subtitle}"
                         TextAlignment="Center"
-                        Margin="0, 0, 0, 50"/>
+                        Margin="0, 0, 0, 30"/>
                     <RelativePanel
                         Grid.Row="2"
                         Grid.Column="0"
@@ -97,13 +98,13 @@
                     </RelativePanel>
                     <RelativePanel
                         Grid.Row="2"
-                        Grid.Column="1"
+                        Grid.Column="2"
                         Grid.ColumnSpan="1"
                         RelativePanel.AlignHorizontalCenterWithPanel="True"
                         RelativePanel.AlignVerticalCenterWithPanel="True"
                         CornerRadius="100"
                         Background="White"
-                        Margin="10, 0, 0, 0">
+                        Margin="0, 0, 0, 0">
                         <Grid
                             Width="150"
                             Height="150"
@@ -139,7 +140,7 @@
                         Text="Haz tu pedido"/>
                     <TextBlock
                         Grid.Row="3"
-                        Grid.Column="1"
+                        Grid.Column="2"
                         Grid.ColumnSpan="1"
                         Name="Text4"
                         RelativePanel.AlignHorizontalCenterWithPanel="true"

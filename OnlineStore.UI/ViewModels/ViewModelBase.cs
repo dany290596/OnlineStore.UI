@@ -1,45 +1,42 @@
-﻿using OnlineStore.UI.Services;
+﻿using OnlineStore.UI.Helpers;
+using OnlineStore.UI.Services;
+using OnlineStore.UI.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace OnlineStore.UI.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
-        private string _header;
-        private string _content;
+        public ICommand ShowModalCommand { get; }
+        public ICommand CloseModalCommand { get; }
 
-        public string Header
+        public ViewModelBase()
         {
-            get => _header;
+            ShowModalCommand = new RelayCommand(ShowModal);
+            CloseModalCommand = new RelayCommand(CloseModal);
+        }
+
+        private bool _isModalVisible;
+        public bool IsModalVisible
+        {
+            get { return _isModalVisible; }
             set
             {
-                if (_header != value)
+                if (_isModalVisible != value)
                 {
-                    _header = value;
-                    OnPropertyChanged(nameof(Header));
+                    _isModalVisible = value;
+                    OnPropertyChanged();
                 }
             }
         }
-
-        public string Content
-        {
-            get => _content;
-            set
-            {
-                if (_content != value)
-                {
-                    _content = value;
-                    OnPropertyChanged(nameof(Content));
-                }
-            }
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
         public string _title;
 
@@ -82,6 +79,21 @@ namespace OnlineStore.UI.ViewModels
             field = value;
             OnPropertyChanged(propertyName);
             return true;
+        }
+
+        private async void ShowModal()
+        {
+            IsModalVisible = true;
+            var modalDialog = new ModalDialogPage
+            {
+                DataContext = new ModalDialogViewModel {  }
+            };
+            await modalDialog.ShowAsync();
+        }
+
+        private void CloseModal()
+        {
+            IsModalVisible = false;
         }
     }
 }

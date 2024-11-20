@@ -119,15 +119,20 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ModalDialog.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\StringToStringConverter.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductType.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ModalDialogViewModel.cs" />
     <Compile Include="ViewModels\ProductTypeViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -138,6 +143,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ModalDialogPage.xaml.cs">
+      <DependentUpon>ModalDialogPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>
     </Compile>
@@ -152,20 +160,39 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\18965881.jpg" />
+    <Content Include="Assets\bag-svgrepo-com.png" />
+    <Content Include="Assets\baseball-cap-cap-svgrepo-com.png" />
+    <Content Include="Assets\baseball-cap-svgrepo-com.png" />
+    <Content Include="Assets\basketball-jersey-shirt-svgrepo-com.png" />
+    <Content Include="Assets\belt-svgrepo-com.png" />
+    <Content Include="Assets\blouse-svgrepo-com.png" />
     <Content Include="Assets\bridal-shoe-svgrepo-com.png" />
     <Content Include="Assets\canvas-hat-blank-fashion-sport.jpg" />
+    <Content Include="Assets\cap-svgrepo-com.png" />
     <Content Include="Assets\clothes.jpg" />
     <Content Include="Assets\clothes_1.jpg" />
+    <Content Include="Assets\coat-jacket-svgrepo-com.png" />
     <Content Include="Assets\cursor-hand-click-svgrepo-com.png" />
     <Content Include="Assets\gorra-deportiva.jpg" />
+    <Content Include="Assets\jeans-pants-svgrepo-com.png" />
+    <Content Include="Assets\lingerie-underwear-svgrepo-com.png" />
     <Content Include="Assets\man-toilet-icon.png" />
     <Content Include="Assets\men-restroom-sign-svgrepo-com.png" />
     <Content Include="Assets\old-fedora-hat.jpg" />
+    <Content Include="Assets\parka-coat-svgrepo-com.png" />
     <Content Include="Assets\pay-with-card-svgrepo-com.png" />
     <Content Include="Assets\red-cap-protection-background-clothes.jpg" />
+    <Content Include="Assets\scarf-cold-svgrepo-com.png" />
+    <Content Include="Assets\scarf-svgrepo-com.png" />
+    <Content Include="Assets\shirt-svgrepo-com.png" />
+    <Content Include="Assets\slit-skirt-svgrepo-com.png" />
     <Content Include="Assets\sport-faculty-svgrepo-com.png" />
+    <Content Include="Assets\suit-svgrepo-com.png" />
+    <Content Include="Assets\sunglasses-svgrepo-com.png" />
+    <Content Include="Assets\sweatshirt-svgrepo-com.png" />
     <Content Include="Assets\team-svgrepo-com.png" />
     <Content Include="Assets\two-men-standing-svgrepo-com.png" />
+    <Content Include="Assets\watch-round-svgrepo-com.png" />
     <Content Include="Assets\woman-svgrepo-com.png" />
     <Content Include="Assets\woman-svgrepo-com.svg" />
     <Content Include="Assets\women-accesories-svgrepo-com.png" />
@@ -191,6 +218,10 @@
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModalDialogPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProductPage.xaml">
       <SubType>Designer</SubType>

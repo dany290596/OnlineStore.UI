@@ -9,7 +9,10 @@ namespace OnlineStore.UI.Models
     public class ProductType : BaseEntity
     {
         public string Name { get; set; }
+        public string Description { get; set; }
         public string ImageUrl { get; set; }
         public Guid CategoryId { get; set; }
+
+        public Category Category { get; set; }
     }
 }
