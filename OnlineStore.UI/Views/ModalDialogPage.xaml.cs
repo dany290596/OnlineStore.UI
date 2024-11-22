@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineStore.UI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace OnlineStore.UI.Views
         public ModalDialogPage()
         {
             this.InitializeComponent();
+            this.DataContext = new ModalDialogViewModel();
         }
     }
 }

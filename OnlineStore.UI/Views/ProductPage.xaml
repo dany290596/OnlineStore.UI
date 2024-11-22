@@ -16,258 +16,338 @@
     </Page.DataContext>
 
     <Grid  x:Name="ParentGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Fila para el CommandBar -->
+            <RowDefinition Height="*"/>
+            <!-- Fila para el contenido desplazable -->
+        </Grid.RowDefinitions>
 
+        <Grid
+            Grid.Row="0">
+            <Rectangle
+                Opacity="0.2"
+                Fill="#8CC63C" 
+                Width="1920" Height="60" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center">
+            </Rectangle>
+            <Button
+                    Margin="0, 0, 10, 0"
+                    Background="Transparent"
+                    Width="60"
+                    Height="60"
+                    MaxWidth="60" 
+                    MaxHeight="60"
+                    CornerRadius="100"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right"
+                    Command="{Binding CommandGoShoppingCart}">
+                <Button.Content>
+                    <Image 
+                        Width="30"
+                        Source="ms-appx:///Assets//shopping-cart-svgrepo-com.png" />
+                </Button.Content>
+            </Button>
+            <Grid 
+                Width="30" 
+                Height="30"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,10,10,0"
+                Background="Red"
+                CornerRadius="100">
+                <TextBlock 
+                    Text="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    FontSize="12" />
+            </Grid>
+            <!--<Image
+                
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Source="ms-appx:///Assets/shopping-cart-svgrepo-com.png"
+                Stretch="UniformToFill"
+                MaxWidth="50" 
+                MaxHeight="50">
+                <Image.RenderTransform>
+                    <RotateTransform Angle="0"/>
+                </Image.RenderTransform>
+            </Image>-->
+            <TextBlock
+                Name="Text11"
+                RelativePanel.AlignHorizontalCenterWithPanel="true"
+                FontSize="35"
+                FontStyle="Normal"
+                TextWrapping="WrapWholeWords"
+                FontWeight="Bold"
+                TextAlignment="Center"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="#1e3050"
+                RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="CoverImage" 
+                Text="{Binding Title}" />
+        </Grid>
+        <!--<CommandBar
+ Height="80"
+            Grid.Row="0"
+            VerticalAlignment="Top" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
+            --><!-- Botones o elementos del encabezado --><!--
+            <AppBarButton Label="Carrito de compras">
 
-        <!--<Pivot>
-                --><!-- Vincular los items dinámicamente --><!--
-                <Pivot.ItemTemplate>
-                    <DataTemplate x:DataType="models:Product">
-                        <PivotItem Header="{Binding Name}">
-                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        </PivotItem>
-                    </DataTemplate>
-                </Pivot.ItemTemplate>
+                <AppBarButton.Content>
+                    <RelativePanel>
+                        --><!-- Ícono del carrito de compras --><!--
+                        <SymbolIcon Symbol="Shop" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                --><!-- Vinculando el ItemsSource al ViewModel --><!--
-                <Pivot.ItemsSource>
-                    <Binding Path="ProductFilter" />
-                </Pivot.ItemsSource>
-            </Pivot>-->
-      
-        
-        
-        <RelativePanel>
+                        --><!-- Contador de artículos en el carrito (simula el badge) --><!--
+                        <Border Background="Red"
+                                CornerRadius="100"
+        Width="15" Height="15"
+        VerticalAlignment="Top" 
+        HorizontalAlignment="Right" 
+        Margin="12,-5,5,0"
+        Padding="2"
+        RelativePanel.AlignRightWithPanel="True"
+        RelativePanel.AlignTopWithPanel="True">
+                            <TextBlock Text="112" 
+                                   Foreground="White" 
+                                   
+                                   VerticalAlignment="Top" 
+                                   HorizontalAlignment="Center" 
+                                   Width="28" Height="10" 
+                                   FontSize="8" 
+                                   Margin="0, -1, 0, 0" 
+                                   Padding="0" 
+                                   TextAlignment="Center"
+                                   RelativePanel.AlignRightWithPanel="True"
+                                   RelativePanel.AlignTopWithPanel="True">
+
+                            </TextBlock>
+                        </Border>
+                    </RelativePanel>
+                </AppBarButton.Content>
+                --><!--<AppBarButton.Icon>
+                    --><!--<SymbolIcon Symbol="Shop" />--><!--
+                    <Grid>
+                        --><!-- Ícono de carrito de compras --><!--
+                        <SymbolIcon Symbol="Shop" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        --><!-- Contador de artículos --><!--
+                        <TextBlock Text="1" 
+                                   Foreground="White" 
+                                   Background="Red" 
+                                   VerticalAlignment="Top" 
+                                   HorizontalAlignment="Right" 
+                                   Width="20" Height="20" 
+                                   FontSize="12" 
+                                   Margin="0,0,5,0" 
+                                   Padding="2" 
+                                   TextAlignment="Center" />
+                    </Grid>
+
+                </AppBarButton.Icon>-->
+                <!--<AppBarButton.Content>
+                    <StackPanel>
+                        <TextBlock Text="Carrito de compras" HorizontalAlignment="Center" />
+                        <Border Background="Red" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top">
+                            <TextBlock Text="sdcds1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </StackPanel>
+                </AppBarButton.Content>--><!--
+            </AppBarButton>
+        </CommandBar>-->
+
+        <RelativePanel
+            Grid.Row="1">
             <ScrollViewer
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.AlignVerticalCenterWithPanel="True">
                 <StackPanel>
-
-                    <!--<Pivot>
-                        --><!-- Primer item del Pivot --><!--
-                        <PivotItem Header="Pestaña 1">
-                            <TextBlock Text="Contenido de la Pestaña 1" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        </PivotItem>
-
-                        --><!-- Segundo item del Pivot --><!--
-                        <PivotItem Header="Pestaña 2">
-                            <TextBlock Text="Contenido de la Pestaña 2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        </PivotItem>
-
-                        --><!-- Tercer item del Pivot --><!--
-                        <PivotItem Header="Pestaña 3">
-                            <TextBlock Text="Contenido de la Pestaña 3" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        </PivotItem>
-                    </Pivot>
-                    <Pivot SelectedIndex="{Binding PivotProductIndex}" >
-                        <Pivot.ItemTemplate>
-                            <DataTemplate x:DataType="models:Product">
-                                <PivotItem Header="oklkl">
-                                    --><!--<Frame SourcePageType="{Binding Name}" />--><!--
-                                </PivotItem>
-                            </DataTemplate>
-                        </Pivot.ItemTemplate>
-
-                        <Pivot.ItemsSource>
-                            <Binding Path="ProductFilter"/>
-                        </Pivot.ItemsSource>
-                    </Pivot>-->
-
-                    <!--<Pivot
-                        x:Name="asxaxssasa"
-                        ItemsSource="{Binding ProductFilter, Mode=OneWay}"
-                        SelectedIndex="{Binding PivotProductIndex}" Title="saxsaxsasa">
-                        <Pivot.ItemTemplate>
-                            <DataTemplate x:DataType="models:Product">
-                                <PivotItem Header="dsdsdsds" AllowDrop="True">
-                                        <TextBlock Text="{Binding Name}" />
-                                </PivotItem>
-                            </DataTemplate>
-                        </Pivot.ItemTemplate>
-                    </Pivot>-->
-
-                    <TextBlock
-                        Name="Text1"
-                        RelativePanel.AlignHorizontalCenterWithPanel="true"
-                        FontSize="35"
-                        FontStyle="Normal"
-                        TextWrapping="WrapWholeWords"
-                        FontWeight="Bold"
-                        TextAlignment="Center"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Foreground="#1e3050"
-                        RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="CoverImage" 
-                        Text="{Binding Title}" />
                     <Grid>
-                        <ListView
-                        HorizontalAlignment="Stretch" 
-                        VerticalAlignment="Stretch"
-                        ItemsSource="{Binding ProductFilter}"    
-                        IsItemClickEnabled="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            >
                             <!--
-                        <ListView.Header>
-                            <Grid Background="#1e3050">
-                                <TextBlock Foreground="White" Text="Lista de articulos" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </Grid>
-                        </ListView.Header>
-                        -->
-                            <ListView.ItemTemplate>
-
-                                <DataTemplate x:DataType="model:Product">
-                                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                        <!--<Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10">
-                       <StackPanel Margin="10" Background="White" BorderBrush="Gray" BorderThickness="1" Padding="10">-->
-                                        <Grid
-                                        Background="#fff"
-                                        HorizontalAlignment="Stretch" 
-                                        VerticalAlignment="Stretch"
-                                        Width="Auto"
-                                        Height="200"
-                                        Margin="0, 0, 0, 0">
-                                            <Grid.Shadow>
-                                                <ThemeShadow/>
-                                            </Grid.Shadow>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="*" />
-                                                <RowDefinition Height="*" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Name="Text1"
+                                RelativePanel.AlignHorizontalCenterWithPanel="true"
+                                FontSize="35"
+                                FontStyle="Normal"
+                                TextWrapping="WrapWholeWords"
+                                FontWeight="Bold"
+                                TextAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Foreground="#1e3050"
+                                RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="CoverImage" 
+                                Text="{Binding Title}" />
+                            -->
+                        </Grid>
+                        <Grid
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            >
+                            <ListView
+                                Background="#fff"
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Stretch"
+                                ItemsSource="{Binding ProductFilter}"    
+                                IsItemClickEnabled="True">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="model:Product">
+                                        <StackPanel Margin="0, 0, 0, 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                             <Grid
-                                            VerticalAlignment="Top"
-                                            Grid.Row="0"
-                                            Grid.Column="0"
-                                            Grid.ColumnSpan="2"
-                                            Width="150" Height="Auto">
-                                                <Image 
-                                                VerticalAlignment="Top"
-                                                Source="{Binding ImageUrl}"
-                                                Stretch="UniformToFill"
-                                                FlowDirection="RightToLeft"
-                                                MaxWidth="150" MaxHeight="100">
-                                                    <Image.RenderTransform>
-                                                        <RotateTransform Angle="0"/>
-                                                    </Image.RenderTransform>
-                                                </Image>
-                                            </Grid>
-                                            <TextBlock 
-                                                Foreground="#1e3050"
-                                                Grid.Row="1"
-                                                Grid.Column="0"
-                                                Grid.ColumnSpan="1"
-                                                Text="{Binding Name}"
-                                                HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Center"
-                                                FontSize="12"
-                                                TextWrapping="WrapWholeWords"
-                                                FontWeight="Bold">
-                                                </TextBlock>
-                                            <TextBlock 
-                                                Foreground="#1e3050"
-                                                Grid.Row="1"
-                                                Grid.Column="1"
-                                                Grid.ColumnSpan="1"
-                                                Text="{Binding Price}"
-                                                HorizontalAlignment="Right"
-                                                VerticalAlignment="Center"
-                                                FontSize="12"
-                                                TextWrapping="WrapWholeWords"
-                                                FontWeight="Bold">
-                                                </TextBlock>
-                                            <TextBlock
-                                                TextTrimming="CharacterEllipsis"
-                                                RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                RelativePanel.AlignVerticalCenterWithPanel="True"
-                                                Foreground="#1e3050"
-                                                Grid.Row="2"
-                                                Grid.Column="0"
-                                                Grid.ColumnSpan="2"
-                                                Text="{Binding Description}"
-                                                HorizontalAlignment="Stretch"
+                                                Background="#fff"
+                                                HorizontalAlignment="Stretch" 
                                                 VerticalAlignment="Stretch"
-                                                FontSize="10"
-                                                TextWrapping="Wrap"
-                                                FontWeight="Normal"
-                                                TextAlignment="Justify"
                                                 Width="Auto"
-                                                Height="Auto">
+                                                Height="200"
+                                                Margin="0, 0, 0, 0">
+                                                <Grid.Shadow>
+                                                    <ThemeShadow/>
+                                                </Grid.Shadow>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid
+                                                    VerticalAlignment="Top"
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    Width="150" Height="Auto">
+                                                    <Image 
+                                                        VerticalAlignment="Top"
+                                                        Source="{Binding ImageUrl}"
+                                                        Stretch="UniformToFill"
+                                                        FlowDirection="RightToLeft"
+                                                        MaxWidth="150" MaxHeight="100">
+                                                        <Image.RenderTransform>
+                                                            <RotateTransform Angle="0"/>
+                                                        </Image.RenderTransform>
+                                                    </Image>
+                                                </Grid>
+                                                <TextBlock 
+                                                    Foreground="#1e3050"
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="1"
+                                                    Text="{Binding Name}"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="12"
+                                                    TextWrapping="WrapWholeWords"
+                                                    FontWeight="Bold">
                                                 </TextBlock>
-                                            <Button
-                                                RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                RelativePanel.AlignVerticalCenterWithPanel="True"
-                                                Grid.Row="3"
-                                                Grid.Column="0"
-                                                Grid.ColumnSpan="2"
-                                                CornerRadius="2"                
-                                                Name="Button2"
-                                                Width="Auto"
-                                                Height="Auto"
-                                                VerticalAlignment="Stretch" 
-                                                HorizontalAlignment="Stretch"
-                                                Content="Agregar al carrito"
-                                                Command="{Binding DataContext.ShowModalCommand, ElementName=ParentGrid}"
-                                                CommandParameter="{Binding}">
+                                                <TextBlock 
+                                                    Foreground="#1e3050"
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="1"
+                                                    Text="{Binding Price}"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="12"
+                                                    TextWrapping="WrapWholeWords"
+                                                    FontWeight="Bold">
+                                                </TextBlock>
+                                                <TextBlock
+                                                    TextTrimming="CharacterEllipsis"
+                                                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                    Foreground="#1e3050"
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    Text="{Binding Description}"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    FontSize="10"
+                                                    TextWrapping="Wrap"
+                                                    FontWeight="Normal"
+                                                    TextAlignment="Justify"
+                                                    Width="Auto"
+                                                    Height="Auto">
+                                                </TextBlock>
+                                                <Button
+                                                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    CornerRadius="2"                
+                                                    Name="Button2"
+                                                    Width="Auto"
+                                                    Height="Auto"
+                                                    VerticalAlignment="Stretch" 
+                                                    HorizontalAlignment="Stretch"
+                                                    Content="Agregar al carrito"
+                                                    Command="{Binding DataContext.ShowModalCommand, ElementName=ParentGrid}"
+                                                    CommandParameter="{Binding}">
                                                 </Button>
-                                        </Grid>
-                                    </StackPanel>
-                                    <!--</StackPanel>
-                   </Border>-->
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-
-                            <!-- Define a 3-column responsive grid using the WrapGrid -->
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapGrid
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    Orientation="Horizontal" 
-                                    MaximumRowsOrColumns="4"
-                                    ItemWidth="250" 
-                                    ItemHeight="250" />
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                        </ListView>
+                                            </Grid>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapGrid
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            Orientation="Horizontal" 
+                                            MaximumRowsOrColumns="4"
+                                            ItemWidth="250" 
+                                            ItemHeight="250" />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                        </Grid>
+                        <Grid
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            >
+                            <Button
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Background="#1e3050"
+                                CornerRadius="2"                
+                                Name="Button2"
+                                Foreground="#FFFFFF"
+                                FontSize="20"
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Center"
+                                Content="Regresar"
+                                Margin="0, 0, 0, 0"
+                                Height="80"
+                                Width="200"
+                                Command="{Binding DataContext.CommandGoBack, ElementName=ParentGrid}"
+                                CommandParameter="{Binding}">
+                            </Button>
+                        </Grid>
                     </Grid>
-                    <Button
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="2"
-                        Background="#1e3050"
-                        CornerRadius="2"                
-                        Name="Button2"
-                        Foreground="#FFFFFF"
-                        FontSize="20"
-                        VerticalAlignment="Center" 
-                        HorizontalAlignment="Center"
-                        Content="Regresar"
-                        Margin="0, 0, 0, 0"
-                        Height="80"
-                        Width="200"
-                        Command="{Binding DataContext.CommandGoBack, ElementName=ParentGrid}"
-                        CommandParameter="{Binding}">
-                        </Button>
-
-                    <!--<Popup 
-                        x:Name="DynamicModal"
-                        IsOpen="{Binding IsPopupOpen}">
-                        <TextBlock Text="asaxsaasx" />
-                    </Popup>-->
-
-                    <ContentControl 
-                        
-                        Content="{Binding IsModalVisible}">
-                        <ContentControl.ContentTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="asaxsaawwwwwww  sx" />
-                            </DataTemplate>
-                        </ContentControl.ContentTemplate>
-                    </ContentControl>
-                    
                 </StackPanel>
             </ScrollViewer>
         </RelativePanel>

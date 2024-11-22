@@ -1,4 +1,5 @@
 ﻿using OnlineStore.UI.Helpers;
+using OnlineStore.UI.Models;
 using OnlineStore.UI.Services;
 using OnlineStore.UI.Views;
 using System;
@@ -20,8 +21,8 @@ namespace OnlineStore.UI.ViewModels
 
         public ViewModelBase()
         {
-            ShowModalCommand = new RelayCommand(ShowModal);
-            CloseModalCommand = new RelayCommand(CloseModal);
+            ShowModalCommand = new RelayCommand<Product>(ShowModal);
+            CloseModalCommand = new RelayCommand<CarouselItem>(CloseModal);
         }
 
         private bool _isModalVisible;
@@ -81,19 +82,19 @@ namespace OnlineStore.UI.ViewModels
             return true;
         }
 
-        private async void ShowModal()
+        private async void ShowModal(Product product)
         {
-            IsModalVisible = true;
             var modalDialog = new ModalDialogPage
             {
-                DataContext = new ModalDialogViewModel {  }
+                DataContext = new ModalDialogViewModel { Product = product }
             };
+            modalDialog.Width = 600;   // Establece el ancho
+            modalDialog.Height = 400;
             await modalDialog.ShowAsync();
         }
 
-        private void CloseModal()
+        private void CloseModal(CarouselItem carouselItem)
         {
-            IsModalVisible = false;
         }
     }
 }
