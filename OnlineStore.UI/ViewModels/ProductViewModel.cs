@@ -1,4 +1,5 @@
-﻿using OnlineStore.UI.Helpers;
+﻿using OnlineStore.UI.Controls;
+using OnlineStore.UI.Helpers;
 using OnlineStore.UI.Models;
 using OnlineStore.UI.Views;
 using System;
@@ -16,9 +17,11 @@ namespace OnlineStore.UI.ViewModels
 {
     public class ProductViewModel : ViewModelBase
     {
+        private Action _openAction;
         public Category SelectedCategory { get; set; }
         public ObservableCollection<Product> Product { get; }
         public ObservableCollection<Product> _productFilter;
+        public ModalDialogPage _modalDialogPage { get; set; }
         public ObservableCollection<Product> ProductFilter
         {
             get { return _productFilter; }
@@ -41,12 +44,14 @@ namespace OnlineStore.UI.ViewModels
                 }
             }
         }
-
+        private TaskCompletionSource<bool> _tcs;
+        public ICommand ShowModalCommand { get; }
         public ICommand CommandGoBack { get; }
         public ICommand CommandGoShoppingCart { get; }
 
         public ProductViewModel()
         {
+            _modalDialogPage = new ModalDialogPage();
             Product = new ObservableCollection<Product>() {
             new Product() { Id = new Guid("19a43857-4a31-42de-9848-87eac0b9a4e8"), Name = "Gorra Deportiva", Description = "Ideal para: Comprar ahora y llevar tu estilo al siguiente nivel.", Price = 12328.00, Stock = 12, ImageUrl = "ms-appx:///Assets/474.jpg", Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
             new Product() { Id = new Guid("6677ed00-307f-414c-9f7b-3c5239b79a67"), Name = "Gorra Deportiva Clásica Unisex", Description = "Ideal para: Correr, ciclismo, deportes al aire libre, y uso diario.", Price = 12328.00, Stock = 45, ImageUrl = "ms-appx:///Assets/red-cap-protection-background-clothes.jpg", Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
@@ -91,11 +96,11 @@ namespace OnlineStore.UI.ViewModels
             };
 
             ProductFilter = new ObservableCollection<Product>();
-
             PivotProductIndex = 0;
             Title = "¡Ordena ahora!";
             CommandGoBack = new RelayCommand(NavigateToGoBack);
             CommandGoShoppingCart = new RelayCommand(NavigateToGoShoppingCart);
+            ShowModalCommand = new RelayCommand<Product>(ShowModal);
         }
 
         public void Initialize(ProductType productType)
@@ -132,6 +137,31 @@ namespace OnlineStore.UI.ViewModels
             //modalDialog.Width = 600;   // Establece el ancho
             //modalDialog.Height = 400;
             await modalDialog.ShowAsync();
+        }
+
+        private async void ShowModal(Product product)
+        {
+             _modalDialogPage.InitializeDialog(product);
+            await _modalDialogPage.ShowAsync();
+
+
+            //_tcs = new TaskCompletionSource<bool>();
+            //_modalDialogPage = new ModalDialogPage
+            //{
+            //    DataContext = new ModalDialogViewModel { Product = product }
+            //};
+            //_modalDialogPage.Width = 600;   // Establece el ancho
+            //_modalDialogPage.Height = 400;
+            //await _modalDialogPage.ShowAsync();
+
+
+
+            //_modalDialogPage.Closed += (sender, args) =>
+            //{
+            //    _tcs.SetResult(true);
+            //};
+
+            //bool result = await _tcs.Task;
         }
     }
 }

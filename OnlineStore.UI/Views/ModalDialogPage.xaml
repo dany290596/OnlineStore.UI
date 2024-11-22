@@ -8,9 +8,12 @@
     mc:Ignorable="d"
     Title="¡Descubre Todo Sobre Este Producto!"
     SecondaryButtonText="Aceptar"
-    DataContext="{Binding}"
+    xmlns:viewModels="using:OnlineStore.UI.ViewModels"
+    x:Name="MyDialog"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <ContentDialog.DataContext>
+        <viewModels:ModalDialogViewModel />
+    </ContentDialog.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -139,11 +142,22 @@
                 VerticalAlignment="Center"
                 FontSize="10"
                 TextWrapping="WrapWholeWords" />
+            <!--
             <TextBox
                 Grid.Row="4"
                 Grid.Column="1"
                 Grid.ColumnSpan="1"
                 VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+            -->
+            <ComboBox
+                Grid.Row="4"
+                Grid.Column="1"
+                Grid.ColumnSpan="1"
+                ItemsSource="{Binding QuantityItem}" 
+                DisplayMemberPath="Name" 
+                SelectedItem="{Binding SelectedQuantityItem, Mode=TwoWay}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center" />
             <Button
                 Grid.Row="5"
                 Grid.Column="0"
@@ -152,7 +166,8 @@
                 Name="Button2"
                 VerticalAlignment="Stretch" 
                 HorizontalAlignment="Stretch"
-                Content="Agregar al carrito">
+                Content="Agregar al carrito"
+                Command="{Binding CommandAddCart}">
             </Button>
         </Grid>
         <!--<TextBox 

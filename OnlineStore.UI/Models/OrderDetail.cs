@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineStore.UI.Models
 {
-    public class OrderDetails : BaseEntity
+    public class OrderDetail : BaseEntity
     {
         public double Price { get; set; }
         public int Quantity { get; set; }

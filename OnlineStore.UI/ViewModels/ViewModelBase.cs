@@ -1,4 +1,5 @@
-﻿using OnlineStore.UI.Helpers;
+﻿using Newtonsoft.Json;
+using OnlineStore.UI.Helpers;
 using OnlineStore.UI.Models;
 using OnlineStore.UI.Services;
 using OnlineStore.UI.Views;
@@ -11,33 +12,24 @@ using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.Storage;
+using Windows.UI.Xaml.Controls;
 
 namespace OnlineStore.UI.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
-        public ICommand ShowModalCommand { get; }
+
+       
         public ICommand CloseModalCommand { get; }
+        private ModalDialogPage _dialog;
 
         public ViewModelBase()
         {
-            ShowModalCommand = new RelayCommand<Product>(ShowModal);
+           
             CloseModalCommand = new RelayCommand<CarouselItem>(CloseModal);
         }
 
-        private bool _isModalVisible;
-        public bool IsModalVisible
-        {
-            get { return _isModalVisible; }
-            set
-            {
-                if (_isModalVisible != value)
-                {
-                    _isModalVisible = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
         public event PropertyChangedEventHandler PropertyChanged;
         public string _title;
 
@@ -55,7 +47,6 @@ namespace OnlineStore.UI.ViewModels
         }
 
         public string _subtitle;
-
         public string Subtitle
         {
             get { return _subtitle; }
@@ -82,19 +73,31 @@ namespace OnlineStore.UI.ViewModels
             return true;
         }
 
-        private async void ShowModal(Product product)
-        {
-            var modalDialog = new ModalDialogPage
-            {
-                DataContext = new ModalDialogViewModel { Product = product }
-            };
-            modalDialog.Width = 600;   // Establece el ancho
-            modalDialog.Height = 400;
-            await modalDialog.ShowAsync();
-        }
+     
 
         private void CloseModal(CarouselItem carouselItem)
         {
+        }
+
+        public void SaveCart(ProductDetail data)
+        {
+            if (data != null)
+            {
+                _dialog = new ModalDialogPage { };
+                List<ProductDetail> productDetail = new List<ProductDetail>();
+                productDetail.Add(data);
+                //List<ShoppingCart> shoppingCart = new List<ShoppingCart>
+                //{
+                //    new ShoppingCart { Id = Guid.NewGuid(), Estado = 1, ProductDetail = productDetail }
+                //};
+                 Task.Delay(2000);
+                var json = JsonConvert.SerializeObject(productDetail);
+                ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
+                if (_dialog != null)
+                {
+                    _dialog.Hide(); // Esto debe cerrar el diálogo
+                }
+            }
         }
     }
 }
