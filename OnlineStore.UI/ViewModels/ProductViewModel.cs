@@ -48,9 +48,10 @@ namespace OnlineStore.UI.ViewModels
         public ICommand ShowModalCommand { get; }
         public ICommand CommandGoBack { get; }
         public ICommand CommandGoShoppingCart { get; }
-
+        public ObservableCollection<ProductDetail> ProductDetail { get; set; }
         public ProductViewModel()
         {
+            ProductDetail = StorageShoppingCart();
             _modalDialogPage = new ModalDialogPage();
             Product = new ObservableCollection<Product>() {
             new Product() { Id = new Guid("19a43857-4a31-42de-9848-87eac0b9a4e8"), Name = "Gorra Deportiva", Description = "Ideal para: Comprar ahora y llevar tu estilo al siguiente nivel.", Price = 12328.00, Stock = 12, ImageUrl = "ms-appx:///Assets/474.jpg", Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
@@ -101,6 +102,8 @@ namespace OnlineStore.UI.ViewModels
             CommandGoBack = new RelayCommand(NavigateToGoBack);
             CommandGoShoppingCart = new RelayCommand(NavigateToGoShoppingCart);
             ShowModalCommand = new RelayCommand<Product>(ShowModal);
+
+            ShoppingCartCount = ProductDetail.Count();
         }
 
         public void Initialize(ProductType productType)

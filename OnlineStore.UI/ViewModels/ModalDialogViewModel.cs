@@ -1,4 +1,5 @@
-﻿using OnlineStore.UI.Helpers;
+﻿using Newtonsoft.Json;
+using OnlineStore.UI.Helpers;
 using OnlineStore.UI.Models;
 using OnlineStore.UI.Services;
 using OnlineStore.UI.Views;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -18,8 +20,8 @@ namespace OnlineStore.UI.ViewModels
 {
     public class ModalDialogViewModel : ViewModelBase
     {
-
-        private ContentDialog _dialog;
+        public ObservableCollection<ProductDetail> ProductDetail { get; set; }
+        private ContentDialog _dialog { get; set; }
         private readonly ModalDialogPage _modalDialogPage;
         public Action CloseDialogAction { get; set; }
         public event EventHandler OnDialogRequested;
@@ -53,7 +55,7 @@ namespace OnlineStore.UI.ViewModels
 
         public ModalDialogViewModel()
         {
-
+            ProductDetail = StorageShoppingCart();
             CarouselItem = new ObservableCollection<CarouselItem>
             {
                 new CarouselItem { ImageUrl = "ms-appx:///Assets/old-fedora-hat.jpg", Title = "Imagen 1", Description = "Description 1" },
@@ -67,7 +69,13 @@ namespace OnlineStore.UI.ViewModels
                 new Quantity { Id = 3, Name = "3" },
                 new Quantity { Id = 4, Name = "4" },
                 new Quantity { Id = 5, Name = "5" },
-                new Quantity { Id = 6, Name = "6" }
+                new Quantity { Id = 6, Name = "6" },
+                new Quantity { Id = 7, Name = "7" },
+                new Quantity { Id = 8, Name = "8" },
+                new Quantity { Id = 9, Name = "9" },
+                new Quantity { Id = 10, Name = "10" },
+                new Quantity { Id = 11, Name = "11" },
+                new Quantity { Id = 12, Name = "12" }
             };
             CommandAddCart = new RelayCommand(CloseDialog);
             //MessengerService.Subscribe("CerrarDialogo", OnCerrarDialogo);
@@ -88,31 +96,61 @@ namespace OnlineStore.UI.ViewModels
 
         public void CloseDialog()
         {
-            //var quantity = SelectedQuantityItem;
-            //ProductDetail productDetail = new ProductDetail();
-            //productDetail.Id = Guid.NewGuid();
-            //productDetail.Product = Product;
-            //productDetail.TotalProduct = quantity.Id * Product.Price;
-            //productDetail.Estado = 1;
-            //  _modalDialogPage?.CloseDialog();
-            //var dialog = Application.Current.Resources["MyDialog"] as ContentDialog;
-            //if (dialog != null)
-            //{
-            //    dialog.Hide(); // Close dialog
-            //}
-            // SaveCart(productDetail);
-            // Disparar el evento CloseRequested
-            //CloseRequested?.Invoke(this, EventArgs.Empty);
-            //Product.Send(new CloseDialogMessage());
+            var quantity = SelectedQuantityItem;
+            if (quantity != null)
+            {
+                if (ProductDetail.Count() > 0)
+                {
+                    var searchProduct = ProductDetail.FirstOrDefault(f => f.Product.Id == Product.Id);
+                    if (searchProduct == null)
+                    {
+                        ProductDetail productDetail = new ProductDetail();
+                        productDetail.Id = Guid.NewGuid();
+                        productDetail.Name = Product.Name;
+                        productDetail.Product = Product;
+                        productDetail.TotalProduct = quantity.Id;
+                        productDetail.TotalPriceProduct = quantity.Id * Product.Price;
+                        productDetail.Estado = 1;
+                        ProductDetail.Add(productDetail);
+                        var json = JsonConvert.SerializeObject(ProductDetail);
+                        ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
+                    }
+                    else
+                    {
+                        double totalPriceProduct = quantity.Id * Product.Price;
+                        searchProduct.TotalProduct = searchProduct.TotalProduct + quantity.Id;
+                        searchProduct.TotalPriceProduct = searchProduct.TotalPriceProduct + totalPriceProduct;
+                        var json = JsonConvert.SerializeObject(ProductDetail);
+                        ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
+                    }
+                    //ProductDetail productDetail = new ProductDetail();
+                    //productDetail.Id = Guid.NewGuid();
+                    //productDetail.Name = Product.Name;
+                    //productDetail.Product = Product;
+                    //productDetail.TotalProduct = quantity.Id;
+                    //productDetail.TotalPriceProduct = quantity.Id * Product.Price;
+                    //productDetail.Estado = 1;
 
-            var dssd = _dialog;
-            _dialog.Hide();
+                    //Task.Delay(2000);
 
+
+                    //List<ProductDetail> details = new List<ProductDetail>();
+                    //details.Add(productDetail);
+                    //var json = JsonConvert.SerializeObject(details);
+
+                    //ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
+                }
+            }
+
+            if (_dialog != null)
+            {
+                _dialog.Hide();
+            }
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-       
-            public void EstablecerDialogo(ContentDialog dialog)
+
+        public void EstablecerDialogo(ContentDialog dialog)
         {
             _dialog = dialog;
         }

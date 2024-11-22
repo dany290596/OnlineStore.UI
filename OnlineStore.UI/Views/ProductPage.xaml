@@ -28,7 +28,7 @@
             <Rectangle
                 Opacity="0.2"
                 Fill="#8CC63C" 
-                Width="1920" Height="60" 
+                Width="1920" Height="65" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center">
             </Rectangle>
@@ -58,7 +58,7 @@
                 Background="Red"
                 CornerRadius="100">
                 <TextBlock 
-                    Text="0"
+                    Text="{Binding ShoppingCartCount}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Foreground="White"
@@ -80,7 +80,7 @@
             <TextBlock
                 Name="Text11"
                 RelativePanel.AlignHorizontalCenterWithPanel="true"
-                FontSize="35"
+                FontSize="20"
                 FontStyle="Normal"
                 TextWrapping="WrapWholeWords"
                 FontWeight="Bold"

@@ -5,6 +5,7 @@ using OnlineStore.UI.Services;
 using OnlineStore.UI.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -20,13 +21,13 @@ namespace OnlineStore.UI.ViewModels
     public class ViewModelBase : INotifyPropertyChanged
     {
 
-       
+
         public ICommand CloseModalCommand { get; }
         private ModalDialogPage _dialog;
 
         public ViewModelBase()
         {
-           
+
             CloseModalCommand = new RelayCommand<CarouselItem>(CloseModal);
         }
 
@@ -60,6 +61,20 @@ namespace OnlineStore.UI.ViewModels
             }
         }
 
+        public int _shoppingCartCount;
+        public int ShoppingCartCount
+        {
+            get { return _shoppingCartCount; }
+            set
+            {
+                if (_shoppingCartCount != value)
+                {
+                    _shoppingCartCount = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -72,8 +87,6 @@ namespace OnlineStore.UI.ViewModels
             OnPropertyChanged(propertyName);
             return true;
         }
-
-     
 
         private void CloseModal(CarouselItem carouselItem)
         {
@@ -90,7 +103,7 @@ namespace OnlineStore.UI.ViewModels
                 //{
                 //    new ShoppingCart { Id = Guid.NewGuid(), Estado = 1, ProductDetail = productDetail }
                 //};
-                 Task.Delay(2000);
+                Task.Delay(2000);
                 var json = JsonConvert.SerializeObject(productDetail);
                 ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
                 if (_dialog != null)
@@ -98,6 +111,16 @@ namespace OnlineStore.UI.ViewModels
                     _dialog.Hide(); // Esto debe cerrar el diálogo
                 }
             }
+        }
+
+        public ObservableCollection<ProductDetail> StorageShoppingCart()
+        {
+            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("StorageShoppingCart"))
+            {
+                var json = ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] as string;
+                return JsonConvert.DeserializeObject<ObservableCollection<ProductDetail>>(json);
+            }
+            return new ObservableCollection<ProductDetail>(); // Retorna un carrito vacío si no hay datos almacenados
         }
     }
 }

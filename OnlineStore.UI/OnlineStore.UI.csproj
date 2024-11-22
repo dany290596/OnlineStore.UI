@@ -133,7 +133,6 @@
     <Compile Include="Models\ProductType.cs" />
     <Compile Include="Models\Quantity.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
-    <Compile Include="Services\MessengerService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

@@ -8,9 +8,71 @@
     mc:Ignorable="d"
     Title="¡Lo que quieres, a punto de ser tuyo!"
     SecondaryButtonText="Aceptar"
+    xmlns:viewModels="using:OnlineStore.UI.ViewModels"
+    xmlns:models="using:OnlineStore.UI.Models"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <ContentDialog.DataContext>
+        <viewModels:ModalShoppingCartViewModel />
+    </ContentDialog.DataContext>
     <Grid>
-
+        <ScrollViewer
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True">
+                <ListView
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        ItemsSource="{Binding ProductDetail}"
+                        IsItemClickEnabled="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:ProductDetail">
+                            <Grid
+                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                    Background="Aqua">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                <ColumnDefinition MinWidth="100" MaxWidth="300" Width="1*" />
+                                <ColumnDefinition MinWidth="100" MaxWidth="300" Width="1*" />
+                                <ColumnDefinition MinWidth="100" MaxWidth="300" Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock                                       
+                                        Foreground="#1e3050"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                        Text="{Binding Name}"                                   
+                                        FontSize="12"
+                                        TextWrapping="WrapWholeWords"
+                                        FontWeight="Normal">
+                                </TextBlock>
+                                <TextBlock                                        
+                                        Foreground="#1e3050"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                        Text="{Binding TotalProduct}"
+                                        TextAlignment="Right"
+                                        FontSize="12"
+                                        TextWrapping="WrapWholeWords"
+                                        FontWeight="Normal">
+                                </TextBlock>
+                            <TextBlock                                       
+                                        Foreground="#1e3050"
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                        Text="{Binding TotalPriceProduct}"
+                                        TextAlignment="Right"
+                                        FontSize="12"
+                                        TextWrapping="WrapWholeWords"
+                                        FontWeight="Normal">
+                            </TextBlock>
+                        </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
     </Grid>
 </ContentDialog>
