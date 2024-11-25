@@ -22,6 +22,7 @@ namespace OnlineStore.UI.ViewModels
         public ObservableCollection<Product> Product { get; }
         public ObservableCollection<Product> _productFilter;
         public ModalDialogPage _modalDialogPage { get; set; }
+        public ModalShoppingCartPage _modalShoppingCartPage { get; set; }
         public ObservableCollection<Product> ProductFilter
         {
             get { return _productFilter; }
@@ -53,6 +54,7 @@ namespace OnlineStore.UI.ViewModels
         {
             ProductDetail = StorageShoppingCart();
             _modalDialogPage = new ModalDialogPage();
+            _modalShoppingCartPage = new ModalShoppingCartPage();
             Product = new ObservableCollection<Product>() {
             new Product() { Id = new Guid("19a43857-4a31-42de-9848-87eac0b9a4e8"), Name = "Gorra Deportiva", Description = "Ideal para: Comprar ahora y llevar tu estilo al siguiente nivel.", Price = 12328.00, Stock = 12, ImageUrl = "ms-appx:///Assets/474.jpg", Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
             new Product() { Id = new Guid("6677ed00-307f-414c-9f7b-3c5239b79a67"), Name = "Gorra Deportiva Clásica Unisex", Description = "Ideal para: Correr, ciclismo, deportes al aire libre, y uso diario.", Price = 12328.00, Stock = 45, ImageUrl = "ms-appx:///Assets/red-cap-protection-background-clothes.jpg", Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
@@ -132,19 +134,28 @@ namespace OnlineStore.UI.ViewModels
 
         private async void NavigateToGoShoppingCart()
         {
-            var sdcds = "";
-            var modalDialog = new ModalShoppingCartPage
-            {
-                DataContext = new ModalShoppingCartViewModel { }
-            };
+            //var sdcds = "";
+            //var modalDialog = new ModalShoppingCartPage
+            //{
+            //    DataContext = new ModalShoppingCartViewModel { }
+            //};
             //modalDialog.Width = 600;   // Establece el ancho
             //modalDialog.Height = 400;
-            await modalDialog.ShowAsync();
+            var windowWidth = Window.Current.Bounds.Width;
+            var windowHeight = Window.Current.Bounds.Height;
+            _modalShoppingCartPage.InitializeDialog();
+            _modalShoppingCartPage.Width = windowWidth * 0.9;
+            _modalShoppingCartPage.Height = windowHeight * 0.9;
+            await _modalShoppingCartPage.ShowAsync();
         }
 
         private async void ShowModal(Product product)
         {
-             _modalDialogPage.InitializeDialog(product);
+            var windowWidth = Window.Current.Bounds.Width;
+            var windowHeight = Window.Current.Bounds.Height;
+            _modalDialogPage.Width = windowWidth * 0.9;
+            _modalDialogPage.Height = windowHeight * 0.9;
+            _modalDialogPage.InitializeDialog(product);
             await _modalDialogPage.ShowAsync();
 
 

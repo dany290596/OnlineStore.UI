@@ -114,6 +114,7 @@ namespace OnlineStore.UI.ViewModels
                         ProductDetail.Add(productDetail);
                         var json = JsonConvert.SerializeObject(ProductDetail);
                         ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
+                        ShoppingCartCount = ProductDetail.Count();
                     }
                     else
                     {
@@ -123,22 +124,20 @@ namespace OnlineStore.UI.ViewModels
                         var json = JsonConvert.SerializeObject(ProductDetail);
                         ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
                     }
-                    //ProductDetail productDetail = new ProductDetail();
-                    //productDetail.Id = Guid.NewGuid();
-                    //productDetail.Name = Product.Name;
-                    //productDetail.Product = Product;
-                    //productDetail.TotalProduct = quantity.Id;
-                    //productDetail.TotalPriceProduct = quantity.Id * Product.Price;
-                    //productDetail.Estado = 1;
-
-                    //Task.Delay(2000);
-
-
-                    //List<ProductDetail> details = new List<ProductDetail>();
-                    //details.Add(productDetail);
-                    //var json = JsonConvert.SerializeObject(details);
-
-                    //ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
+                }
+                else
+                {
+                    ProductDetail productDetail = new ProductDetail();
+                    productDetail.Id = Guid.NewGuid();
+                    productDetail.Name = Product.Name;
+                    productDetail.Product = Product;
+                    productDetail.TotalProduct = quantity.Id;
+                    productDetail.TotalPriceProduct = quantity.Id * Product.Price;
+                    productDetail.Estado = 1;
+                    ProductDetail.Add(productDetail);
+                    var json = JsonConvert.SerializeObject(ProductDetail);
+                    ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
+                    ShoppingCartCount = ProductDetail.Count();
                 }
             }
 

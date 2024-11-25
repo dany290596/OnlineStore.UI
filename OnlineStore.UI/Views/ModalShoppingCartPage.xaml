@@ -10,69 +10,175 @@
     SecondaryButtonText="Aceptar"
     xmlns:viewModels="using:OnlineStore.UI.ViewModels"
     xmlns:models="using:OnlineStore.UI.Models"
+    MaxWidth="1920"
+    MaxHeight="1080"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <ContentDialog.DataContext>
         <viewModels:ModalShoppingCartViewModel />
     </ContentDialog.DataContext>
-    <Grid>
-        <ScrollViewer
-                RelativePanel.AlignHorizontalCenterWithPanel="True"
-                RelativePanel.AlignVerticalCenterWithPanel="True">
-                <ListView
-                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                        ItemsSource="{Binding ProductDetail}"
-                        IsItemClickEnabled="True">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:ProductDetail">
+    <Grid x:Name="ParentGrid">
+        <!-- Definir las filas para los encabezados y el área desplazable -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Fila para los encabezados -->
+            <RowDefinition Height="*" />
+            <!-- Fila para los datos desplazables -->
+        </Grid.RowDefinitions>
+
+        <!-- Definir las columnas para que las celdas se alineen correctamente -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Encabezados en un Grid -->
+        <Grid Grid.Row="0" Grid.ColumnSpan="4" Background="#98FF98" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Encabezados -->
+            <TextBlock 
+                FontSize="10"
+                Foreground="#1e3050" 
+                Grid.Column="0" Grid.ColumnSpan="1" Text="Nombre" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5"/>
+            <TextBlock 
+                FontSize="10"
+                Foreground="#1e3050" 
+                Grid.Column="1" Grid.ColumnSpan="1" Text="N.o de productos" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5"/>
+            <TextBlock 
+                FontSize="10"
+                Foreground="#1e3050" 
+                Grid.Column="2" Grid.ColumnSpan="1" Text="Precio total" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5"/>
+            <TextBlock 
+                FontSize="10"
+                Foreground="#1e3050" 
+                Grid.Column="3" Grid.ColumnSpan="1" Text="Acción" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5"/>
+        </Grid>
+        <ScrollViewer  Grid.Row="1" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Auto" Height="200">
+            <GridView        
+    ItemsSource="{Binding ProductDetail}"
+    IsItemClickEnabled="True">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ProductDetail">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                TextWrapping="WrapWholeWords"
+                                Width="150" 
+                                FontSize="10"
+                                Text="{Binding Name}" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock 
+                                TextWrapping="WrapWholeWords"
+                                Width="100"
+                                FontSize="10"
+                                Text="{Binding TotalProduct}" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock 
+                                TextWrapping="WrapWholeWords"
+                                Width="100"
+                                FontSize="10"
+                                Text="{Binding TotalPriceProduct}" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <Grid
-                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                    Background="Aqua">
+                                Width="150">
+                                <Button     
+                                Background="Transparent"
+                                Width="40"
+                                Height="40"
+                                MaxWidth="40" 
+                                MaxHeight="40"
+                                CornerRadius="100"
+                                    Padding="5"
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Center"
+                                Command="{Binding DataContext.CommandGoRemove, ElementName=ParentGrid}"
+                                CommandParameter="{Binding}">
+                                    <Button.Content>
+                                        <Image 
+                                        Width="20"
+                                        Source="ms-appx:///Assets//delete-2-svgrepo-com.png" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+
+                        <!--
+                            <Grid
+            Background="#fff" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                <ColumnDefinition MinWidth="100" MaxWidth="300" Width="1*" />
-                                <ColumnDefinition MinWidth="100" MaxWidth="300" Width="1*" />
-                                <ColumnDefinition MinWidth="100" MaxWidth="300" Width="1*" />
+                                    <ColumnDefinition MinWidth="100" MaxWidth="300" Width="1*" />
+                                    <ColumnDefinition MinWidth="100" MaxWidth="300" Width="1*" />
+                                    <ColumnDefinition MinWidth="100" MaxWidth="300" Width="1*" />
+                                    <ColumnDefinition MinWidth="100" MaxWidth="300" Width="1*" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock                                       
-                                        Foreground="#1e3050"
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                        Text="{Binding Name}"                                   
-                                        FontSize="12"
-                                        TextWrapping="WrapWholeWords"
-                                        FontWeight="Normal">
+                    Foreground="#1e3050"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Text="{Binding Name}"                                   
+                    FontSize="12"
+                    TextWrapping="WrapWholeWords"
+                    FontWeight="Normal">
                                 </TextBlock>
                                 <TextBlock                                        
-                                        Foreground="#1e3050"
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                        Text="{Binding TotalProduct}"
-                                        TextAlignment="Right"
-                                        FontSize="12"
-                                        TextWrapping="WrapWholeWords"
-                                        FontWeight="Normal">
+                    Foreground="#1e3050"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Text="{Binding TotalProduct}"
+                    TextAlignment="Right"
+                    FontSize="12"
+                    TextWrapping="WrapWholeWords"
+                    FontWeight="Normal">
                                 </TextBlock>
-                            <TextBlock                                       
-                                        Foreground="#1e3050"
-                                        Grid.Row="0"
-                                        Grid.Column="2"
-                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                        Text="{Binding TotalPriceProduct}"
-                                        TextAlignment="Right"
-                                        FontSize="12"
-                                        TextWrapping="WrapWholeWords"
-                                        FontWeight="Normal">
-                            </TextBlock>
-                        </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
+                                <TextBlock                                       
+                    Foreground="#1e3050"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Text="{Binding TotalPriceProduct}"
+                    TextAlignment="Right"
+                    FontSize="12"
+                    TextWrapping="WrapWholeWords"
+                    FontWeight="Normal">
+                                </TextBlock>
+                                <Button
+            Grid.Row="0"
+            Grid.Column="3"       
+            Background="Transparent"
+            Width="40"
+            Height="40"
+            MaxWidth="40" 
+            MaxHeight="40"
+            CornerRadius="100"
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Right"
+            Command="{Binding DataContext.CommandGoRemove, ElementName=ParentGrid}"
+            CommandParameter="{Binding}">
+                                    <Button.Content>
+                                        <Image 
+                    Width="20"
+                    Source="ms-appx:///Assets//delete-2-svgrepo-com.png" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                            -->
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+
+        </ScrollViewer>
+
+
     </Grid>
 </ContentDialog>

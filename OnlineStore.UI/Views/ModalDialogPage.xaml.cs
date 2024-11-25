@@ -78,7 +78,6 @@ namespace OnlineStore.UI.Views
             // Inicializa el ViewModel
             this.DataContext = ViewModel;
             ViewModel.EstablecerDialogo(this);
-
         }
 
         private void OnCloseRequested()

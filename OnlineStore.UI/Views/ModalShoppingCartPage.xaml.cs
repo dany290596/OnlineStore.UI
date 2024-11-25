@@ -1,4 +1,5 @@
-﻿using OnlineStore.UI.ViewModels;
+﻿using OnlineStore.UI.Models;
+using OnlineStore.UI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,10 +24,19 @@ namespace OnlineStore.UI.Views
     /// </summary>
     public sealed partial class ModalShoppingCartPage : ContentDialog
     {
+        public ModalShoppingCartViewModel ViewModel { get; set; }
         public ModalShoppingCartPage()
         {
             this.InitializeComponent();
-            this.DataContext = new ModalShoppingCartViewModel();
+            //this.DataContext = new ModalShoppingCartViewModel();
+        }
+
+        public void InitializeDialog()
+        {
+            ViewModel = new ModalShoppingCartViewModel();
+            // Inicializa el ViewModel
+            this.DataContext = ViewModel;
+            ViewModel.EstablecerDialogo(this);
         }
     }
 }
