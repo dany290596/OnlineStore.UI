@@ -48,8 +48,7 @@ namespace OnlineStore.UI.ViewModels
         private TaskCompletionSource<bool> _tcs;
         public ICommand ShowModalCommand { get; }
         public ICommand CommandGoBack { get; }
-        public ICommand CommandGoShoppingCart { get; }
-        public ObservableCollection<ProductDetail> ProductDetail { get; set; }
+        public ICommand CommandGoShoppingCart { get; }        
         public ProductViewModel()
         {
             ProductDetail = StorageShoppingCart();

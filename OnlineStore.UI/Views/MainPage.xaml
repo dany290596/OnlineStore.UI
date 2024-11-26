@@ -87,7 +87,7 @@
                                 CornerRadius="100"
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Center"
-                                Command="{Binding NavigateCommand}">
+                                Command="{Binding NavigateToHomeCommand}">
                                 <Button.Content>
                                     <Image 
                                         Width="80"
@@ -116,7 +116,8 @@
                                 Height="150"
                                 CornerRadius="100"
                                 VerticalAlignment="Center" 
-                                HorizontalAlignment="Center">
+                                HorizontalAlignment="Center"
+                                Command="{Binding NavigateToPayCommand}">
                                 <Button.Content>
                                     <Image 
                                         Width="80"

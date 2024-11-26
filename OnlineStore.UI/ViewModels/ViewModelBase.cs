@@ -20,14 +20,13 @@ namespace OnlineStore.UI.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
-
+        public ObservableCollection<ProductDetail> ProductDetail { get; set; }
 
         public ICommand CloseModalCommand { get; }
         private ModalDialogPage _dialog;
 
         public ViewModelBase()
         {
-
             CloseModalCommand = new RelayCommand<CarouselItem>(CloseModal);
         }
 

@@ -16,14 +16,16 @@ namespace OnlineStore.UI.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        public ICommand NavigateToHomeCommand { get; }
+        public ICommand NavigateToPayCommand { get; }
+
         public MainViewModel()
         {
             Title = "BIENVENIDO";
             Subtitle = "¿Qué te gustaría \nhacer hoy?";
-            NavigateCommand = new RelayCommand(NavigateToHome);
+            NavigateToHomeCommand = new RelayCommand(NavigateToHome);
+            NavigateToPayCommand = new RelayCommand(NavigateToPay);
         }
-
-        public ICommand NavigateCommand { get; }
 
         private void NavigateToHome()
         {
@@ -34,11 +36,13 @@ namespace OnlineStore.UI.ViewModels
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        private void NavigateToPay()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            var frame = Window.Current.Content as Frame;
+            if (frame != null)
+            {
+                frame.Navigate(typeof(PayPage));
+            }
         }
     }
 }

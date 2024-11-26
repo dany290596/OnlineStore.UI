@@ -1,0 +1,357 @@
+﻿<Page
+    x:Class="OnlineStore.UI.Views.PayPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OnlineStore.UI.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:models="using:OnlineStore.UI.Models"
+    xmlns:viewModels="using:OnlineStore.UI.ViewModels"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <viewModels:PayViewModel />
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0">
+            <Rectangle
+                Fill="#98FF98" 
+                Width="1920" Height="65" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center">
+            </Rectangle>
+            <TextBlock
+                Name="Text11"
+                RelativePanel.AlignHorizontalCenterWithPanel="true"
+                FontSize="20"
+                FontStyle="Normal"
+                TextWrapping="WrapWholeWords"
+                FontWeight="Bold"
+                TextAlignment="Center"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="#1e3050"
+                RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="CoverImage" 
+                Text="{Binding Title}" />
+        </Grid>
+        <Grid                         
+            Grid.Row="1"
+            HorizontalAlignment="Stretch" 
+            VerticalAlignment="Stretch"
+            x:Name="ParentGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <RelativePanel
+                VerticalAlignment="Top"
+                HorizontalAlignment="Stretch"
+                Background="White"
+                Grid.Row="0" 
+                Grid.Column="0"
+                Grid.ColumnSpan="1">
+                <Grid
+                    RelativePanel.AlignTopWithPanel="True" 
+                    RelativePanel.AlignBottomWithPanel="True" 
+                    RelativePanel.AlignLeftWithPanel="True" 
+                    RelativePanel.AlignRightWithPanel="True" 
+                    RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                    RelativePanel.AlignVerticalCenterWithPanel="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid
+                        Grid.Row="0"
+                        Grid.Column="0">
+                        <StackPanel
+                            Orientation="Horizontal">
+                            <TextBlock
+                                TextWrapping="WrapWholeWords"
+                                Width="420" 
+                                FontSize="10"
+                                Foreground="#1e3050"
+                                Text="Tiendas CDMX SA de CV"
+                                FontWeight="Bold"
+                                Padding="5" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center"
+                                TextAlignment="Center"
+                                MinWidth="0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid
+                        Grid.Row="2"
+                        Grid.Column="0">
+                        <Rectangle
+                            Fill="#1e3050" 
+                            Width="420" Height="2" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center">
+                        </Rectangle>
+                    </Grid>
+                    <Grid
+                        Grid.Row="3"
+                        Grid.Column="0">
+                        <StackPanel
+                            Orientation="Horizontal">
+                            <TextBlock
+                                TextWrapping="WrapWholeWords"
+                                Width="420" 
+                                FontSize="10"
+                                Foreground="#1e3050"
+                                Text="Sucursal: 578 Acambay, Estado de México"
+                                FontWeight="Bold"
+                                Padding="5" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center"
+                                TextAlignment="Center"
+                                MinWidth="0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid
+                        Grid.Row="4"
+                        Grid.Column="0">
+                        <Rectangle
+                            Fill="#1e3050" 
+                            Width="420" Height="2" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center">
+                        </Rectangle>
+                    </Grid>
+                    <Grid
+                        Grid.Row="5"
+                        Grid.Column="0">
+                        <StackPanel                
+                            Orientation="Horizontal">
+                            <TextBlock
+                                TextWrapping="WrapWholeWords"
+                                Width="150" 
+                                FontSize="10"
+                                Foreground="#1e3050"
+                                Text="Artículo"
+                                FontWeight="Bold"
+                                Padding="5" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center"
+                                MinWidth="0"/>
+                            <TextBlock 
+                                TextWrapping="WrapWholeWords"
+                                Width="100"
+                                FontSize="10"
+                                Foreground="#1e3050"
+                                Text="Cantidad"
+                                FontWeight="Bold"
+                                Padding="5" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center"
+                                MinWidth="0"/>
+                            <TextBlock 
+                                TextWrapping="WrapWholeWords"
+                                Width="100"
+                                FontSize="10"
+                                Foreground="#1e3050"
+                                Text="Precio total"
+                                FontWeight="Bold"
+                                Padding="5" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center"
+                                MinWidth="0"/>
+                            <TextBlock
+                                TextWrapping="WrapWholeWords"
+                                Width="350"
+                                FontSize="10"
+                                Foreground="#1e3050" 
+                                Grid.Column="3" 
+                                Grid.ColumnSpan="1" 
+                                Text="Acción" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center" 
+                                FontWeight="Bold" 
+                                Padding="5"
+                                MinWidth="0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid                        
+                        Grid.Row="6"
+                        Grid.Column="0">
+                        <GridView        
+                                ItemsSource="{Binding ProductDetail}"
+                                IsItemClickEnabled="True">
+                            <GridView.ItemTemplate>
+                                <DataTemplate 
+                                        x:DataType="models:ProductDetail">
+                                    <StackPanel
+                                            Orientation="Horizontal"
+                                            Spacing="10">
+                                        <TextBlock
+                                                TextWrapping="WrapWholeWords"
+                                                Width="150" 
+                                                FontSize="10"
+                                                Text="{Binding Name}" 
+                                                Padding="5" 
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center"
+                                                Foreground="#1e3050"/>
+                                        <TextBlock
+                                                TextWrapping="WrapWholeWords"
+                                                Width="100"
+                                                FontSize="10"
+                                                Text="{Binding TotalProduct}" 
+                                                Padding="5" 
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center"
+                                                Foreground="#1e3050"/>
+                                        <TextBlock 
+                                                TextWrapping="WrapWholeWords"
+                                                Width="100"
+                                                FontSize="10"
+                                                Text="{Binding TotalPriceProductMXN}" 
+                                                Padding="5" 
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center"
+                                                Foreground="#1e3050"/>
+                                        <Grid
+                                                Width="350">
+                                            <Button     
+                                                    Background="#98FF98"
+                                                    Width="40"
+                                                    Height="40"
+                                                    MaxWidth="40" 
+                                                    MaxHeight="40"
+                                                    CornerRadius="100"
+                                                    Padding="5"
+                                                    VerticalAlignment="Center" 
+                                                    HorizontalAlignment="Left"
+                                                    Command="{Binding DataContext.CommandGoRemove, ElementName=ParentGrid}"
+                                                    CommandParameter="{Binding}">
+                                                <Button.Content>
+                                                    <Image 
+                                                            Width="20"
+                                                            Source="ms-appx:///Assets//delete-2-svgrepo-com.png" />
+                                                </Button.Content>
+                                            </Button>
+                                        </Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                    </Grid>
+                    <Grid
+                        Grid.Row="7"
+                        Grid.Column="0">
+                        <Rectangle
+                            Fill="#1e3050" 
+                            Width="420" Height="2" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center">
+                        </Rectangle>
+                    </Grid>
+                    <Grid
+                        Grid.Row="8"
+                        Grid.Column="0">
+                        <StackPanel                
+                            Orientation="Horizontal">
+                            <TextBlock
+                                TextWrapping="WrapWholeWords"
+                                Width="150" 
+                                FontSize="10"
+                                Foreground="#1e3050"
+                                Text="Total"
+                                FontWeight="Bold"
+                                Padding="5" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center"
+                                MinWidth="0"/>
+                            <TextBlock 
+                                TextWrapping="WrapWholeWords"
+                                Width="100"
+                                FontSize="10"
+                                Foreground="#1e3050"
+                                Text=""
+                                FontWeight="Bold"
+                                Padding="5" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center"
+                                MinWidth="0"/>
+                            <TextBlock 
+                                TextWrapping="WrapWholeWords"
+                                Width="100"
+                                FontSize="10"
+                                Foreground="#1e3050"
+                                Text="$323223"
+                                FontWeight="Bold"
+                                Padding="5" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center"
+                                MinWidth="0"/>
+                            <TextBlock
+                                TextWrapping="WrapWholeWords"
+                                Width="350"
+                                FontSize="10"
+                                Foreground="#1e3050" 
+                                Grid.Column="3" 
+                                Grid.ColumnSpan="1" 
+                                Text="" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center" 
+                                FontWeight="Bold" 
+                                Padding="5"
+                                MinWidth="0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid
+                        Grid.Row="9"
+                        Grid.Column="0">
+                        <Rectangle
+                            Fill="#1e3050" 
+                            Width="420" Height="2" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center">
+                        </Rectangle>
+                    </Grid>
+                </Grid>
+            </RelativePanel>
+        </Grid>
+
+        <Button 
+            Grid.Row="2"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Bottom"
+            CornerRadius="100"
+            Width="70" 
+            Height="70" 
+            Background="#98FF98" 
+            Foreground="White"         
+            Margin="0,0,20,20" 
+            VerticalContentAlignment="Center" 
+            HorizontalContentAlignment="Center"
+            Command="{Binding CommandGoBack}">
+            <Button.Content>
+                <Image 
+                    Width="40"
+                    Source="ms-appx:///Assets//arrow-go-back-svgrepo-com.png" />        
+            </Button.Content>
+        </Button>
+    </Grid>
+</Page>
