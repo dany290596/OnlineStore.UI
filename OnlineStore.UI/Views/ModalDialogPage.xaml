@@ -159,6 +159,7 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center" />
             <Button
+                Background="#98FF98"
                 Grid.Row="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"

@@ -26,8 +26,7 @@
         <Grid
             Grid.Row="0">
             <Rectangle
-                Opacity="0.2"
-                Fill="#8CC63C" 
+                Fill="#98FF98" 
                 Width="1920" Height="65" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center">
@@ -265,7 +264,7 @@
                                                     Grid.Row="1"
                                                     Grid.Column="1"
                                                     Grid.ColumnSpan="1"
-                                                    Text="{Binding Price}"
+                                                    Text="{Binding PriceMXN}"
                                                     HorizontalAlignment="Right"
                                                     VerticalAlignment="Center"
                                                     FontSize="12"
@@ -291,6 +290,7 @@
                                                     Height="Auto">
                                                 </TextBlock>
                                                 <Button
+                                                    Background="#98FF98"
                                                     RelativePanel.AlignHorizontalCenterWithPanel="True"
                                                     RelativePanel.AlignVerticalCenterWithPanel="True"
                                                     Grid.Row="3"

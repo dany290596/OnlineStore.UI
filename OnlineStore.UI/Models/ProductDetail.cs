@@ -12,5 +12,12 @@ namespace OnlineStore.UI.Models
         public string Name { get; set; }
         public double TotalProduct { get; set; }
         public double TotalPriceProduct { get; set; }
+        public string TotalPriceProductMXN { get { return OnTotalPriceProduct(TotalPriceProduct); } }
+
+        public string OnTotalPriceProduct(double? totalPriceProduct)
+        {
+            string s = "$" + TotalPriceProduct.ToString();
+            return s;
+        }
     }
 }
