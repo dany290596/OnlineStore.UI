@@ -113,8 +113,8 @@
                         Grid.Column="0">
                         <Rectangle
                             Fill="#1e3050" 
-                            Width="420" Height="2" 
-                            HorizontalAlignment="Left" 
+                            Height="2" 
+                            HorizontalAlignment="Stretch" 
                             VerticalAlignment="Center">
                         </Rectangle>
                     </Grid>
@@ -142,12 +142,13 @@
                         Grid.Column="0">
                         <Rectangle
                             Fill="#1e3050" 
-                            Width="420" Height="2" 
-                            HorizontalAlignment="Left" 
+                            Height="2" 
+                            HorizontalAlignment="Stretch" 
                             VerticalAlignment="Center">
                         </Rectangle>
                     </Grid>
                     <Grid
+                        Background="#98FF98"
                         Grid.Row="5"
                         Grid.Column="0">
                         <StackPanel                
@@ -236,8 +237,9 @@
                                                 FontSize="10"
                                                 Text="{Binding TotalPriceProductMXN}" 
                                                 Padding="5" 
-                                                HorizontalAlignment="Center" 
+                                                HorizontalAlignment="Left" 
                                                 VerticalAlignment="Center"
+                                            TextAlignment="Left"
                                                 Foreground="#1e3050"/>
                                         <Grid
                                                 Width="350">
@@ -270,8 +272,8 @@
                         Grid.Column="0">
                         <Rectangle
                             Fill="#1e3050" 
-                            Width="420" Height="2" 
-                            HorizontalAlignment="Left" 
+                            Height="2" 
+                            HorizontalAlignment="Stretch" 
                             VerticalAlignment="Center">
                         </Rectangle>
                     </Grid>
@@ -333,8 +335,8 @@
                         Grid.Column="0">
                         <Rectangle
                             Fill="#1e3050" 
-                            Width="420" Height="2" 
-                            HorizontalAlignment="Left" 
+                            Height="2" 
+                            HorizontalAlignment="Stretch" 
                             VerticalAlignment="Center">
                         </Rectangle>
                     </Grid>
@@ -349,19 +351,19 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <RelativePanel
+            </Grid.ColumnDefinitions>
+            <RelativePanel
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="1"
                     RelativePanel.AlignHorizontalCenterWithPanel="True"
                     RelativePanel.AlignVerticalCenterWithPanel="True"
                     Margin="0, 0, 0, 0">
-                    <Button                
+                <Button                
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Bottom"
                         CornerRadius="100"
@@ -371,21 +373,21 @@
                         Foreground="White"         
                         Margin="0,0,0,20" 
                         Command="{Binding CommandGoBack}">
-                        <Button.Content>
-                            <Image 
+                    <Button.Content>
+                        <Image 
                                 Width="40"
                                 Source="ms-appx:///Assets//arrow-go-back-svgrepo-com.png" />
-                        </Button.Content>
-                    </Button>
-                </RelativePanel>
-                <RelativePanel
+                    </Button.Content>
+                </Button>
+            </RelativePanel>
+            <RelativePanel
                     Grid.Row="0"
                     Grid.Column="2"
                     Grid.ColumnSpan="1"
                     RelativePanel.AlignHorizontalCenterWithPanel="True"
                     RelativePanel.AlignVerticalCenterWithPanel="True"
                     Margin="0, 0, 0, 0">
-                    <Button                
+                <Button                
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Bottom"
                         CornerRadius="100"
@@ -395,13 +397,13 @@
                         Foreground="White"         
                         Margin="0,0,0,20" 
                         Command="{Binding CommandGoBack}">
-                        <Button.Content>
-                            <Image 
+                    <Button.Content>
+                        <Image 
                                 Width="40"
                                 Source="ms-appx:///Assets//pay-with-card-svgrepo-com-uno.png" />
-                        </Button.Content>
-                    </Button>
-                </RelativePanel>
-            </Grid>
+                    </Button.Content>
+                </Button>
+            </RelativePanel>
+        </Grid>
     </Grid>
 </Page>

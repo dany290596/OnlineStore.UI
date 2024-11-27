@@ -18,11 +18,9 @@
     <Grid  x:Name="ParentGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Fila para el CommandBar -->
             <RowDefinition Height="*"/>
-            <!-- Fila para el contenido desplazable -->
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
         <Grid
             Grid.Row="0">
             <Rectangle
@@ -90,75 +88,6 @@
                 RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="CoverImage" 
                 Text="{Binding Title}" />
         </Grid>
-        <!--<CommandBar
- Height="80"
-            Grid.Row="0"
-            VerticalAlignment="Top" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
-            --><!-- Botones o elementos del encabezado --><!--
-            <AppBarButton Label="Carrito de compras">
-
-                <AppBarButton.Content>
-                    <RelativePanel>
-                        --><!-- Ícono del carrito de compras --><!--
-                        <SymbolIcon Symbol="Shop" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-                        --><!-- Contador de artículos en el carrito (simula el badge) --><!--
-                        <Border Background="Red"
-                                CornerRadius="100"
-        Width="15" Height="15"
-        VerticalAlignment="Top" 
-        HorizontalAlignment="Right" 
-        Margin="12,-5,5,0"
-        Padding="2"
-        RelativePanel.AlignRightWithPanel="True"
-        RelativePanel.AlignTopWithPanel="True">
-                            <TextBlock Text="112" 
-                                   Foreground="White" 
-                                   
-                                   VerticalAlignment="Top" 
-                                   HorizontalAlignment="Center" 
-                                   Width="28" Height="10" 
-                                   FontSize="8" 
-                                   Margin="0, -1, 0, 0" 
-                                   Padding="0" 
-                                   TextAlignment="Center"
-                                   RelativePanel.AlignRightWithPanel="True"
-                                   RelativePanel.AlignTopWithPanel="True">
-
-                            </TextBlock>
-                        </Border>
-                    </RelativePanel>
-                </AppBarButton.Content>
-                --><!--<AppBarButton.Icon>
-                    --><!--<SymbolIcon Symbol="Shop" />--><!--
-                    <Grid>
-                        --><!-- Ícono de carrito de compras --><!--
-                        <SymbolIcon Symbol="Shop" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        --><!-- Contador de artículos --><!--
-                        <TextBlock Text="1" 
-                                   Foreground="White" 
-                                   Background="Red" 
-                                   VerticalAlignment="Top" 
-                                   HorizontalAlignment="Right" 
-                                   Width="20" Height="20" 
-                                   FontSize="12" 
-                                   Margin="0,0,5,0" 
-                                   Padding="2" 
-                                   TextAlignment="Center" />
-                    </Grid>
-
-                </AppBarButton.Icon>-->
-                <!--<AppBarButton.Content>
-                    <StackPanel>
-                        <TextBlock Text="Carrito de compras" HorizontalAlignment="Center" />
-                        <Border Background="Red" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top">
-                            <TextBlock Text="sdcds1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </StackPanel>
-                </AppBarButton.Content>--><!--
-            </AppBarButton>
-        </CommandBar>-->
-
         <RelativePanel
             Grid.Row="1">
             <ScrollViewer
@@ -199,8 +128,7 @@
                         <Grid
                             Grid.Row="1"
                             Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            >
+                            Grid.ColumnSpan="2">
                             <ListView
                                 Background="#fff"
                                 HorizontalAlignment="Stretch" 
@@ -326,8 +254,8 @@
                         <Grid
                             Grid.Row="2"
                             Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            >
+                            Grid.ColumnSpan="2">
+                            <!--
                             <Button
                                 Grid.Row="1"
                                 Grid.Column="1"
@@ -346,10 +274,45 @@
                                 Command="{Binding DataContext.CommandGoBack, ElementName=ParentGrid}"
                                 CommandParameter="{Binding}">
                             </Button>
+                            -->
                         </Grid>
                     </Grid>
                 </StackPanel>
             </ScrollViewer>
         </RelativePanel>
+        <Grid
+            HorizontalAlignment="Center"
+            Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <RelativePanel
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="1"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True"
+                Margin="0, 0, 0, 0">
+                <Button                
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Bottom"
+                    CornerRadius="100"
+                    Width="70" 
+                    Height="70" 
+                    Background="#98FF98" 
+                    Foreground="White"         
+                    Margin="0,0,0,20" 
+                    Command="{Binding CommandGoBack}">
+                    <Button.Content>
+                        <Image 
+                            Width="40"
+                            Source="ms-appx:///Assets//arrow-go-back-svgrepo-com.png" />
+                    </Button.Content>
+                </Button>
+            </RelativePanel>
+        </Grid>
     </Grid>
 </Page>

@@ -10,6 +10,8 @@
     SecondaryButtonText="Aceptar"
     xmlns:viewModels="using:OnlineStore.UI.ViewModels"
     x:Name="MyDialog"
+    MaxWidth="1920"
+    MaxHeight="1080"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <ContentDialog.DataContext>
         <viewModels:ModalDialogViewModel />

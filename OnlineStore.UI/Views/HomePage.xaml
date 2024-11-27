@@ -16,6 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid
             Grid.Row="0">
@@ -128,6 +129,7 @@
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                     </ListView>
+                    <!--
                     <Button
                         Grid.Row="1"
                         Grid.Column="1"
@@ -145,8 +147,43 @@
                         Width="200"
                         Command="{Binding CommandGoBack}">
                     </Button>
+                    -->
                 </StackPanel>
             </ScrollViewer>
         </RelativePanel>
+        <Grid
+            HorizontalAlignment="Center"
+            Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <RelativePanel
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="1"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True"
+                Margin="0, 0, 0, 0">
+                <Button                
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Bottom"
+                    CornerRadius="100"
+                    Width="70" 
+                    Height="70" 
+                    Background="#98FF98" 
+                    Foreground="White"         
+                    Margin="0,0,0,20" 
+                    Command="{Binding CommandGoBack}">
+                    <Button.Content>
+                        <Image 
+                            Width="40"
+                            Source="ms-appx:///Assets//arrow-go-back-svgrepo-com.png" />
+                    </Button.Content>
+                </Button>
+            </RelativePanel>
+        </Grid>
     </Grid>
 </Page>
