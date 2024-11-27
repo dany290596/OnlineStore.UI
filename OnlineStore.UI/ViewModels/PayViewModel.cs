@@ -14,11 +14,20 @@ namespace OnlineStore.UI.ViewModels
     public class PayViewModel : ViewModelBase
     {
         public ICommand CommandGoBack { get; }
+        public string TotalMXN { get; }
+        public DateTime DateTime { get; }
         public PayViewModel()
         {
-            Title = "Tu carrito te espera, ¡paga y disfruta!";
+            Title = "Tu carrito te espera, \n¡Paga y disfruta!";
             ProductDetail = StorageShoppingCart();
+            double total = 0;
+            foreach (var item in ProductDetail)
+            {
+                total += item.TotalPriceProduct;
+            }
             CommandGoBack = new RelayCommand(NavigateToGoBack);
+            TotalMXN = "$" + total.ToString();
+            DateTime = DateTime.Now;
         }
 
         private void NavigateToGoBack()

@@ -55,7 +55,7 @@
                 Background="Red"
                 CornerRadius="100">
                 <TextBlock 
-                    Text="{Binding ShoppingCartCount}"
+                    Text="{Binding ShoppingCartCount, Mode=OneWay}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Foreground="White"

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.ServiceModel.Channels;
@@ -27,10 +28,9 @@ namespace OnlineStore.UI.ViewModels
 
         public ViewModelBase()
         {
+            SharedService.Instance.OnShoppingCartCountChanged += OnShoppingCartCountChanged;
             CloseModalCommand = new RelayCommand<CarouselItem>(CloseModal);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
         public string _title;
 
         public string Title
@@ -69,11 +69,12 @@ namespace OnlineStore.UI.ViewModels
                 if (_shoppingCartCount != value)
                 {
                     _shoppingCartCount = value;
+                    Debug.WriteLine($"DialogResult cambiado a: {_shoppingCartCount}");
                     OnPropertyChanged();
                 }
             }
         }
-
+        public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -120,6 +121,20 @@ namespace OnlineStore.UI.ViewModels
                 return JsonConvert.DeserializeObject<ObservableCollection<ProductDetail>>(json);
             }
             return new ObservableCollection<ProductDetail>(); // Retorna un carrito vacío si no hay datos almacenados
+        }
+
+        public void SyncShoppingCart()
+        {
+            ProductDetail = StorageShoppingCart();
+            //ShoppingCartCount = ProductDetail.Count();
+            //SharedService.Instance.ShoppingCartCount = ProductDetail.Count();
+            //ShoppingCartCount = ProductDetail.Count();
+            OnShoppingCartCountChanged(ProductDetail.Count());
+        }
+
+        public void OnShoppingCartCountChanged(int value)
+        {
+            ShoppingCartCount = value;
         }
     }
 }

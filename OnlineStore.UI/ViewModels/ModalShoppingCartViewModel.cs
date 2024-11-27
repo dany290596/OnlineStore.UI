@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OnlineStore.UI.Models;
+using OnlineStore.UI.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,11 +16,11 @@ namespace OnlineStore.UI.ViewModels
     public class ModalShoppingCartViewModel : ViewModelBase
     {
         public ObservableCollection<Product> Product { get; }
-        public ObservableCollection<ProductDetail> ProductDetail { get; set; }
         public ICommand CommandGoRemove { get; }
         private ContentDialog _dialog { get; set; }
         public ModalShoppingCartViewModel()
         {
+            
             ProductDetail = StorageShoppingCart();
             CommandGoRemove = new Helpers.RelayCommand<ProductDetail>(NavigateToGoRemove);
         }
@@ -33,7 +34,8 @@ namespace OnlineStore.UI.ViewModels
                 ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
                 if (_dialog != null)
                 {
-                    ShoppingCartCount = ProductDetail.Count();
+                    SharedService.Instance.ShoppingCartCount = ProductDetail.Count();
+                    //ShoppingCartCount = ProductDetail.Count();
                     _dialog.Hide();
                 }
             }
@@ -43,5 +45,7 @@ namespace OnlineStore.UI.ViewModels
         {
             _dialog = dialog;
         }
+
+       
     }
 }

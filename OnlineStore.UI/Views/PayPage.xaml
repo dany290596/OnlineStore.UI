@@ -85,6 +85,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -309,7 +310,7 @@
                                 Width="100"
                                 FontSize="10"
                                 Foreground="#1e3050"
-                                Text="$323223"
+                                Text="{Binding TotalMXN}"
                                 FontWeight="Bold"
                                 Padding="5" 
                                 HorizontalAlignment="Stretch" 
@@ -339,6 +340,25 @@
                             HorizontalAlignment="Stretch" 
                             VerticalAlignment="Center">
                         </Rectangle>
+                    </Grid>
+                    <Grid
+                        Grid.Row="10"
+                        Grid.Column="0">
+                        <StackPanel
+                            Orientation="Horizontal">
+                            <TextBlock
+                                TextWrapping="WrapWholeWords"
+                                Width="420" 
+                                FontSize="10"
+                                Foreground="#1e3050"
+                                Text="{Binding DateTime}"
+                                FontWeight="Bold"
+                                Padding="5" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center"
+                                TextAlignment="Center"
+                                MinWidth="0"/>
+                        </StackPanel>
                     </Grid>
                 </Grid>
             </RelativePanel>
