@@ -29,6 +29,11 @@ namespace OnlineStore.UI.ViewModels
         public ViewModelBase()
         {
             SharedService.Instance.OnShoppingCartCountChanged += OnShoppingCartCountChanged;
+            //ProductDetail = StorageShoppingCart();
+            //SharedService.Instance.ShoppingCartCount = ProductDetail.Count();
+
+            SyncShoppingCart();
+
             CloseModalCommand = new RelayCommand<CarouselItem>(CloseModal);
         }
         public string _title;
@@ -129,7 +134,9 @@ namespace OnlineStore.UI.ViewModels
             //ShoppingCartCount = ProductDetail.Count();
             //SharedService.Instance.ShoppingCartCount = ProductDetail.Count();
             //ShoppingCartCount = ProductDetail.Count();
-            OnShoppingCartCountChanged(ProductDetail.Count());
+            //OnShoppingCartCountChanged(ProductDetail.Count());
+            SharedService.Instance.ShoppingCartCount = ProductDetail.Count();
+            ShoppingCartCount = ProductDetail.Count();
         }
 
         public void OnShoppingCartCountChanged(int value)

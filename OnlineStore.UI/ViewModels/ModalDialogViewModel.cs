@@ -20,7 +20,6 @@ namespace OnlineStore.UI.ViewModels
 {
     public class ModalDialogViewModel : ViewModelBase
     {
-        public ObservableCollection<ProductDetail> ProductDetail { get; set; }
         private ContentDialog _dialog { get; set; }
         private readonly ModalDialogPage _modalDialogPage;
         public Action CloseDialogAction { get; set; }
@@ -78,9 +77,6 @@ namespace OnlineStore.UI.ViewModels
                 new Quantity { Id = 12, Name = "12" }
             };
             CommandAddCart = new RelayCommand(CloseDialog);
-            //MessengerService.Subscribe("CerrarDialogo", OnCerrarDialogo);
-
-            //_modalDialogPage = new ModalDialogPage();
         }
 
         private void OnCerrarDialogo(object parameter)
@@ -114,7 +110,7 @@ namespace OnlineStore.UI.ViewModels
                         ProductDetail.Add(productDetail);
                         var json = JsonConvert.SerializeObject(ProductDetail);
                         ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
-                        ShoppingCartCount = ProductDetail.Count();
+                        SyncShoppingCart();
                     }
                     else
                     {
@@ -123,6 +119,7 @@ namespace OnlineStore.UI.ViewModels
                         searchProduct.TotalPriceProduct = searchProduct.TotalPriceProduct + totalPriceProduct;
                         var json = JsonConvert.SerializeObject(ProductDetail);
                         ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
+                        SyncShoppingCart();
                     }
                 }
                 else
@@ -137,7 +134,7 @@ namespace OnlineStore.UI.ViewModels
                     ProductDetail.Add(productDetail);
                     var json = JsonConvert.SerializeObject(ProductDetail);
                     ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
-                    ShoppingCartCount = ProductDetail.Count();
+                    SyncShoppingCart();
                 }
             }
 
@@ -146,8 +143,6 @@ namespace OnlineStore.UI.ViewModels
                 _dialog.Hide();
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-
 
         public void EstablecerDialogo(ContentDialog dialog)
         {

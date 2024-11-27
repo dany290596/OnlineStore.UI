@@ -1,6 +1,7 @@
 ﻿using OnlineStore.UI.Controls;
 using OnlineStore.UI.Helpers;
 using OnlineStore.UI.Models;
+using OnlineStore.UI.Services;
 using OnlineStore.UI.Views;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,6 @@ namespace OnlineStore.UI.ViewModels
 {
     public class ProductViewModel : ViewModelBase
     {
-        private Action _openAction;
         public Category SelectedCategory { get; set; }
         public ObservableCollection<Product> Product { get; }
         public ObservableCollection<Product> _productFilter;
@@ -48,10 +48,11 @@ namespace OnlineStore.UI.ViewModels
         private TaskCompletionSource<bool> _tcs;
         public ICommand ShowModalCommand { get; }
         public ICommand CommandGoBack { get; }
-        public ICommand CommandGoShoppingCart { get; }        
+        public ICommand CommandGoShoppingCart { get; }
         public ProductViewModel()
         {
-            ProductDetail = StorageShoppingCart();
+            
+            
             _modalDialogPage = new ModalDialogPage();
             _modalShoppingCartPage = new ModalShoppingCartPage();
             Product = new ObservableCollection<Product>() {
@@ -103,8 +104,8 @@ namespace OnlineStore.UI.ViewModels
             CommandGoBack = new RelayCommand(NavigateToGoBack);
             CommandGoShoppingCart = new RelayCommand(NavigateToGoShoppingCart);
             ShowModalCommand = new RelayCommand<Product>(ShowModal);
-
-            ShoppingCartCount = ProductDetail.Count();
+            
+        
         }
 
         public void Initialize(ProductType productType)
@@ -133,13 +134,6 @@ namespace OnlineStore.UI.ViewModels
 
         private async void NavigateToGoShoppingCart()
         {
-            //var sdcds = "";
-            //var modalDialog = new ModalShoppingCartPage
-            //{
-            //    DataContext = new ModalShoppingCartViewModel { }
-            //};
-            //modalDialog.Width = 600;   // Establece el ancho
-            //modalDialog.Height = 400;
             var windowWidth = Window.Current.Bounds.Width;
             var windowHeight = Window.Current.Bounds.Height;
             _modalShoppingCartPage.InitializeDialog();
@@ -156,25 +150,11 @@ namespace OnlineStore.UI.ViewModels
             _modalDialogPage.Height = windowHeight * 0.9;
             _modalDialogPage.InitializeDialog(product);
             await _modalDialogPage.ShowAsync();
+        }
 
-
-            //_tcs = new TaskCompletionSource<bool>();
-            //_modalDialogPage = new ModalDialogPage
-            //{
-            //    DataContext = new ModalDialogViewModel { Product = product }
-            //};
-            //_modalDialogPage.Width = 600;   // Establece el ancho
-            //_modalDialogPage.Height = 400;
-            //await _modalDialogPage.ShowAsync();
-
-
-
-            //_modalDialogPage.Closed += (sender, args) =>
-            //{
-            //    _tcs.SetResult(true);
-            //};
-
-            //bool result = await _tcs.Task;
+        public void UpdateDisplayText()
+        {
+            ShoppingCartCount = ProductDetail.Count();
         }
     }
 }

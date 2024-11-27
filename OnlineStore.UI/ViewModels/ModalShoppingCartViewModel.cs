@@ -34,7 +34,14 @@ namespace OnlineStore.UI.ViewModels
                 ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
                 if (_dialog != null)
                 {
-                    SharedService.Instance.ShoppingCartCount = ProductDetail.Count();
+                    if (ProductDetail.Count() > 0)
+                    {
+                        SharedService.Instance.ShoppingCartCount = ProductDetail.Count();
+                    }
+                    else
+                    {
+                        SharedService.Instance.ShoppingCartCount = 0;
+                    }
                     //ShoppingCartCount = ProductDetail.Count();
                     _dialog.Hide();
                 }
