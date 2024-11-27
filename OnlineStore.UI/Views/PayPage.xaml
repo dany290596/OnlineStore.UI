@@ -18,8 +18,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <Grid
-            Grid.Row="0">
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
             <Rectangle
                 Fill="#98FF98" 
                 Width="1920" Height="65" 
@@ -42,6 +48,8 @@
         </Grid>
         <Grid                         
             Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
             HorizontalAlignment="Stretch" 
             VerticalAlignment="Stretch"
             x:Name="ParentGrid">
@@ -333,25 +341,67 @@
                 </Grid>
             </RelativePanel>
         </Grid>
-
-        <Button 
+        <Grid
+            HorizontalAlignment="Center"
             Grid.Row="2"
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Bottom"
-            CornerRadius="100"
-            Width="70" 
-            Height="70" 
-            Background="#98FF98" 
-            Foreground="White"         
-            Margin="0,0,20,20" 
-            VerticalContentAlignment="Center" 
-            HorizontalContentAlignment="Center"
-            Command="{Binding CommandGoBack}">
-            <Button.Content>
-                <Image 
-                    Width="40"
-                    Source="ms-appx:///Assets//arrow-go-back-svgrepo-com.png" />        
-            </Button.Content>
-        </Button>
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <RelativePanel
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Margin="0, 0, 0, 0">
+                    <Button                
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom"
+                        CornerRadius="100"
+                        Width="70" 
+                        Height="70" 
+                        Background="#98FF98" 
+                        Foreground="White"         
+                        Margin="0,0,0,20" 
+                        Command="{Binding CommandGoBack}">
+                        <Button.Content>
+                            <Image 
+                                Width="40"
+                                Source="ms-appx:///Assets//arrow-go-back-svgrepo-com.png" />
+                        </Button.Content>
+                    </Button>
+                </RelativePanel>
+                <RelativePanel
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="1"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Margin="0, 0, 0, 0">
+                    <Button                
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom"
+                        CornerRadius="100"
+                        Width="70" 
+                        Height="70" 
+                        Background="#98FF98" 
+                        Foreground="White"         
+                        Margin="0,0,0,20" 
+                        Command="{Binding CommandGoBack}">
+                        <Button.Content>
+                            <Image 
+                                Width="40"
+                                Source="ms-appx:///Assets//pay-with-card-svgrepo-com-uno.png" />
+                        </Button.Content>
+                    </Button>
+                </RelativePanel>
+            </Grid>
     </Grid>
 </Page>
