@@ -21,8 +21,7 @@ namespace OnlineStore.UI.ViewModels
         public Category SelectedCategory { get; set; }
         public ObservableCollection<Product> Product { get; }
         public ObservableCollection<Product> _productFilter;
-        public ModalDialogPage _modalDialogPage { get; set; }
-        public ModalShoppingCartPage _modalShoppingCartPage { get; set; }
+
         public ObservableCollection<Product> ProductFilter
         {
             get { return _productFilter; }
@@ -48,11 +47,10 @@ namespace OnlineStore.UI.ViewModels
         private TaskCompletionSource<bool> _tcs;
         public ICommand ShowModalCommand { get; }
         public ICommand CommandGoBack { get; }
-        public ICommand CommandGoShoppingCart { get; }
         public ProductViewModel()
         {
-            
-            
+
+
             _modalDialogPage = new ModalDialogPage();
             _modalShoppingCartPage = new ModalShoppingCartPage();
             Product = new ObservableCollection<Product>() {
@@ -102,10 +100,7 @@ namespace OnlineStore.UI.ViewModels
             PivotProductIndex = 0;
             Title = "¡Ordena ahora!";
             CommandGoBack = new RelayCommand(NavigateToGoBack);
-            CommandGoShoppingCart = new RelayCommand(NavigateToGoShoppingCart);
             ShowModalCommand = new RelayCommand<Product>(ShowModal);
-            
-        
         }
 
         public void Initialize(ProductType productType)
@@ -130,16 +125,6 @@ namespace OnlineStore.UI.ViewModels
             {
                 frame.Navigate(typeof(HomePage));
             }
-        }
-
-        private async void NavigateToGoShoppingCart()
-        {
-            var windowWidth = Window.Current.Bounds.Width;
-            var windowHeight = Window.Current.Bounds.Height;
-            _modalShoppingCartPage.InitializeDialog();
-            _modalShoppingCartPage.Width = windowWidth * 0.9;
-            _modalShoppingCartPage.Height = windowHeight * 0.9;
-            await _modalShoppingCartPage.ShowAsync();
         }
 
         private async void ShowModal(Product product)

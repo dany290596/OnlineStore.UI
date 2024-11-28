@@ -26,7 +26,9 @@ namespace OnlineStore.UI.ViewModels
 
         public ICommand CloseModalCommand { get; }
         public ICommand CloseModalGoPreviewCommand { get; }
-        private ModalDialogPage _dialog;
+        public ICommand CommandGoShoppingCart { get; }
+        public ModalDialogPage _modalDialogPage { get; set; }
+        public ModalShoppingCartPage _modalShoppingCartPage { get; set; }
 
         public ViewModelBase()
         {
@@ -35,6 +37,7 @@ namespace OnlineStore.UI.ViewModels
 
             CloseModalCommand = new RelayCommand<CarouselItem>(CloseModal);
             CloseModalGoPreviewCommand = new RelayCommand(CloseModalGoPreview);
+            CommandGoShoppingCart = new RelayCommand(NavigateToGoShoppingCart);
         }
         public string _title;
 
@@ -94,7 +97,7 @@ namespace OnlineStore.UI.ViewModels
         }
 
         private void CloseModal(CarouselItem carouselItem)
-        {            
+        {
         }
 
         private void CloseModalGoPreview()
@@ -106,25 +109,14 @@ namespace OnlineStore.UI.ViewModels
             }
         }
 
-        public void SaveCart(ProductDetail data)
+        private async void NavigateToGoShoppingCart()
         {
-            if (data != null)
-            {
-                _dialog = new ModalDialogPage { };
-                List<ProductDetail> productDetail = new List<ProductDetail>();
-                productDetail.Add(data);
-                //List<ShoppingCart> shoppingCart = new List<ShoppingCart>
-                //{
-                //    new ShoppingCart { Id = Guid.NewGuid(), Estado = 1, ProductDetail = productDetail }
-                //};
-                Task.Delay(2000);
-                var json = JsonConvert.SerializeObject(productDetail);
-                ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
-                if (_dialog != null)
-                {
-                    _dialog.Hide(); // Esto debe cerrar el diálogo
-                }
-            }
+            var windowWidth = Window.Current.Bounds.Width;
+            var windowHeight = Window.Current.Bounds.Height;
+            _modalShoppingCartPage.InitializeDialog();
+            _modalShoppingCartPage.Width = windowWidth * 0.9;
+            _modalShoppingCartPage.Height = windowHeight * 0.9;
+            await _modalShoppingCartPage.ShowAsync();
         }
 
         public ObservableCollection<ProductDetail> StorageShoppingCart()
@@ -140,10 +132,6 @@ namespace OnlineStore.UI.ViewModels
         public void SyncShoppingCart()
         {
             ProductDetail = StorageShoppingCart();
-            //ShoppingCartCount = ProductDetail.Count();
-            //SharedService.Instance.ShoppingCartCount = ProductDetail.Count();
-            //ShoppingCartCount = ProductDetail.Count();
-            //OnShoppingCartCountChanged(ProductDetail.Count());
             SharedService.Instance.ShoppingCartCount = ProductDetail.Count();
             ShoppingCartCount = ProductDetail.Count();
         }
