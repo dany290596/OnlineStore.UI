@@ -24,8 +24,8 @@ namespace OnlineStore.UI.ViewModels
     {
         public ObservableCollection<ProductDetail> ProductDetail { get; set; }
 
-        public ICommand CloseModalCommand { get; }
-        public ICommand CloseModalGoPreviewCommand { get; }
+        public ICommand CommandCloseModal { get; }
+        public ICommand CommandCloseModalGoPreview { get; }
         public ICommand CommandGoShoppingCart { get; }
         public ModalDialogPage _modalDialogPage { get; set; }
         public ModalShoppingCartPage _modalShoppingCartPage { get; set; }
@@ -33,10 +33,9 @@ namespace OnlineStore.UI.ViewModels
         public ViewModelBase()
         {
             SharedService.Instance.OnShoppingCartCountChanged += OnShoppingCartCountChanged;
-            SyncShoppingCart();
-
-            CloseModalCommand = new RelayCommand<CarouselItem>(CloseModal);
-            CloseModalGoPreviewCommand = new RelayCommand(CloseModalGoPreview);
+            SyncShoppingCart();            
+            CommandCloseModal = new RelayCommand<CarouselItem>(CloseModal);
+            CommandCloseModalGoPreview = new RelayCommand(CloseModalGoPreview);
             CommandGoShoppingCart = new RelayCommand(NavigateToGoShoppingCart);
         }
         public string _title;

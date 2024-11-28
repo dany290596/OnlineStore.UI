@@ -45,6 +45,7 @@ namespace OnlineStore.UI.ViewModels
 
         public ProductTypeViewModel()
         {
+            _modalShoppingCartPage = new ModalShoppingCartPage();
             Title = "¡Cuéntanos! \n¿Qué tipo de ropa buscas?";
             ProductType = new ObservableCollection<ProductType>(){
             new ProductType() { Id = new Guid("506c1f23-564c-4869-9140-558eb7d367c5"), Name = "Camisetas", ImageUrl = "ms-appx:///Assets/two-men-standing-svgrepo-com.png", Estado = 1, CategoryId = new Guid("dd19669a-d361-4dce-bcec-c3da967e187b") },

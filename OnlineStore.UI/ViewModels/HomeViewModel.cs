@@ -39,6 +39,7 @@ namespace OnlineStore.UI.ViewModels
 
         public HomeViewModel()
         {
+            _modalShoppingCartPage = new ModalShoppingCartPage();
             Title = "¿En qué categoría \npodemos ayudarte hoy?";
             CommandSelectedCategory = new RelayCommand(OnSelectionCategoryChanged);
             this.Category.Add(new Category() { Id = new Guid("dd19669a-d361-4dce-bcec-c3da967e187b"), Name = "Hombres", ImageUrl = "ms-appx:///Assets/two-men-standing-svgrepo-com.png", Estado = 1 });

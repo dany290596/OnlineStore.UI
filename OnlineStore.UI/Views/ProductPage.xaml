@@ -32,17 +32,17 @@
             <Button
                     Margin="0, 0, 10, 0"
                     Background="Transparent"
-                    Width="60"
-                    Height="60"
-                    MaxWidth="60" 
-                    MaxHeight="60"
+                    Width="62"
+                    Height="62"
+                    MaxWidth="62" 
+                    MaxHeight="62"
                     CornerRadius="100"
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Right"
                     Command="{Binding CommandGoShoppingCart}">
                 <Button.Content>
                     <Image 
-                        Width="30"
+                        Width="45"
                         Source="ms-appx:///Assets//shopping-cart-svgrepo-com.png" />
                 </Button.Content>
             </Button>
@@ -62,18 +62,6 @@
                     FontWeight="Bold"
                     FontSize="12" />
             </Grid>
-            <!--<Image
-                
-                VerticalAlignment="Center"
-                HorizontalAlignment="Right"
-                Source="ms-appx:///Assets/shopping-cart-svgrepo-com.png"
-                Stretch="UniformToFill"
-                MaxWidth="50" 
-                MaxHeight="50">
-                <Image.RenderTransform>
-                    <RotateTransform Angle="0"/>
-                </Image.RenderTransform>
-            </Image>-->
             <TextBlock
                 Name="Text11"
                 RelativePanel.AlignHorizontalCenterWithPanel="true"

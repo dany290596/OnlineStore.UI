@@ -49,8 +49,6 @@ namespace OnlineStore.UI.ViewModels
         public ICommand CommandGoBack { get; }
         public ProductViewModel()
         {
-
-
             _modalDialogPage = new ModalDialogPage();
             _modalShoppingCartPage = new ModalShoppingCartPage();
             Product = new ObservableCollection<Product>() {
