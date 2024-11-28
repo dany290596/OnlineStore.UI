@@ -8,6 +8,7 @@
     mc:Ignorable="d"
     Title="¡Lo que quieres, a punto de ser tuyo!"
     PrimaryButtonText="Preview"
+    PrimaryButtonCommand="{Binding CloseModalGoPreviewCommand}"
     SecondaryButtonText="Seguir comprando"
     xmlns:viewModels="using:OnlineStore.UI.ViewModels"
     xmlns:models="using:OnlineStore.UI.Models"

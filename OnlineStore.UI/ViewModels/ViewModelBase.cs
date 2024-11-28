@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Storage;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace OnlineStore.UI.ViewModels
@@ -24,17 +25,16 @@ namespace OnlineStore.UI.ViewModels
         public ObservableCollection<ProductDetail> ProductDetail { get; set; }
 
         public ICommand CloseModalCommand { get; }
+        public ICommand CloseModalGoPreviewCommand { get; }
         private ModalDialogPage _dialog;
 
         public ViewModelBase()
         {
             SharedService.Instance.OnShoppingCartCountChanged += OnShoppingCartCountChanged;
-            //ProductDetail = StorageShoppingCart();
-            //SharedService.Instance.ShoppingCartCount = ProductDetail.Count();
-
             SyncShoppingCart();
 
             CloseModalCommand = new RelayCommand<CarouselItem>(CloseModal);
+            CloseModalGoPreviewCommand = new RelayCommand(CloseModalGoPreview);
         }
         public string _title;
 
@@ -94,7 +94,16 @@ namespace OnlineStore.UI.ViewModels
         }
 
         private void CloseModal(CarouselItem carouselItem)
+        {            
+        }
+
+        private void CloseModalGoPreview()
         {
+            var frame = Window.Current.Content as Frame;
+            if (frame != null)
+            {
+                frame.Navigate(typeof(PayPage));
+            }
         }
 
         public void SaveCart(ProductDetail data)
