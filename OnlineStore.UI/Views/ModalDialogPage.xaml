@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="¡Descubre Todo Sobre Este Producto!"
-    SecondaryButtonText="Aceptar"
+    SecondaryButtonText="Seguir comprando"
     xmlns:viewModels="using:OnlineStore.UI.ViewModels"
     x:Name="MyDialog"
     MaxWidth="1920"

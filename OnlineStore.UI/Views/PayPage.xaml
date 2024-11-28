@@ -98,7 +98,7 @@
                             <TextBlock
                                 TextWrapping="WrapWholeWords"
                                 Width="420" 
-                                FontSize="10"
+                                FontSize="20"
                                 Foreground="#1e3050"
                                 Text="Tiendas CDMX SA de CV"
                                 FontWeight="Bold"
@@ -127,7 +127,7 @@
                             <TextBlock
                                 TextWrapping="WrapWholeWords"
                                 Width="420" 
-                                FontSize="10"
+                                FontSize="15"
                                 Foreground="#1e3050"
                                 Text="Sucursal: 578 Acambay, Estado de México"
                                 FontWeight="Bold"
@@ -233,15 +233,16 @@
                                                 VerticalAlignment="Center"
                                                 Foreground="#1e3050"/>
                                         <TextBlock 
-                                                TextWrapping="WrapWholeWords"
-                                                Width="100"
-                                                FontSize="10"
-                                                Text="{Binding TotalPriceProductMXN}" 
-                                                Padding="5" 
-                                                HorizontalAlignment="Left" 
-                                                VerticalAlignment="Center"
+                                            TextWrapping="WrapWholeWords"
+                                            Width="100"
+                                            FontSize="15"
+                                            Text="{Binding TotalPriceProductMXN}" 
+                                            Padding="5" 
+                                            HorizontalAlignment="Left" 
+                                            VerticalAlignment="Center"
                                             TextAlignment="Left"
-                                                Foreground="#1e3050"/>
+                                            Foreground="#1e3050"
+                                            FontWeight="Bold"/>
                                         <Grid
                                                 Width="350">
                                             <Button     
@@ -286,7 +287,7 @@
                             <TextBlock
                                 TextWrapping="WrapWholeWords"
                                 Width="150" 
-                                FontSize="10"
+                                FontSize="20"
                                 Foreground="#1e3050"
                                 Text="Total"
                                 FontWeight="Bold"
@@ -308,7 +309,7 @@
                             <TextBlock 
                                 TextWrapping="WrapWholeWords"
                                 Width="100"
-                                FontSize="10"
+                                FontSize="20"
                                 Foreground="#1e3050"
                                 Text="{Binding TotalMXN}"
                                 FontWeight="Bold"

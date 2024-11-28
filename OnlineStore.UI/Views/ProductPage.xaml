@@ -143,15 +143,16 @@
                                                 HorizontalAlignment="Stretch" 
                                                 VerticalAlignment="Stretch"
                                                 Width="Auto"
-                                                Height="200"
+                                                Height="250"
                                                 Margin="0, 0, 0, 0">
                                                 <Grid.Shadow>
                                                     <ThemeShadow/>
                                                 </Grid.Shadow>
                                                 <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
                                                     <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="Auto" />
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
@@ -195,7 +196,7 @@
                                                     Text="{Binding PriceMXN}"
                                                     HorizontalAlignment="Right"
                                                     VerticalAlignment="Center"
-                                                    FontSize="12"
+                                                    FontSize="15"
                                                     TextWrapping="WrapWholeWords"
                                                     FontWeight="Bold">
                                                 </TextBlock>
@@ -217,11 +218,48 @@
                                                     Width="Auto"
                                                     Height="Auto">
                                                 </TextBlock>
+                                                <TextBlock
+                                                    TextTrimming="CharacterEllipsis"
+                                                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                    Foreground="#1e3050"
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="1"
+                                                    Text="Existencias"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    FontSize="10"
+                                                    TextWrapping="Wrap"
+                                                    FontWeight="Bold"
+                                                    TextAlignment="Justify"
+                                                    Width="Auto"
+                                                    Height="Auto">
+                                                </TextBlock>
+                                                <TextBlock
+                                                    TextTrimming="CharacterEllipsis"
+                                                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                    Foreground="#1e3050"
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="1"
+                                                    Text="{Binding Stock}"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    FontSize="10"
+                                                    TextWrapping="Wrap"
+                                                    FontWeight="Bold"
+                                                    TextAlignment="Justify"
+                                                    Width="Auto"
+                                                    Height="Auto">
+                                                </TextBlock>
                                                 <Button
+                                                    IsEnabled="{Binding IsButtonEnabled}"
                                                     Background="#98FF98"
                                                     RelativePanel.AlignHorizontalCenterWithPanel="True"
                                                     RelativePanel.AlignVerticalCenterWithPanel="True"
-                                                    Grid.Row="3"
+                                                    Grid.Row="4"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
                                                     CornerRadius="2"                
