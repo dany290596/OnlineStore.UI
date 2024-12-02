@@ -194,7 +194,7 @@
                                 Foreground="#1e3050" 
                                 Grid.Column="3" 
                                 Grid.ColumnSpan="1" 
-                                Text="Acción" 
+                                Text="" 
                                 HorizontalAlignment="Stretch" 
                                 VerticalAlignment="Center" 
                                 FontWeight="Bold" 
@@ -243,8 +243,9 @@
                                             TextAlignment="Left"
                                             Foreground="#1e3050"
                                             FontWeight="Bold"/>
-                                        <Grid
-                                                Width="350">
+                                        <Grid                                            
+                                            Width="350">
+                                            <!--
                                             <Button     
                                                     Background="#98FF98"
                                                     Width="40"
@@ -263,6 +264,7 @@
                                                             Source="ms-appx:///Assets//delete-2-svgrepo-com.png" />
                                                 </Button.Content>
                                             </Button>
+                                            -->
                                         </Grid>
                                     </StackPanel>
                                 </DataTemplate>
@@ -287,7 +289,7 @@
                             <TextBlock
                                 TextWrapping="WrapWholeWords"
                                 Width="150" 
-                                FontSize="20"
+                                FontSize="25"
                                 Foreground="#1e3050"
                                 Text="Total"
                                 FontWeight="Bold"
@@ -309,7 +311,7 @@
                             <TextBlock 
                                 TextWrapping="WrapWholeWords"
                                 Width="100"
-                                FontSize="20"
+                                FontSize="25"
                                 Foreground="#1e3050"
                                 Text="{Binding TotalMXN}"
                                 FontWeight="Bold"
@@ -350,7 +352,7 @@
                             <TextBlock
                                 TextWrapping="WrapWholeWords"
                                 Width="420" 
-                                FontSize="10"
+                                FontSize="15"
                                 Foreground="#1e3050"
                                 Text="{Binding DateTime}"
                                 FontWeight="Bold"

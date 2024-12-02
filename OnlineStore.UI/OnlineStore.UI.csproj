@@ -139,6 +139,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ModalDialogViewModel.cs" />
     <Compile Include="ViewModels\ModalShoppingCartViewModel.cs" />
+    <Compile Include="ViewModels\PanelViewModel.cs" />
     <Compile Include="ViewModels\PayViewModel.cs" />
     <Compile Include="ViewModels\ProductTypeViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
@@ -155,6 +156,9 @@
     </Compile>
     <Compile Include="Views\ModalShoppingCartPage.xaml.cs">
       <DependentUpon>ModalShoppingCartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PanelPage.xaml.cs">
+      <DependentUpon>PanelPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PayPage.xaml.cs">
       <DependentUpon>PayPage.xaml</DependentUpon>
@@ -182,6 +186,7 @@
     <Content Include="Assets\basketball-jersey-shirt-svgrepo-com.png" />
     <Content Include="Assets\belt-svgrepo-com.png" />
     <Content Include="Assets\blouse-svgrepo-com.png" />
+    <Content Include="Assets\boutique.png" />
     <Content Include="Assets\bridal-shoe-svgrepo-com.png" />
     <Content Include="Assets\canvas-hat-blank-fashion-sport.jpg" />
     <Content Include="Assets\cap-svgrepo-com.png" />
@@ -250,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ModalShoppingCartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PanelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

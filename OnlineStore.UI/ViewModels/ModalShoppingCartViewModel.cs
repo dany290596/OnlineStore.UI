@@ -20,7 +20,7 @@ namespace OnlineStore.UI.ViewModels
         private ContentDialog _dialog { get; set; }
         public ModalShoppingCartViewModel()
         {
-            
+
             ProductDetail = StorageShoppingCart();
             CommandGoRemove = new Helpers.RelayCommand<ProductDetail>(NavigateToGoRemove);
         }
@@ -42,7 +42,6 @@ namespace OnlineStore.UI.ViewModels
                     {
                         SharedService.Instance.ShoppingCartCount = 0;
                     }
-                    //ShoppingCartCount = ProductDetail.Count();
                     _dialog.Hide();
                 }
             }
@@ -52,7 +51,5 @@ namespace OnlineStore.UI.ViewModels
         {
             _dialog = dialog;
         }
-
-       
     }
 }

@@ -91,28 +91,21 @@
                         IsItemClickEnabled="True">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="model:ProductType">
-                                <Grid>
+                                <Grid
+                                    CornerRadius="100"
+                                    Width="170"
+                                    Height="170"
+                                    Background="#98FF98">
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="20" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock 
-                                         Foreground="#1e3050"
-                                         Grid.Row="1"
-                                         Grid.Column="0"
-                                         Grid.ColumnSpan="1"
-                                         Text="{Binding Name}"
-                                         HorizontalAlignment="Center"
-                                         VerticalAlignment="Center"
-                                         FontSize="16"
-                                         TextWrapping="WrapWholeWords"
-                                         FontWeight="Bold">
-                                    </TextBlock>
                                     <Image 
-                                         Grid.Row="0"
+                                         Grid.Row="1"
                                          Grid.Column="0"
                                          Grid.ColumnSpan="1"
                                          Source="{Binding ImageUrl}"
@@ -125,18 +118,31 @@
                                             <RotateTransform Angle="0"/>
                                         </Image.RenderTransform>
                                     </Image>
+                                    <TextBlock 
+                                         Foreground="#1e3050"
+                                         Grid.Row="2"
+                                         Grid.Column="0"
+                                         Grid.ColumnSpan="1"
+                                         Text="{Binding Name}"
+                                        TextAlignment="Center"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         FontSize="16"
+                                         TextWrapping="WrapWholeWords"
+                                         FontWeight="Bold">
+                                    </TextBlock>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapGrid
-                                 HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 Orientation="Horizontal" 
-                                 MaximumRowsOrColumns="5"
-                                 ItemWidth="200" 
-                                 ItemHeight="200" />
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Orientation="Horizontal" 
+                                     MaximumRowsOrColumns="5"
+                                     ItemWidth="200" 
+                                     ItemHeight="200" />
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                     </ListView>

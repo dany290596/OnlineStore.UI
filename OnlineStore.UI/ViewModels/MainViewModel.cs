@@ -32,7 +32,7 @@ namespace OnlineStore.UI.ViewModels
             var frame = Window.Current.Content as Frame;
             if (frame != null)
             {
-                frame.Navigate(typeof(HomePage));
+                frame.Navigate(typeof(PanelPage));
             }
         }
 

@@ -97,6 +97,10 @@
                                 <!--<Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10">
                         <StackPanel Margin="10" Background="White" BorderBrush="Gray" BorderThickness="1" Padding="10">-->
                                 <Grid
+                                    CornerRadius="100"
+                                    Width="170"
+                                    Height="170"
+                                    Background="#98FF98"
                                     RelativePanel.AlignTopWithPanel="True" 
                                     RelativePanel.RightOf="CoverImage" 
                                     RelativePanel.AlignHorizontalCenterWithPanel="True" 
@@ -104,6 +108,7 @@
                                     HorizontalAlignment="Center" 
                                     VerticalAlignment="Center">
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="20" />
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
@@ -114,7 +119,7 @@
                                         RelativePanel.AlignTopWithPanel="True" RelativePanel.RightOf="CoverImage" 
                                         RelativePanel.AlignHorizontalCenterWithPanel="True" 
                                         RelativePanel.AlignVerticalCenterWithPanel="True"
-                                        Grid.Row="0"
+                                        Grid.Row="1"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="1"
                                         Source="{Binding ImageUrl}"
@@ -130,7 +135,7 @@
                                     <TextBlock
                                         RelativePanel.AlignHorizontalCenterWithPanel="true"
                                         Foreground="#1e3050"
-                                        Grid.Row="1"
+                                        Grid.Row="2"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="1"
                                         Text="{Binding Name}"

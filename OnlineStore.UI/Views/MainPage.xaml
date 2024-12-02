@@ -33,7 +33,7 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <TextBlock
@@ -68,7 +68,7 @@
                         Margin="0, 0, 0, 30"/>
                     <RelativePanel
                         Grid.Row="2"
-                        Grid.Column="0"
+                        Grid.Column="1"
                         Grid.ColumnSpan="1"
                         RelativePanel.AlignHorizontalCenterWithPanel="True"
                         RelativePanel.AlignVerticalCenterWithPanel="True"
@@ -96,6 +96,7 @@
                             </Button>
                         </Grid>
                     </RelativePanel>
+                    <!--
                     <RelativePanel
                         Grid.Row="2"
                         Grid.Column="2"
@@ -126,10 +127,11 @@
                             </Button>
                         </Grid>
                     </RelativePanel>
+                    -->
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="0"
-                        Grid.ColumnSpan="1"
+                        Grid.ColumnSpan="3"
                         Name="Text3"
                         RelativePanel.AlignHorizontalCenterWithPanel="true"
                         FontSize="18"
@@ -138,7 +140,8 @@
                         FontWeight="Normal"
                         VerticalAlignment="Center" 
                         HorizontalAlignment="Center"
-                        Text="Haz tu pedido"/>
+                        Text="Haz tu compra"/>
+                    <!--
                     <TextBlock
                         Grid.Row="3"
                         Grid.Column="2"
@@ -152,6 +155,7 @@
                         VerticalAlignment="Center" 
                         HorizontalAlignment="Center"
                         Text="Tomar orden"/>
+                    -->
                     <!--
                     <Button
                         Grid.Row="1"
