@@ -179,10 +179,14 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\1352.jpg" />
+    <Content Include="Assets\1354.jpg" />
     <Content Include="Assets\170680847_10556979.png" />
     <Content Include="Assets\18965881.jpg" />
     <Content Include="Assets\474.jpg" />
+    <Content Include="Assets\8754.jpg" />
     <Content Include="Assets\arrow-go-back-svgrepo-com.png" />
+    <Content Include="Assets\baby-clothes-isolated-white-background.jpg" />
     <Content Include="Assets\backward-svgrepo-com.png" />
     <Content Include="Assets\bag-svgrepo-com.png" />
     <Content Include="Assets\baseball-cap-cap-svgrepo-com.png" />
@@ -205,6 +209,7 @@
     <Content Include="Assets\delete-2-svgrepo-com.png" />
     <Content Include="Assets\female-beauty-brown-cap-summer.jpg" />
     <Content Include="Assets\female-person-svgrepo-com.png" />
+    <Content Include="Assets\garment-casual-material-wear-blue.jpg" />
     <Content Include="Assets\gorra-deportiva.jpg" />
     <Content Include="Assets\hat-visor-textile-sign-background.jpg" />
     <Content Include="Assets\jacket-with-pockets-svgrepo-com.png" />
@@ -212,20 +217,24 @@
     <Content Include="Assets\lingerie-underwear-svgrepo-com.png" />
     <Content Include="Assets\man-toilet-icon.png" />
     <Content Include="Assets\men-restroom-sign-svgrepo-com.png" />
+    <Content Include="Assets\men-s-formal-wear-collection.jpg" />
     <Content Include="Assets\old-fedora-hat.jpg" />
     <Content Include="Assets\pants-svgrepo-com.png" />
+    <Content Include="Assets\pants.jpg" />
     <Content Include="Assets\parka-coat-svgrepo-com.png" />
     <Content Include="Assets\pay-with-card-svgrepo-com-uno.png" />
     <Content Include="Assets\pay-with-card-svgrepo-com.png" />
     <Content Include="Assets\person-svgrepo-com.png" />
     <Content Include="Assets\pngimg-com-jacket-PNG8033.png" />
     <Content Include="Assets\pretty-blue-hat.jpg" />
+    <Content Include="Assets\rb_2787.png" />
     <Content Include="Assets\rb_38538.png" />
     <Content Include="Assets\red-cap-protection-background-clothes.jpg" />
     <Content Include="Assets\scarf-cold-svgrepo-com.png" />
     <Content Include="Assets\scarf-svgrepo-com.png" />
     <Content Include="Assets\shirt-svgrepo-com-two.png" />
     <Content Include="Assets\shirt-svgrepo-com.png" />
+    <Content Include="Assets\shirt.jpg" />
     <Content Include="Assets\shopping-cart-14-svgrepo-com.png" />
     <Content Include="Assets\shopping-cart-empty-side-view-svgrepo-com.png" />
     <Content Include="Assets\shopping-cart-svgrepo-com.png" />
