@@ -51,6 +51,8 @@ namespace OnlineStore.UI.ViewModels
         {
             _modalDialogPage = new ModalDialogPage();
             _modalShoppingCartPage = new ModalShoppingCartPage();
+            Product = new ObservableCollection<Product>();
+            /*
             Product = new ObservableCollection<Product>() {
             new Product() { Id = new Guid("19a43857-4a31-42de-9848-87eac0b9a4e8"), Name = "Gorra Deportiva", Description = "Ideal para: Comprar ahora y llevar tu estilo al siguiente nivel.", Price = 12328.00, Stock = 0, ImageUrl = "ms-appx:///Assets/474.jpg", Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
             new Product() { Id = new Guid("6677ed00-307f-414c-9f7b-3c5239b79a67"), Name = "Gorra Deportiva Clásica Unisex", Description = "Ideal para: Correr, ciclismo, deportes al aire libre, y uso diario.", Price = 211, Stock = 45, ImageUrl = "ms-appx:///Assets/red-cap-protection-background-clothes.jpg", Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
@@ -93,6 +95,7 @@ namespace OnlineStore.UI.ViewModels
             new Product() { Id = new Guid("f702a9a2-889c-4987-a865-b33e3d2f0d18"), Name = "Bolsos y carteras", Description = "", Price = 12328.00, Stock = 55, ImageUrl = "ms-appx:///Assets/women-accesories-svgrepo-com.png", Estado = 1, ProductTypeId = new Guid("f6251291-fc36-4087-8d53-09ae9c8797d8") },
             new Product() { Id = new Guid("0a903fc3-9445-4f21-a79e-f451cf5b2be2"), Name = "Gafas de sol", Description = "", Price = 12328.00, Stock = 22, ImageUrl = "ms-appx:///Assets/sport-faculty-svgrepo-com.png", Estado = 1, ProductTypeId = new Guid("f6251291-fc36-4087-8d53-09ae9c8797d8") }
             };
+            */
 
             ProductFilter = new ObservableCollection<Product>();
             PivotProductIndex = 0;

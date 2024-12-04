@@ -6,9 +6,20 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="#F9F9F9">
+    xmlns:model="using:OnlineStore.UI.Models"
+    xmlns:viewModel="using:OnlineStore.UI.ViewModels"
+    xmlns:helper="using:OnlineStore.UI.Helpers"
+    Background="#EDEDED">
+    <Page.DataContext>
+        <viewModel:PanelViewModel />
+    </Page.DataContext>
+    <Page.Resources>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -19,7 +30,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="50" />
         </Grid.ColumnDefinitions>
-
+        <!--
         <Image 
             Source="ms-appx:///Assets/boutique.png" 
             Width="50" 
@@ -30,7 +41,8 @@
             Grid.Column="0" 
             Grid.ColumnSpan="4" 
             Margin="0, 0"/>
-
+        -->
+        <!--
         <StackPanel 
             Grid.Row="1"
             Grid.Column="0"
@@ -69,15 +81,14 @@
                 </Button.Content>
             </Button>
         </StackPanel>
-
-        <MenuBar
-            
+        -->
+        <MenuBar            
             VerticalAlignment="Top" 
-            Background="#ffbad0" 
             Height="50"
             Grid.Row="2" 
             Grid.Column="0"
             Grid.ColumnSpan="4">
+            <!--
             <MenuBarItem 
                 Title="Categorías" 
                 Foreground="#f55287">
@@ -95,7 +106,8 @@
                 <MenuFlyoutItem 
                     Text="Ofertas Especiales"/>
             </MenuBarItem>
-
+            -->
+            <!--
             <MenuBarItem 
                 Title="Carrito" 
                 Foreground="#f55287">
@@ -115,21 +127,353 @@
                 <MenuFlyoutItem 
                     Text="Cerrar Sesión"/>
             </MenuBarItem>
+            -->
+            <MenuBar.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF9933" Offset="0" />
+                    <GradientStop Color="#FF5722" Offset="1" />
+                </LinearGradientBrush>
+            </MenuBar.Background>
         </MenuBar>
 
-        <Grid 
+        <Grid
             Grid.Row="3"
             Grid.Column="0"
             Grid.ColumnSpan="4"
-            Margin="20, 50">
+            Margin="0, 0">
             <TextBlock 
-                Grid.Row="1" 
-                Text="Bienvenido a la Tienda de Ropa" 
-                FontSize="28" 
-                FontWeight="Bold" 
-                HorizontalAlignment="Center" 
+                Margin="5"
+                Text="Ropa de hombres"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="13"
+                FontWeight="Bold">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <!-- Definir los colores del gradiente -->
+                        <GradientStop Color="#000" Offset="0.0" />
+                        <!-- Azul claro -->
+                        <GradientStop Color="#000" Offset="1.0" />
+                        <!-- Púrpura -->
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+        </Grid>
+
+        <Grid            
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="0, 0">
+            <ScrollViewer
+                HorizontalScrollMode="Enabled" 
+                VerticalScrollMode="Disabled" 
+                HorizontalScrollBarVisibility="Auto" 
+                VerticalScrollBarVisibility="Disabled">
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Left">
+                    <ListView ItemsSource="{Binding Categories}" 
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center" 
+                      ScrollViewer.HorizontalScrollMode="Enabled"
+                      ScrollViewer.VerticalScrollMode="Disabled"
+                      SelectionMode="None"                      
+                      Margin="0, 0, 0, 5">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate 
+                                x:DataType="model:Panel">
+                                <StackPanel 
+                                    x:Name="ItemPanel" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+                                    <StackPanel.RenderTransform>
+                                        <TranslateTransform x:Name="TranslateElement" X="0"/>
+                                    </StackPanel.RenderTransform>
+                                    <StackPanel.Triggers>
+                                        <EventTrigger 
+                                            RoutedEvent="FrameworkElement.Loaded">
+                                            <BeginStoryboard x:Name="MyStoryboard">
+                                                <Storyboard>
+                                                    <!-- Animación de Fade-In de Opacidad -->
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="ItemPanel"
+                                                        Storyboard.TargetProperty="Opacity"
+                                                        From="0" To="1" Duration="0:0:0.5"/>
+
+                                                    <!-- Animación de Deslizamiento con CubicEase (suavizado) -->
+                                                    <DoubleAnimationUsingKeyFrames 
+                                                        Storyboard.TargetName="TranslateElement"
+                                                        Storyboard.TargetProperty="X" 
+                                                        Duration="0:0:0.5">
+                                                        <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0" KeySpline="0.42,0,0.58,1"/>
+                                                    </DoubleAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </StackPanel.Triggers>
+                                    <Button
+                                        Foreground="White"   
+                                        CornerRadius="100"
+                                        FontSize="11" 
+                                        Width="80"
+                                        Height="80"
+                                        Tapped="OnCategoryClick">
+                                        <Button.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#FF5722" Offset="0" />
+                                                <GradientStop Color="#FF9933" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Button.Background>
+                                        <Button.Content>
+                                            <Image 
+                                                Source="{Binding ImageUrl}" 
+                                                Width="55" 
+                                                Height="55"/>
+                                        </Button.Content>
+                                    </Button>
+                                    <TextBlock
+                                        FontSize="10"
+                                        Text="{Binding Name}" 
+                                        HorizontalAlignment="Center">
+                                        <TextBlock.Foreground>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#000" Offset="0.0" />
+                                                <GradientStop Color="#000" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </TextBlock.Foreground>
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        <Grid
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"            
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            Margin="5">
+            <Grid
+                Grid.Row="2"
+                Visibility="{Binding IsPanelVisible, Mode=TwoWay}"
                 VerticalAlignment="Top"
-                Foreground="#f55287" Margin="0,0,0,10"/>
+                HorizontalAlignment="Stretch">
+                <!--
+                <TextBlock 
+                    Text="{Binding SelectedCategory.Name}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" />
+                -->
+
+
+
+
+
+
+
+
+
+
+
+                <!--
+                <Grid x:Name="LayoutRoot">
+                    <Grid x:Name="CardGrid" Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Background="LightGray" Padding="10" Margin="5" CornerRadius="10" Grid.Column="0">
+                                <StackPanel>
+                                    <TextBlock Text="Card 1" FontWeight="Bold" />
+                                    <TextBlock Text="Description for card 1" />
+                                </StackPanel>
+                            </Border>
+
+                            <Border Background="LightGray" Padding="10" Margin="5" CornerRadius="10" Grid.Column="1">
+                                <StackPanel>
+                                    <TextBlock Text="Card 2" FontWeight="Bold" />
+                                    <TextBlock Text="Description for card 2" />
+                                </StackPanel>
+                            </Border>
+
+                            <Border Background="LightGray" Padding="10" Margin="5" CornerRadius="10" Grid.Column="2">
+                                <StackPanel>
+                                    <TextBlock Text="Card 3" FontWeight="Bold" />
+                                    <TextBlock Text="Description for card 3" />
+                                </StackPanel>
+                            </Border>
+
+                            <Border Background="LightGray" Padding="10" Margin="5" CornerRadius="10" Grid.Column="3">
+                                <StackPanel>
+                                    <TextBlock Text="Card 4" FontWeight="Bold" />
+                                    <TextBlock Text="Description for card 4" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border Background="LightGray" Padding="10" Margin="5" CornerRadius="10" Grid.Column="0">
+                                <StackPanel>
+                                    <TextBlock Text="Card 5" FontWeight="Bold" />
+                                    <TextBlock Text="Description for card 5" />
+                                </StackPanel>
+                            </Border>
+
+                            <Border Background="LightGray" Padding="10" Margin="5" CornerRadius="10" Grid.Column="1">
+                                <StackPanel>
+                                    <TextBlock Text="Card 6" FontWeight="Bold" />
+                                    <TextBlock Text="Description for card 6" />
+                                </StackPanel>
+                            </Border>
+
+                            <Border Background="LightGray" Padding="10" Margin="5" CornerRadius="10" Grid.Column="2">
+                                <StackPanel>
+                                    <TextBlock Text="Card 7" FontWeight="Bold" />
+                                    <TextBlock Text="Description for card 7" />
+                                </StackPanel>
+                            </Border>
+
+                            <Border Background="LightGray" Padding="10" Margin="5" CornerRadius="10" Grid.Column="3">
+                                <StackPanel>
+                                    <TextBlock Text="Card 8" FontWeight="Bold" />
+                                    <TextBlock Text="Description for card 8" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="SizeStates">
+                            <VisualState x:Name="SmallScreen">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="400" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="CardGrid.ColumnSpacing" Value="5" />
+                                    <Setter Target="CardGrid.RowSpacing" Value="5" />
+                                </VisualState.Setters>
+                            </VisualState>
+                      
+                            <VisualState x:Name="MediumScreen">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="800" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="CardGrid.ColumnSpacing" Value="10" />
+                                    <Setter Target="CardGrid.RowSpacing" Value="10" />
+                                </VisualState.Setters>
+                            </VisualState>
+                    
+                            <VisualState x:Name="LargeScreen">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="1200" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="CardGrid.ColumnSpacing" Value="20" />
+                                    <Setter Target="CardGrid.RowSpacing" Value="20" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Grid>
+                -->
+
+
+
+
+
+
+
+
+
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+
+
+
+
+
+
+                    <Grid x:Name="CardGrid" Margin="10">
+                    </Grid>
+                    
+
+
+           
+
+
+
+
+
+                </ScrollViewer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </Grid>
+            
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#EDEDED" Offset="0" />
+                    <GradientStop Color="#EDEDED" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
         </Grid>
     </Grid>
 </Page>

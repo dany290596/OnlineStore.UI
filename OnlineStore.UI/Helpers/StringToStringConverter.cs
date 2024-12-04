@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
 namespace OnlineStore.UI.Helpers
@@ -11,12 +12,16 @@ namespace OnlineStore.UI.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return value?.ToString();  // Ensure it's always converted to a string
+            if (value is bool)
+            {
+                return (bool)value ? Visibility.Visible : Visibility.Collapsed;
+            }
+            return Visibility.Collapsed; // Si el valor no es un booleano, lo ocultamos
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            return value;
+            return value.Equals(Visibility.Visible);
         }
     }
 }

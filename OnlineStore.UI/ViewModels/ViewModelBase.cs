@@ -120,12 +120,12 @@ namespace OnlineStore.UI.ViewModels
 
         public ObservableCollection<ProductDetail> StorageShoppingCart()
         {
-            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("StorageShoppingCart"))
-            {
-                var json = ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] as string;
-                return JsonConvert.DeserializeObject<ObservableCollection<ProductDetail>>(json);
-            }
-            return new ObservableCollection<ProductDetail>(); // Retorna un carrito vacío si no hay datos almacenados
+            //if (ApplicationData.Current.LocalSettings.Values.ContainsKey("StorageShoppingCart"))
+            //{
+            //    var json = ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] as string;
+            //    return JsonConvert.DeserializeObject<ObservableCollection<ProductDetail>>(json);
+            //}
+            return new ObservableCollection<ProductDetail>();
         }
 
         public void SyncShoppingCart()

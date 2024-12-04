@@ -1,4 +1,5 @@
-﻿using OnlineStore.UI.ViewModels;
+﻿using OnlineStore.UI.Models;
+using OnlineStore.UI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +28,192 @@ namespace OnlineStore.UI.Views
         {
             this.InitializeComponent();
             this.DataContext = new PanelViewModel();
+            InitializeCardGrid();
+        }
+
+        // Maneja el clic en cada categoría
+        private void OnCategoryClick(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                var category = button.DataContext as Models.Panel;
+                if (category != null)
+                {
+                    var viewModel = (PanelViewModel)this.DataContext;
+                    // Si la categoría es la misma, ocultamos el panel, si es diferente, mostramos el panel
+                    if (viewModel.SelectedCategory == category)
+                    {
+                        viewModel.IsPanelVisible = false; // Ocultamos el panel si la misma categoría fue seleccionada
+                        viewModel.SelectedCategory = null; // Desmarcamos la categoría
+                    }
+                    else
+                    {
+                        viewModel.SelectedCategory = category; // Seleccionamos una nueva categoría
+                        viewModel.IsPanelVisible = true; // Mostramos el panel
+                    }
+                }
+            }
+        }
+
+        private void InitializeCardGrid()
+        {
+            // Obtener las tarjetas desde el ViewModel
+            var cards = ((PanelViewModel)this.DataContext).Cards;
+
+            // Calcular cuántas filas necesitamos (4 tarjetas por fila)
+            int rowCount = (int)Math.Ceiling(cards.Count / 4.0);
+
+            // Definir las filas dinámicamente en el Grid
+            for (int i = 0; i < rowCount; i++)
+            {
+                CardGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            }
+
+            // Definir las columnas del Grid (4 columnas)
+            for (int i = 0; i < 4; i++)
+            {
+                CardGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            }
+
+            // Añadir las tarjetas al Grid
+            for (int i = 0; i < cards.Count; i++)
+            {
+                var card = cards[i];
+
+                // Crear un nuevo Border para cada tarjeta
+                Border cardBorder = new Border
+                {
+                    Background = new SolidColorBrush(Windows.UI.Colors.White),
+                    Padding = new Windows.UI.Xaml.Thickness(10),
+                    Margin = new Windows.UI.Xaml.Thickness(5),
+                    CornerRadius = new Windows.UI.Xaml.CornerRadius(5)
+                };
+
+                StackPanel stackPanel = new StackPanel();
+                // Crear un FlipView para mostrar varias imágenes en forma de carrusel
+                FlipView imageCarousel = new FlipView
+                {
+                    Height = 150,  // Altura del carrusel (puedes ajustarlo según sea necesario)
+                    Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 10),  // Margen inferior
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    Background = new SolidColorBrush(Windows.UI.Colors.White)
+                };
+
+                // Crear las imágenes dentro del carrusel (FlipView)
+                foreach (var imageUrl in card.ImageUrl)  // Suponiendo que `card.ImageUrls` es una lista de URLs de imágenes
+                {
+                    var image = new Image
+                    {
+                        Source = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(imageUrl)),
+                        Stretch = Windows.UI.Xaml.Media.Stretch.Uniform,  // Asegura que la imagen se ajuste bien
+                        VerticalAlignment = VerticalAlignment.Stretch,
+                        HorizontalAlignment = HorizontalAlignment.Stretch
+                    };
+                    imageCarousel.Items.Add(image);
+                }
+
+                stackPanel.Children.Add(imageCarousel);
+
+                // Línea horizontal separadora entre el carrusel y la información
+                Border separatorLine = new Border
+                {
+                    Background = new SolidColorBrush(Windows.UI.Colors.Gray), // Color de la línea
+                    Height = 1,  // Grosor de la línea
+                    Margin = new Windows.UI.Xaml.Thickness(0, 10, 0, 10),  // Margen alrededor de la línea
+                    Opacity = 0.3
+                };
+
+                // Añadir la línea al StackPanel
+                stackPanel.Children.Add(separatorLine);
+
+                // Añadir el título, la descripción, precio y existencias
+                stackPanel.Children.Add(new TextBlock
+                {
+                    Text = card.Name,
+                    FontWeight = Windows.UI.Text.FontWeights.Bold,
+                    FontFamily = new Windows.UI.Xaml.Media.FontFamily("Segoe UI"),
+                    FontSize = 12,
+                    Foreground = new SolidColorBrush(Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34)),
+                    TextWrapping = TextWrapping.Wrap
+                });
+                stackPanel.Children.Add(new TextBlock
+                {
+                    Text = card.Description,
+                    FontSize = 10,
+                    //TextAlignment = TextAlignment.Justify,
+                    TextWrapping = TextWrapping.Wrap
+                });
+
+                // Añadir el precio
+                stackPanel.Children.Add(new TextBlock
+                {
+                    Text = $"${card.Price:F2}",  // Mostrar el precio con 2 decimales
+                    FontSize = 18,
+                    //FontWeight = Windows.UI.Text.FontWeights.Bold,
+                    Foreground = new SolidColorBrush(Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34)),
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    Margin = new Windows.UI.Xaml.Thickness(0, 10, 0, 0),  // Margen superior
+                    TextWrapping = TextWrapping.Wrap
+                });
+
+                // Crear un TextBlock para mostrar las existencias (debajo del precio)
+                stackPanel.Children.Add(new TextBlock
+                {
+                    Text = $"{card.Stock} unidades disponibles",  // Mostrar el número de unidades disponibles
+                    FontWeight = Windows.UI.Text.FontWeights.Normal,
+                    Foreground = new SolidColorBrush(Windows.UI.Colors.Gray),  // Color gris para las existencias
+                    VerticalAlignment = VerticalAlignment.Center,  // Centrar verticalmente
+                    HorizontalAlignment = HorizontalAlignment.Left,  // Alinear a la derecha
+                    Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 0),  // Margen superior para separar del precio
+                    FontSize = 10,
+                    TextWrapping = TextWrapping.Wrap
+                });
+
+                // Crear un botón en la parte inferior
+                Button addToCartButton = new Button
+                {
+                    Content = "Agregar al carrito",
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    Height = 30,
+                    FontSize = 10,
+                    Foreground = new SolidColorBrush(Windows.UI.ColorHelper.FromArgb(255, 255, 255, 255)) // Color personalizado (Rojo, Verde, Azul, Alfa)
+                };
+
+                // Establecer un gradiente para el fondo del botón
+                var gradientBrush = new Windows.UI.Xaml.Media.LinearGradientBrush
+                {
+                    StartPoint = new Windows.Foundation.Point(0, 0),
+                    EndPoint = new Windows.Foundation.Point(1, 1),
+                    GradientStops =
+                    {
+                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34), Offset = 0.0 },
+                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34), Offset = 1.0 }
+                    }
+                };
+
+                // Aplicar el gradiente al fondo del botón
+                addToCartButton.Background = gradientBrush;
+
+                // Añadir el botón al StackPanel
+                stackPanel.Children.Add(addToCartButton);
+
+
+                cardBorder.Child = stackPanel;
+
+                // Calcular la fila y la columna
+                int row = i / 4;
+                int col = i % 4;
+
+                // Añadir la tarjeta al Grid en la fila y columna correspondientes
+                Grid.SetRow(cardBorder, row);
+                Grid.SetColumn(cardBorder, col);
+
+                // Añadir el Border al Grid
+                CardGrid.Children.Add(cardBorder);
+            }
         }
     }
 }

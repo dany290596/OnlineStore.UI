@@ -13,9 +13,10 @@ namespace OnlineStore.UI.Models
         public double Price { get; set; }
         public string PriceMXN { get { return OnPrice(Price); } }
         public int Stock { get; set; }
-        public string ImageUrl { get; set; }
+        //public string ImageUrl { get; set; }
         public Guid ProductTypeId { get; set; }
         public bool IsButtonEnabled { get { return OnStock(Stock); } }
+        public List<string> ImageUrl { get; set; }
 
         public ProductType ProductType { get; set; }
 
