@@ -15,8 +15,10 @@ namespace OnlineStore.UI.ViewModels
         private Panel _selectedCategory;
         private bool _isPanelVisibleMenClothing;
         private bool _isPanelVisibleWomenClothing;
+        private bool _isPanelVisibleFootwear;
         public ObservableCollection<Panel> MenClothing { get; set; }
         public ObservableCollection<Panel> WomenClothing { get; set; }
+        public ObservableCollection<Panel> Footwear { get; set; }
 
         public PanelViewModel()
         {
@@ -47,16 +49,16 @@ namespace OnlineStore.UI.ViewModels
                         new Product() { Id = new Guid("042f40e5-4cf5-426a-9e7d-f8bc0f750693"), Name = "Chamarra Táctica Para Hombre Acolchada Con Múltiples Bolsill", Description = "Se trata de una chaqueta muy recomendable.", Price = 938.00, Stock = 6, ImageUrl = new List<string> { "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png", "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png", "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png", "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
                     }
                 },
-                new Panel {
-                    CategoryName = "MenClothing",
-                    Name = "Zapatos",
-                    ImageUrl = "ms-appx:///Assets//sports-shoes-2-svgrepo-com.png",
-                    Product = new List<Product>() {
-                        new Product() { Id = new Guid("9127983d-3722-4cb2-ac2e-c3041d99150e"), Name = "Zapatos De Vestir Cómodo Mocasines Caballero Casual Oxford", Description = "Estos zapatos formales tienen correas elásticas dobles en los lados para un gran ajuste y construyen una silueta fácil de llevar.", Price = 1148.00, Stock = 2, ImageUrl = new List<string> { "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
-                        new Product() { Id = new Guid("e32dcb3f-aa9b-4b08-8223-3d085f249db3"), Name = "Zapatos Casuales Hombre Derby Florsheim F011330103", Description = "Zapato casual tipo derby confeccionado en piel de borrego, en interiores forros de borrego suaves y transpirables, plantilla removible con esponja de poliuretano completamente acojinada.", Price = 9148.00, Stock = 276, ImageUrl = new List<string> { "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
-                        new Product() { Id = new Guid("7e7bc48d-4535-4ee3-b383-cdefc0cc9c19"), Name = "Zapatos Casuales Perry Ellis Suela Chunky Ligera Pe6445", Description = "Zapatos casuales súper ligeros Marca Perry Ellis.", Price = 6298.00, Stock = 52, ImageUrl = new List<string> { "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
-                    }
-                },
+                //new Panel {
+                //    CategoryName = "MenClothing",
+                //    Name = "Zapatos",
+                //    ImageUrl = "ms-appx:///Assets//sports-shoes-2-svgrepo-com.png",
+                //    Product = new List<Product>() {
+                //        new Product() { Id = new Guid("9127983d-3722-4cb2-ac2e-c3041d99150e"), Name = "Zapatos De Vestir Cómodo Mocasines Caballero Casual Oxford", Description = "Estos zapatos formales tienen correas elásticas dobles en los lados para un gran ajuste y construyen una silueta fácil de llevar.", Price = 1148.00, Stock = 2, ImageUrl = new List<string> { "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
+                //        new Product() { Id = new Guid("e32dcb3f-aa9b-4b08-8223-3d085f249db3"), Name = "Zapatos Casuales Hombre Derby Florsheim F011330103", Description = "Zapato casual tipo derby confeccionado en piel de borrego, en interiores forros de borrego suaves y transpirables, plantilla removible con esponja de poliuretano completamente acojinada.", Price = 9148.00, Stock = 276, ImageUrl = new List<string> { "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
+                //        new Product() { Id = new Guid("7e7bc48d-4535-4ee3-b383-cdefc0cc9c19"), Name = "Zapatos Casuales Perry Ellis Suela Chunky Ligera Pe6445", Description = "Zapatos casuales súper ligeros Marca Perry Ellis.", Price = 6298.00, Stock = 52, ImageUrl = new List<string> { "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
+                //    }
+                //},
                 new Panel {
                     CategoryName = "MenClothing",
                     Name = "Camisas",
@@ -112,16 +114,16 @@ namespace OnlineStore.UI.ViewModels
                         new Product() { Id = new Guid("042f40e5-4cf5-426a-9e7d-f8bc0f750693"), Name = "Chamarra Táctica Para Hombre Acolchada Con Múltiples Bolsill", Description = "Se trata de una chaqueta muy recomendable.", Price = 938.00, Stock = 6, ImageUrl = new List<string> { "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png", "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png", "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png", "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
                     }
                 },
-                new Panel {
-                    CategoryName = "WomenClothing",
-                    Name = "Zapatos",
-                    ImageUrl = "ms-appx:///Assets//sports-shoes-2-svgrepo-com.png",
-                    Product = new List<Product>() {
-                        new Product() { Id = new Guid("9127983d-3722-4cb2-ac2e-c3041d99150e"), Name = "Zapatos De Vestir Cómodo Mocasines Caballero Casual Oxford", Description = "Estos zapatos formales tienen correas elásticas dobles en los lados para un gran ajuste y construyen una silueta fácil de llevar.", Price = 1148.00, Stock = 2, ImageUrl = new List<string> { "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
-                        new Product() { Id = new Guid("e32dcb3f-aa9b-4b08-8223-3d085f249db3"), Name = "Zapatos Casuales Hombre Derby Florsheim F011330103", Description = "Zapato casual tipo derby confeccionado en piel de borrego, en interiores forros de borrego suaves y transpirables, plantilla removible con esponja de poliuretano completamente acojinada.", Price = 9148.00, Stock = 276, ImageUrl = new List<string> { "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
-                        new Product() { Id = new Guid("7e7bc48d-4535-4ee3-b383-cdefc0cc9c19"), Name = "Zapatos Casuales Perry Ellis Suela Chunky Ligera Pe6445", Description = "Zapatos casuales súper ligeros Marca Perry Ellis.", Price = 6298.00, Stock = 52, ImageUrl = new List<string> { "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
-                    }
-                },
+                //new Panel {
+                //    CategoryName = "WomenClothing",
+                //    Name = "Zapatos",
+                //    ImageUrl = "ms-appx:///Assets//sports-shoes-2-svgrepo-com.png",
+                //    Product = new List<Product>() {
+                //        new Product() { Id = new Guid("9127983d-3722-4cb2-ac2e-c3041d99150e"), Name = "Zapatos De Vestir Cómodo Mocasines Caballero Casual Oxford", Description = "Estos zapatos formales tienen correas elásticas dobles en los lados para un gran ajuste y construyen una silueta fácil de llevar.", Price = 1148.00, Stock = 2, ImageUrl = new List<string> { "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
+                //        new Product() { Id = new Guid("e32dcb3f-aa9b-4b08-8223-3d085f249db3"), Name = "Zapatos Casuales Hombre Derby Florsheim F011330103", Description = "Zapato casual tipo derby confeccionado en piel de borrego, en interiores forros de borrego suaves y transpirables, plantilla removible con esponja de poliuretano completamente acojinada.", Price = 9148.00, Stock = 276, ImageUrl = new List<string> { "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
+                //        new Product() { Id = new Guid("7e7bc48d-4535-4ee3-b383-cdefc0cc9c19"), Name = "Zapatos Casuales Perry Ellis Suela Chunky Ligera Pe6445", Description = "Zapatos casuales súper ligeros Marca Perry Ellis.", Price = 6298.00, Stock = 52, ImageUrl = new List<string> { "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
+                //    }
+                //},
                 new Panel {
                     CategoryName = "WomenClothing",
                     Name = "Camisas",
@@ -151,9 +153,24 @@ namespace OnlineStore.UI.ViewModels
                 }
             };
 
+            Footwear = new ObservableCollection<Panel>
+            {
+                new Panel {
+                    CategoryName = "Footwear",
+                    Name = "Zapatos",
+                    ImageUrl = "ms-appx:///Assets//sports-shoes-2-svgrepo-com.png",
+                    Product = new List<Product>() {
+                        new Product() { Id = new Guid("9127983d-3722-4cb2-ac2e-c3041d99150e"), Name = "Zapatos De Vestir Cómodo Mocasines Caballero Casual Oxford", Description = "Estos zapatos formales tienen correas elásticas dobles en los lados para un gran ajuste y construyen una silueta fácil de llevar.", Price = 1148.00, Stock = 2, ImageUrl = new List<string> { "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
+                        new Product() { Id = new Guid("e32dcb3f-aa9b-4b08-8223-3d085f249db3"), Name = "Zapatos Casuales Hombre Derby Florsheim F011330103", Description = "Zapato casual tipo derby confeccionado en piel de borrego, en interiores forros de borrego suaves y transpirables, plantilla removible con esponja de poliuretano completamente acojinada.", Price = 9148.00, Stock = 276, ImageUrl = new List<string> { "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
+                        new Product() { Id = new Guid("7e7bc48d-4535-4ee3-b383-cdefc0cc9c19"), Name = "Zapatos Casuales Perry Ellis Suela Chunky Ligera Pe6445", Description = "Zapatos casuales súper ligeros Marca Perry Ellis.", Price = 6298.00, Stock = 52, ImageUrl = new List<string> { "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg" }, Estado = 1, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
+                    }
+                }
+            };
+
             // Inicializamos el panel como no visible
             IsPanelVisibleMenClothing = false;
             IsPanelVisibleWomenClothing = false;
+            IsPanelVisibleFootwear = false;
         }
 
         public Panel SelectedCategory
@@ -195,6 +212,19 @@ namespace OnlineStore.UI.ViewModels
             }
         }
 
+        public bool IsPanelVisibleFootwear
+        {
+            get => _isPanelVisibleFootwear;
+            set
+            {
+                if (_isPanelVisibleFootwear != value)
+                {
+                    _isPanelVisibleFootwear = value;
+                    OnPropertyChanged(nameof(IsPanelVisibleFootwear));
+                }
+            }
+        }
+
         public void ToggleCategoryExpansion(Panel category)
         {
             // Si la categoría ya está seleccionada, la ocultamos
@@ -202,6 +232,7 @@ namespace OnlineStore.UI.ViewModels
             {
                 IsPanelVisibleMenClothing = false;
                 IsPanelVisibleWomenClothing = false;
+                IsPanelVisibleFootwear = false;
                 SelectedCategory = null;
             }
             else
