@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ModalDialog.cs" />
+    <Compile Include="Helpers\BooleanToGridLengthConverter.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\StringToStringConverter.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -178,6 +179,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\170680847_10556979.png" />
     <Content Include="Assets\18965881.jpg" />
     <Content Include="Assets\474.jpg" />
     <Content Include="Assets\arrow-go-back-svgrepo-com.png" />
@@ -191,6 +193,7 @@
     <Content Include="Assets\boutique.png" />
     <Content Include="Assets\bridal-shoe-svgrepo-com.png" />
     <Content Include="Assets\canvas-hat-blank-fashion-sport.jpg" />
+    <Content Include="Assets\cap-svgrepo-com-two.png" />
     <Content Include="Assets\cap-svgrepo-com.png" />
     <Content Include="Assets\cart-badge-plus-svgrepo-com.png" />
     <Content Include="Assets\cart-badge-plus-svgrepo-com.svg" />
@@ -215,7 +218,9 @@
     <Content Include="Assets\pay-with-card-svgrepo-com-uno.png" />
     <Content Include="Assets\pay-with-card-svgrepo-com.png" />
     <Content Include="Assets\person-svgrepo-com.png" />
+    <Content Include="Assets\pngimg-com-jacket-PNG8033.png" />
     <Content Include="Assets\pretty-blue-hat.jpg" />
+    <Content Include="Assets\rb_38538.png" />
     <Content Include="Assets\red-cap-protection-background-clothes.jpg" />
     <Content Include="Assets\scarf-cold-svgrepo-com.png" />
     <Content Include="Assets\scarf-svgrepo-com.png" />

@@ -13,5 +13,6 @@ namespace OnlineStore.UI.Models
     {
         public string Name { get; set; }
         public string ImageUrl { get; set; }
+        public List<Product> Product { get; set; }
     }
 }

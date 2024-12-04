@@ -14,6 +14,7 @@
         <viewModel:PanelViewModel />
     </Page.DataContext>
     <Page.Resources>
+        <helper:BooleanToGridLengthConverter x:Key="BooleanToGridLengthConverter"/>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -22,7 +23,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="{Binding IsPanelVisible, Converter={StaticResource BooleanToGridLengthConverter}}"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -143,7 +145,7 @@
             Margin="0, 0">
             <TextBlock 
                 Margin="5"
-                Text="Ropa de hombres"
+                Text="Ropa de Hombres"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 FontSize="13"
@@ -255,8 +257,10 @@
                 </StackPanel>
             </ScrollViewer>
         </Grid>
+
         <Grid
-            Grid.Row="5"
+            Visibility="{Binding IsPanelVisible, Mode=TwoWay}"
+            Grid.Row="5"            
             Grid.Column="0"
             Grid.ColumnSpan="4"            
             VerticalAlignment="Stretch"
@@ -264,7 +268,6 @@
             Margin="5">
             <Grid
                 Grid.Row="2"
-                Visibility="{Binding IsPanelVisible, Mode=TwoWay}"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Stretch">
                 <!--
@@ -273,17 +276,6 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center" />
                 -->
-
-
-
-
-
-
-
-
-
-
-
                 <!--
                 <Grid x:Name="LayoutRoot">
                     <Grid x:Name="CardGrid" Margin="10">
@@ -404,68 +396,13 @@
                 </Grid>
                 -->
 
-
-
-
-
-
-
-
-
-
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-
-
-
-
-
-
-
-                    <Grid x:Name="CardGrid" Margin="10">
+                <ScrollViewer 
+                    VerticalScrollBarVisibility="Auto">
+                    <Grid 
+                        x:Name="CardGrid" 
+                        Margin="10">
                     </Grid>
-                    
-
-
-           
-
-
-
-
-
                 </ScrollViewer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </Grid>
             
             <Grid.Background>
@@ -474,6 +411,30 @@
                     <GradientStop Color="#EDEDED" Offset="1" />
                 </LinearGradientBrush>
             </Grid.Background>
+        </Grid>
+
+        <Grid
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="0, 0">
+            <TextBlock 
+                Margin="5"
+                Text="Ropa de Mujeres"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="13"
+                FontWeight="Bold">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <!-- Definir los colores del gradiente -->
+                        <GradientStop Color="#000" Offset="0.0" />
+                        <!-- Azul claro -->
+                        <GradientStop Color="#000" Offset="1.0" />
+                        <!-- Púrpura -->
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
         </Grid>
     </Grid>
 </Page>

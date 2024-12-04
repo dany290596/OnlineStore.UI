@@ -28,10 +28,9 @@ namespace OnlineStore.UI.Views
         {
             this.InitializeComponent();
             this.DataContext = new PanelViewModel();
-            InitializeCardGrid();
+            //InitializeCardGrid();
         }
 
-        // Maneja el clic en cada categoría
         private void OnCategoryClick(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -51,18 +50,53 @@ namespace OnlineStore.UI.Views
                     {
                         viewModel.SelectedCategory = category; // Seleccionamos una nueva categoría
                         viewModel.IsPanelVisible = true; // Mostramos el panel
+                        if (viewModel.SelectedCategory != null)
+                        {
+                            if (viewModel.SelectedCategory.Product != null)
+                            {
+                                if (viewModel.SelectedCategory.Product.Count() > 0)
+                                {
+                                    InitializeCardGrid(viewModel.SelectedCategory);
+                                }
+                            }
+                            else
+                            {
+                                ClearCardGrid();
+                            }
+                        }
+                        else
+                        {
+                            ClearCardGrid();
+                        }
                     }
                 }
             }
         }
 
-        private void InitializeCardGrid()
+        private void ClearCardGrid()
         {
+            // Limpiar las filas del Grid
+            CardGrid.RowDefinitions.Clear();
+
+            CardGrid.ColumnDefinitions.Clear();
+
+            // Limpiar los elementos hijos del Grid
+            CardGrid.Children.Clear();
+        }
+
+        private void InitializeCardGrid(Models.Panel panel)
+        {
+            ClearCardGrid();
+
+            int rowCount = 0;
+
+
             // Obtener las tarjetas desde el ViewModel
-            var cards = ((PanelViewModel)this.DataContext).Cards;
+            // var cards = ((PanelViewModel)this.DataContext).Cards;
+            var cards = panel.Product;
 
             // Calcular cuántas filas necesitamos (4 tarjetas por fila)
-            int rowCount = (int)Math.Ceiling(cards.Count / 4.0);
+            rowCount = (int)Math.Ceiling(cards.Count / 4.0);
 
             // Definir las filas dinámicamente en el Grid
             for (int i = 0; i < rowCount; i++)
