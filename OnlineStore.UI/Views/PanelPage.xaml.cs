@@ -178,7 +178,7 @@ namespace OnlineStore.UI.Views
             // Limpiar los elementos hijos del Grid
             CardGrid.Children.Clear();
             CardGridWomenClothing.Children.Clear();
-            CardGridFootwear.Children.Clear();            
+            CardGridFootwear.Children.Clear();
         }
 
         private void InitializeCardGrid(Models.Panel panel)
@@ -386,9 +386,9 @@ namespace OnlineStore.UI.Views
                 #endregion
 
                 #region SECCIÓN - COLOR
-                if (card.AvailableColor != null)
+                if (card.Color != null)
                 {
-                    if (card.AvailableColor.Count() > 0)
+                    if (card.Color.Count() > 0)
                     {
                         StackPanel colorSelectionPanel = new StackPanel
                         {
@@ -396,7 +396,7 @@ namespace OnlineStore.UI.Views
                             HorizontalAlignment = HorizontalAlignment.Left,
                             Margin = new Windows.UI.Xaml.Thickness(0, 10, 0, 10)
                         };
-                       
+
                         // Mostrar el color seleccionado en un cuadro
                         TextBlock selectedColorTextBlock = new TextBlock
                         {
@@ -417,7 +417,7 @@ namespace OnlineStore.UI.Views
                             Spacing = 5
                         };
 
-                        foreach (var colorHex in card.AvailableColor)
+                        foreach (var colorHex in card.Color)
                         {
                             Button colorButton = new Button
                             {
@@ -439,7 +439,7 @@ namespace OnlineStore.UI.Views
                                 VerticalContentAlignment = VerticalAlignment.Center,
                             };
                             colorButton.Click += (s, e) =>
-                            {                                
+                            {
                                 //stackPanel.Children.Remove(selectedColorBox);
                                 card.SelectedColor = colorHex;
 
