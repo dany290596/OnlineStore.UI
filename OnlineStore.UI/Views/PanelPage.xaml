@@ -36,6 +36,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="{Binding IsPanelVisibleFootwear, Converter={StaticResource BooleanToGridLengthConverter}}"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -217,7 +219,7 @@
                             Text="Ropa de Hombres"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            FontSize="13"
+                            FontSize="15"
                             FontWeight="Bold">
                             <TextBlock.Foreground>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -232,25 +234,26 @@
                     </Grid>
 
                     <Grid            
-            Grid.Row="2"
-            Grid.Column="0"
-            Grid.ColumnSpan="4"
-            Margin="0, 0">
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Margin="0, 0">
                         <ScrollViewer
-                HorizontalScrollMode="Enabled" 
-                VerticalScrollMode="Disabled" 
-                HorizontalScrollBarVisibility="Auto" 
-                VerticalScrollBarVisibility="Disabled">
+                            HorizontalScrollMode="Enabled" 
+                            VerticalScrollMode="Disabled" 
+                            HorizontalScrollBarVisibility="Auto" 
+                            VerticalScrollBarVisibility="Disabled">
                             <StackPanel 
-                    Orientation="Horizontal" 
-                    HorizontalAlignment="Left">
-                                <ListView ItemsSource="{Binding MenClothing}" 
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center" 
-                      ScrollViewer.HorizontalScrollMode="Enabled"
-                      ScrollViewer.VerticalScrollMode="Disabled"
-                      SelectionMode="None"                      
-                      Margin="0, 0, 0, 5">
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Left">
+                                <ListView 
+                                    ItemsSource="{Binding MenClothing}" 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" 
+                                    ScrollViewer.HorizontalScrollMode="Enabled"
+                                    ScrollViewer.VerticalScrollMode="Disabled"
+                                    SelectionMode="None"                      
+                                    Margin="0, 0, 0, 5">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation="Horizontal"/>
@@ -259,29 +262,29 @@
 
                                     <ListView.ItemTemplate>
                                         <DataTemplate 
-                                x:DataType="model:Panel">
+                                            x:DataType="model:Panel">
                                             <StackPanel 
-                                    x:Name="ItemPanel" 
-                                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+                                                x:Name="ItemPanel" 
+                                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
                                                 <StackPanel.RenderTransform>
                                                     <TranslateTransform x:Name="TranslateElement" X="0"/>
                                                 </StackPanel.RenderTransform>
                                                 <StackPanel.Triggers>
                                                     <EventTrigger 
-                                            RoutedEvent="FrameworkElement.Loaded">
+                                                        RoutedEvent="FrameworkElement.Loaded">
                                                         <BeginStoryboard x:Name="MyStoryboard">
                                                             <Storyboard>
                                                                 <!-- Animación de Fade-In de Opacidad -->
                                                                 <DoubleAnimation
-                                                        Storyboard.TargetName="ItemPanel"
-                                                        Storyboard.TargetProperty="Opacity"
-                                                        From="0" To="1" Duration="0:0:0.5"/>
+                                                                    Storyboard.TargetName="ItemPanel"
+                                                                    Storyboard.TargetProperty="Opacity"
+                                                                    From="0" To="1" Duration="0:0:0.5"/>
 
                                                                 <!-- Animación de Deslizamiento con CubicEase (suavizado) -->
                                                                 <DoubleAnimationUsingKeyFrames 
-                                                        Storyboard.TargetName="TranslateElement"
-                                                        Storyboard.TargetProperty="X" 
-                                                        Duration="0:0:0.5">
+                                                                    Storyboard.TargetName="TranslateElement"
+                                                                    Storyboard.TargetProperty="X" 
+                                                                    Duration="0:0:0.5">
                                                                     <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0" KeySpline="0.42,0,0.58,1"/>
                                                                 </DoubleAnimationUsingKeyFrames>
                                                             </Storyboard>
@@ -289,12 +292,12 @@
                                                     </EventTrigger>
                                                 </StackPanel.Triggers>
                                                 <Button
-                                        Foreground="White"   
-                                        CornerRadius="100"
-                                        FontSize="11" 
-                                        Width="80"
-                                        Height="80"
-                                        Tapped="OnCategoryClick">
+                                                    Foreground="White"   
+                                                    CornerRadius="100"
+                                                    FontSize="11" 
+                                                    Width="80"
+                                                    Height="80"
+                                                    Tapped="OnCategoryClick">
                                                     <Button.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                             <GradientStop Color="#FF5722" Offset="0" />
@@ -303,15 +306,15 @@
                                                     </Button.Background>
                                                     <Button.Content>
                                                         <Image 
-                                                Source="{Binding ImageUrl}" 
-                                                Width="55" 
-                                                Height="55"/>
+                                                        Source="{Binding ImageUrl}" 
+                                                        Width="55" 
+                                                        Height="55"/>
                                                     </Button.Content>
                                                 </Button>
                                                 <TextBlock
-                                        FontSize="10"
-                                        Text="{Binding Name}" 
-                                        HorizontalAlignment="Center">
+                                                    FontSize="10"
+                                                    Text="{Binding Name}" 
+                                                    HorizontalAlignment="Center">
                                                     <TextBlock.Foreground>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                             <GradientStop Color="#000" Offset="0.0" />
@@ -328,17 +331,17 @@
                     </Grid>
 
                     <Grid
-            Visibility="{Binding IsPanelVisibleMenClothing, Mode=TwoWay}"
-            Grid.Row="3"            
-            Grid.Column="0"
-            Grid.ColumnSpan="4"            
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
-            Margin="5">
+                        Visibility="{Binding IsPanelVisibleMenClothing, Mode=TwoWay}"
+                        Grid.Row="3"            
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"            
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5">
                         <Grid
-                Grid.Row="2"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Stretch">
+                            Grid.Row="2"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch">
                             <!--
                 <TextBlock 
                     Text="{Binding SelectedCategory.Name}"
@@ -483,17 +486,17 @@
                     </Grid>
 
                     <Grid
-            Grid.Row="4"
-            Grid.Column="0"
-            Grid.ColumnSpan="4"
-            Margin="0, 0">
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Margin="0, 0">
                         <TextBlock 
-                Margin="5"
-                Text="Ropa de Mujeres"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                FontSize="13"
-                FontWeight="Bold">
+                            Margin="5"
+                            Text="Ropa de Mujeres"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            FontWeight="Bold">
                             <TextBlock.Foreground>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                     <!-- Definir los colores del gradiente -->
@@ -507,25 +510,26 @@
                     </Grid>
 
                     <Grid            
-            Grid.Row="5"
-            Grid.Column="0"
-            Grid.ColumnSpan="4"
-            Margin="0, 0">
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Margin="0, 0">
                         <ScrollViewer
-                HorizontalScrollMode="Enabled" 
-                VerticalScrollMode="Disabled" 
-                HorizontalScrollBarVisibility="Auto" 
-                VerticalScrollBarVisibility="Disabled">
+                            HorizontalScrollMode="Enabled" 
+                            VerticalScrollMode="Disabled" 
+                            HorizontalScrollBarVisibility="Auto" 
+                            VerticalScrollBarVisibility="Disabled">
                             <StackPanel 
-                    Orientation="Horizontal" 
-                    HorizontalAlignment="Left">
-                                <ListView ItemsSource="{Binding WomenClothing}" 
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center" 
-                      ScrollViewer.HorizontalScrollMode="Enabled"
-                      ScrollViewer.VerticalScrollMode="Disabled"
-                      SelectionMode="None"                      
-                      Margin="0, 0, 0, 5">
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Left">
+                                <ListView 
+                                    ItemsSource="{Binding WomenClothing}" 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" 
+                                    ScrollViewer.HorizontalScrollMode="Enabled"
+                                    ScrollViewer.VerticalScrollMode="Disabled"
+                                    SelectionMode="None"                      
+                                    Margin="0, 0, 0, 5">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation="Horizontal"/>
@@ -534,29 +538,29 @@
 
                                     <ListView.ItemTemplate>
                                         <DataTemplate 
-                                x:DataType="model:Panel">
+                                            x:DataType="model:Panel">
                                             <StackPanel 
-                                    x:Name="ItemPanel" 
-                                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+                                                x:Name="ItemPanel" 
+                                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
                                                 <StackPanel.RenderTransform>
                                                     <TranslateTransform x:Name="TranslateElement" X="0"/>
                                                 </StackPanel.RenderTransform>
                                                 <StackPanel.Triggers>
                                                     <EventTrigger 
-                                            RoutedEvent="FrameworkElement.Loaded">
+                                                        RoutedEvent="FrameworkElement.Loaded">
                                                         <BeginStoryboard x:Name="MyStoryboard">
                                                             <Storyboard>
                                                                 <!-- Animación de Fade-In de Opacidad -->
                                                                 <DoubleAnimation
-                                                        Storyboard.TargetName="ItemPanel"
-                                                        Storyboard.TargetProperty="Opacity"
-                                                        From="0" To="1" Duration="0:0:0.5"/>
+                                                                    Storyboard.TargetName="ItemPanel"
+                                                                    Storyboard.TargetProperty="Opacity"
+                                                                    From="0" To="1" Duration="0:0:0.5"/>
 
                                                                 <!-- Animación de Deslizamiento con CubicEase (suavizado) -->
                                                                 <DoubleAnimationUsingKeyFrames 
-                                                        Storyboard.TargetName="TranslateElement"
-                                                        Storyboard.TargetProperty="X" 
-                                                        Duration="0:0:0.5">
+                                                                    Storyboard.TargetName="TranslateElement"
+                                                                    Storyboard.TargetProperty="X" 
+                                                                    Duration="0:0:0.5">
                                                                     <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0" KeySpline="0.42,0,0.58,1"/>
                                                                 </DoubleAnimationUsingKeyFrames>
                                                             </Storyboard>
@@ -564,12 +568,12 @@
                                                     </EventTrigger>
                                                 </StackPanel.Triggers>
                                                 <Button
-                                        Foreground="White"   
-                                        CornerRadius="100"
-                                        FontSize="11" 
-                                        Width="80"
-                                        Height="80"
-                                        Tapped="OnCategoryClick">
+                                                    Foreground="White"   
+                                                    CornerRadius="100"
+                                                    FontSize="11" 
+                                                    Width="80"
+                                                    Height="80"
+                                                    Tapped="OnCategoryClick">
                                                     <Button.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                             <GradientStop Color="#FF5722" Offset="0" />
@@ -578,15 +582,15 @@
                                                     </Button.Background>
                                                     <Button.Content>
                                                         <Image 
-                                                Source="{Binding ImageUrl}" 
-                                                Width="55" 
-                                                Height="55"/>
+                                                            Source="{Binding ImageUrl}" 
+                                                            Width="55" 
+                                                            Height="55"/>
                                                     </Button.Content>
                                                 </Button>
                                                 <TextBlock
-                                        FontSize="10"
-                                        Text="{Binding Name}" 
-                                        HorizontalAlignment="Center">
+                                                    FontSize="10"
+                                                    Text="{Binding Name}" 
+                                                    HorizontalAlignment="Center">
                                                     <TextBlock.Foreground>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                             <GradientStop Color="#000" Offset="0.0" />
@@ -603,22 +607,22 @@
                     </Grid>
 
                     <Grid
-            Visibility="{Binding IsPanelVisibleWomenClothing, Mode=TwoWay}"
-            Grid.Row="6"            
-            Grid.Column="0"
-            Grid.ColumnSpan="4"            
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
-            Margin="5">
+                        Visibility="{Binding IsPanelVisibleWomenClothing, Mode=TwoWay}"
+                        Grid.Row="6"            
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"            
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5">
                         <Grid
-                Grid.Row="2"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Stretch">
+                            Grid.Row="2"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch">
                             <ScrollViewer 
-                    VerticalScrollBarVisibility="Auto">
+                                VerticalScrollBarVisibility="Auto">
                                 <Grid 
-                        x:Name="CardGridWomenClothing" 
-                        Margin="10">
+                                    x:Name="CardGridWomenClothing" 
+                                    Margin="10">
                                 </Grid>
                             </ScrollViewer>
                         </Grid>
@@ -632,17 +636,17 @@
                     </Grid>
 
                     <Grid
-            Grid.Row="7"
-            Grid.Column="0"
-            Grid.ColumnSpan="4"
-            Margin="0, 0">
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Margin="0, 0">
                         <TextBlock 
-                Margin="5"
-                Text="Calzado"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                FontSize="13"
-                FontWeight="Bold">
+                            Margin="5"
+                            Text="Calzado"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            FontWeight="Bold">
                             <TextBlock.Foreground>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                     <!-- Definir los colores del gradiente -->
@@ -656,25 +660,26 @@
                     </Grid>
 
                     <Grid            
-            Grid.Row="8"
-            Grid.Column="0"
-            Grid.ColumnSpan="4"
-            Margin="0, 0">
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Margin="0, 0">
                         <ScrollViewer
-                HorizontalScrollMode="Enabled" 
-                VerticalScrollMode="Disabled" 
-                HorizontalScrollBarVisibility="Auto" 
-                VerticalScrollBarVisibility="Disabled">
+                            HorizontalScrollMode="Enabled" 
+                            VerticalScrollMode="Disabled" 
+                            HorizontalScrollBarVisibility="Auto" 
+                            VerticalScrollBarVisibility="Disabled">
                             <StackPanel 
-                    Orientation="Horizontal" 
-                    HorizontalAlignment="Left">
-                                <ListView ItemsSource="{Binding Footwear}" 
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center" 
-                      ScrollViewer.HorizontalScrollMode="Enabled"
-                      ScrollViewer.VerticalScrollMode="Disabled"
-                      SelectionMode="None"                      
-                      Margin="0, 0, 0, 5">
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Left">
+                                <ListView 
+                                    ItemsSource="{Binding Footwear}" 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" 
+                                    ScrollViewer.HorizontalScrollMode="Enabled"
+                                    ScrollViewer.VerticalScrollMode="Disabled"
+                                    SelectionMode="None"                      
+                                    Margin="0, 0, 0, 5">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation="Horizontal"/>
@@ -683,29 +688,29 @@
 
                                     <ListView.ItemTemplate>
                                         <DataTemplate 
-                                x:DataType="model:Panel">
+                                            x:DataType="model:Panel">
                                             <StackPanel 
-                                    x:Name="ItemPanel" 
-                                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+                                                x:Name="ItemPanel" 
+                                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
                                                 <StackPanel.RenderTransform>
                                                     <TranslateTransform x:Name="TranslateElement" X="0"/>
                                                 </StackPanel.RenderTransform>
                                                 <StackPanel.Triggers>
                                                     <EventTrigger 
-                                            RoutedEvent="FrameworkElement.Loaded">
+                                                        RoutedEvent="FrameworkElement.Loaded">
                                                         <BeginStoryboard x:Name="MyStoryboard">
                                                             <Storyboard>
                                                                 <!-- Animación de Fade-In de Opacidad -->
                                                                 <DoubleAnimation
-                                                        Storyboard.TargetName="ItemPanel"
-                                                        Storyboard.TargetProperty="Opacity"
-                                                        From="0" To="1" Duration="0:0:0.5"/>
+                                                                    Storyboard.TargetName="ItemPanel"
+                                                                    Storyboard.TargetProperty="Opacity"
+                                                                    From="0" To="1" Duration="0:0:0.5"/>
 
                                                                 <!-- Animación de Deslizamiento con CubicEase (suavizado) -->
                                                                 <DoubleAnimationUsingKeyFrames 
-                                                        Storyboard.TargetName="TranslateElement"
-                                                        Storyboard.TargetProperty="X" 
-                                                        Duration="0:0:0.5">
+                                                                    Storyboard.TargetName="TranslateElement"
+                                                                    Storyboard.TargetProperty="X" 
+                                                                    Duration="0:0:0.5">
                                                                     <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0" KeySpline="0.42,0,0.58,1"/>
                                                                 </DoubleAnimationUsingKeyFrames>
                                                             </Storyboard>
@@ -713,12 +718,12 @@
                                                     </EventTrigger>
                                                 </StackPanel.Triggers>
                                                 <Button
-                                        Foreground="White"   
-                                        CornerRadius="100"
-                                        FontSize="11" 
-                                        Width="80"
-                                        Height="80"
-                                        Tapped="OnCategoryClick">
+                                                    Foreground="White"   
+                                                    CornerRadius="100"
+                                                    FontSize="11" 
+                                                    Width="80"
+                                                    Height="80"
+                                                    Tapped="OnCategoryClick">
                                                     <Button.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                             <GradientStop Color="#FF5722" Offset="0" />
@@ -727,15 +732,16 @@
                                                     </Button.Background>
                                                     <Button.Content>
                                                         <Image 
-                                                Source="{Binding ImageUrl}" 
-                                                Width="55" 
-                                                Height="55"/>
+                                                            Source="{Binding ImageUrl}" 
+                                                            Width="55" 
+                                                            Height="55"/>
                                                     </Button.Content>
                                                 </Button>
                                                 <TextBlock
-                                        FontSize="10"
-                                        Text="{Binding Name}" 
-                                        HorizontalAlignment="Center">
+                                                    TextAlignment="Center"
+                                                    FontSize="10"
+                                                    Text="{Binding Name}" 
+                                                    HorizontalAlignment="Center">
                                                     <TextBlock.Foreground>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                             <GradientStop Color="#000" Offset="0.0" />
@@ -778,6 +784,127 @@
                                 <GradientStop Color="#EDEDED" Offset="1" />
                             </LinearGradientBrush>
                         </Grid.Background>
+                    </Grid>
+
+                    <Grid
+                        Grid.Row="10"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Margin="0, 0">
+                        <TextBlock 
+                            Margin="5"
+                            Text="Accesorios"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            FontWeight="Bold">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <!-- Definir los colores del gradiente -->
+                                    <GradientStop Color="#000" Offset="0.0" />
+                                    <!-- Azul claro -->
+                                    <GradientStop Color="#000" Offset="1.0" />
+                                    <!-- Púrpura -->
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </Grid>
+
+                    <Grid            
+                        Grid.Row="11"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Margin="0, 0">
+                        <ScrollViewer
+                            HorizontalScrollMode="Enabled" 
+                            VerticalScrollMode="Disabled" 
+                            HorizontalScrollBarVisibility="Auto" 
+                            VerticalScrollBarVisibility="Disabled">
+                            <StackPanel 
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Left">
+                                <ListView 
+                                    ItemsSource="{Binding Accessory}" 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" 
+                                    ScrollViewer.HorizontalScrollMode="Enabled"
+                                    ScrollViewer.VerticalScrollMode="Disabled"
+                                    SelectionMode="None"                      
+                                    Margin="0, 0, 0, 5">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate 
+                                            x:DataType="model:Panel">
+                                            <StackPanel 
+                                                x:Name="ItemPanel" 
+                                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+                                                <StackPanel.RenderTransform>
+                                                    <TranslateTransform x:Name="TranslateElement" X="0"/>
+                                                </StackPanel.RenderTransform>
+                                                <StackPanel.Triggers>
+                                                    <EventTrigger 
+                                                        RoutedEvent="FrameworkElement.Loaded">
+                                                        <BeginStoryboard x:Name="MyStoryboard">
+                                                            <Storyboard>
+                                                                <!-- Animación de Fade-In de Opacidad -->
+                                                                <DoubleAnimation
+                                                                    Storyboard.TargetName="ItemPanel"
+                                                                    Storyboard.TargetProperty="Opacity"
+                                                                    From="0" To="1" Duration="0:0:0.5"/>
+
+                                                                <!-- Animación de Deslizamiento con CubicEase (suavizado) -->
+                                                                <DoubleAnimationUsingKeyFrames 
+                                                                    Storyboard.TargetName="TranslateElement"
+                                                                    Storyboard.TargetProperty="X" 
+                                                                    Duration="0:0:0.5">
+                                                                    <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0" KeySpline="0.42,0,0.58,1"/>
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </EventTrigger>
+                                                </StackPanel.Triggers>
+                                                <Button
+                                                    Foreground="White"   
+                                                    CornerRadius="100"
+                                                    FontSize="11" 
+                                                    Width="80"
+                                                    Height="80"
+                                                    Tapped="OnCategoryClick">
+                                                    <Button.Background>
+                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                            <GradientStop Color="#FF5722" Offset="0" />
+                                                            <GradientStop Color="#FF9933" Offset="1" />
+                                                        </LinearGradientBrush>
+                                                    </Button.Background>
+                                                    <Button.Content>
+                                                        <Image 
+                                                        Source="{Binding ImageUrl}" 
+                                                        Width="55" 
+                                                        Height="55"/>
+                                                    </Button.Content>
+                                                </Button>
+                                                <TextBlock
+                                                    FontSize="10"
+                                                    Text="{Binding Name}" 
+                                                    HorizontalAlignment="Center">
+                                                    <TextBlock.Foreground>
+                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                            <GradientStop Color="#000" Offset="0.0" />
+                                                            <GradientStop Color="#000" Offset="1.0" />
+                                                        </LinearGradientBrush>
+                                                    </TextBlock.Foreground>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </ScrollViewer>
                     </Grid>
                 </Grid>
             </StackPanel>

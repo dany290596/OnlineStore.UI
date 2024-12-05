@@ -22,6 +22,7 @@ namespace OnlineStore.UI.ViewModels
         public ObservableCollection<Panel> MenClothing { get; set; }
         public ObservableCollection<Panel> WomenClothing { get; set; }
         public ObservableCollection<Panel> Footwear { get; set; }
+        public ObservableCollection<Panel> Accessory { get; set; }
 
         public PanelViewModel()
         {
@@ -32,7 +33,7 @@ namespace OnlineStore.UI.ViewModels
                 new Panel {
                     CategoryName = "MenClothing",
                     Name = "Camisetas",
-                    ImageUrl = "ms-appx:///Assets//shirt-svgrepo-com-two.png",
+                    ImageUrl = "ms-appx:///Assets//sleeveless-sleeveless-svgrepo-com.png",
                     Product = new List<Product>() {
                         new Product() { Id = new Guid("0d009bc2-d25d-4137-b46b-956a306b2806"), Name = "Camiseta Zaga 100% Algodón", Description = "La Camiseta Zaga 100% Algodón.", Price = 128.00, Stock = 9, ImageUrl = new List<string> { "ms-appx:///Assets/rb_38538.png", "ms-appx:///Assets/rb_38538.png", "ms-appx:///Assets/rb_38538.png", "ms-appx:///Assets/rb_38538.png" }, Estado = 1, Size = new List<string> { "S", "M", "L", "XL", "XXL" }, Color = new List<string> { "#FF5733", "#33FF57", "#3357FF", "#FF9933", "#FF5722" }, SelectedColor = "0000FF", ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
                     }
@@ -87,8 +88,8 @@ namespace OnlineStore.UI.ViewModels
             {
                 new Panel {
                     CategoryName = "WomenClothing",
-                    Name = "Camisetas",
-                    ImageUrl = "ms-appx:///Assets//shirt-svgrepo-com-two.png",
+                    Name = "Blusas",
+                    ImageUrl = "ms-appx:///Assets//women-sleeveless-shirt-svgrepo-com.png",
                     Product = new List<Product>() {
                         new Product() { Id = new Guid("0d009bc2-d25d-4137-b46b-956a306b2806"), Name = "Camiseta Zaga 100% Algodón", Description = "La Camiseta Zaga 100% Algodón.", Price = 128.00, Stock = 9, ImageUrl = new List<string> { "ms-appx:///Assets/rb_38538.png", "ms-appx:///Assets/rb_38538.png", "ms-appx:///Assets/rb_38538.png", "ms-appx:///Assets/rb_38538.png" }, Estado = 1, Size = new List<string> { "S", "M", "L", "XL", "XXL" }, Color = new List<string> { "#FF5733", "#33FF57", "#3357FF", "#FF9933", "#FF5722" }, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
                     }
@@ -105,7 +106,7 @@ namespace OnlineStore.UI.ViewModels
                 new Panel {
                     CategoryName = "WomenClothing",
                     Name = "Chaquetas",
-                    ImageUrl = "ms-appx:///Assets//jacket-with-pockets-svgrepo-com.png",
+                    ImageUrl = "ms-appx:///Assets//jacket-with-zipper-svgrepo-com.png",
                     Product = new List<Product>() {
                         new Product() { Id = new Guid("042f40e5-4cf5-426a-9e7d-f8bc0f750693"), Name = "Chamarra Táctica Para Hombre Acolchada Con Múltiples Bolsill", Description = "Se trata de una chaqueta muy recomendable.", Price = 938.00, Stock = 6, ImageUrl = new List<string> { "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png", "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png", "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png", "ms-appx:///Assets/pngimg-com-jacket-PNG8033.png" }, Estado = 1, Size = new List<string> { "S", "M", "L", "XL", "XXL" }, Color = new List<string> { "#FF5733", "#33FF57", "#3357FF", "#FF9933", "#FF5722" }, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
                     }
@@ -143,13 +144,37 @@ namespace OnlineStore.UI.ViewModels
             {
                 new Panel {
                     CategoryName = "Footwear",
-                    Name = "Zapatos",
+                    Name = "Zapatos de \nHombre",
                     ImageUrl = "ms-appx:///Assets//sports-shoes-2-svgrepo-com.png",
                     Product = new List<Product>() {
                         new Product() { Id = new Guid("9127983d-3722-4cb2-ac2e-c3041d99150e"), Name = "Zapatos De Vestir Cómodo Mocasines Caballero Casual Oxford", Description = "Estos zapatos formales tienen correas elásticas dobles en los lados para un gran ajuste y construyen una silueta fácil de llevar.", Price = 1148.00, Stock = 2, ImageUrl = new List<string> { "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg", "ms-appx:///Assets/1354.jpg" }, Estado = 1, Size = new List<string> { "23", "24", "25", "26", "27", "28" }, Color = new List<string> { "#FF5733", "#33FF57", "#3357FF", "#FF9933", "#FF5722" }, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
                         new Product() { Id = new Guid("e32dcb3f-aa9b-4b08-8223-3d085f249db3"), Name = "Zapatos Casuales Hombre Derby Florsheim F011330103", Description = "Zapato casual tipo derby confeccionado en piel de borrego, en interiores forros de borrego suaves y transpirables, plantilla removible con esponja de poliuretano completamente acojinada.", Price = 9148.00, Stock = 276, ImageUrl = new List<string> { "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg", "ms-appx:///Assets/8754.jpg" }, Estado = 1, Size = new List<string> { "23", "24", "25", "26", "27", "28" }, Color = new List<string> { "#FF5733", "#33FF57", "#3357FF", "#FF9933", "#FF5722" }, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
                         new Product() { Id = new Guid("7e7bc48d-4535-4ee3-b383-cdefc0cc9c19"), Name = "Zapatos Casuales Perry Ellis Suela Chunky Ligera Pe6445", Description = "Zapatos casuales súper ligeros Marca Perry Ellis.", Price = 6298.00, Stock = 52, ImageUrl = new List<string> { "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg", "ms-appx:///Assets/1352.jpg" }, Estado = 1, Size = new List<string> { "23", "24", "25", "26", "27", "28" }, Color = new List<string> { "#FF5733", "#33FF57", "#3357FF", "#FF9933", "#FF5722" }, ProductTypeId = new Guid("8e909355-b1dc-46d5-9cea-35f4572accb2") },
                     }
+                },
+                new Panel {
+                    CategoryName = "Footwear",
+                    Name = "Zapatos de \nMujer",
+                    ImageUrl = "ms-appx:///Assets//high-heel-shoes-svgrepo-com.png"
+                }
+            };
+
+            Accessory = new ObservableCollection<Panel>
+            {
+                new Panel {
+                    CategoryName = "Accessory",
+                    Name = "Cinturones",
+                    ImageUrl = "ms-appx:///Assets//belt-svgrepo-com-tho.png",
+                },
+                new Panel {
+                    CategoryName = "Accessory",
+                    Name = "Gafas de Sol",
+                    ImageUrl = "ms-appx:///Assets//glasses-eyeglasses-svgrepo-com.png",
+                },
+                new Panel {
+                    CategoryName = "Accessory",
+                    Name = "Guantes",
+                    ImageUrl = "ms-appx:///Assets//pair-of-gloves-svgrepo-com.png",
                 }
             };
 

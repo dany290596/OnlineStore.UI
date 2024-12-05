@@ -193,6 +193,7 @@
     <Content Include="Assets\baseball-cap-cap-svgrepo-com.png" />
     <Content Include="Assets\baseball-cap-svgrepo-com.png" />
     <Content Include="Assets\basketball-jersey-shirt-svgrepo-com.png" />
+    <Content Include="Assets\belt-svgrepo-com-tho.png" />
     <Content Include="Assets\belt-svgrepo-com.png" />
     <Content Include="Assets\blouse-svgrepo-com.png" />
     <Content Include="Assets\boutique.png" />
@@ -212,15 +213,19 @@
     <Content Include="Assets\female-beauty-brown-cap-summer.jpg" />
     <Content Include="Assets\female-person-svgrepo-com.png" />
     <Content Include="Assets\garment-casual-material-wear-blue.jpg" />
+    <Content Include="Assets\glasses-eyeglasses-svgrepo-com.png" />
     <Content Include="Assets\gorra-deportiva.jpg" />
     <Content Include="Assets\hat-visor-textile-sign-background.jpg" />
+    <Content Include="Assets\high-heel-shoes-svgrepo-com.png" />
     <Content Include="Assets\jacket-with-pockets-svgrepo-com.png" />
+    <Content Include="Assets\jacket-with-zipper-svgrepo-com.png" />
     <Content Include="Assets\jeans-pants-svgrepo-com.png" />
     <Content Include="Assets\lingerie-underwear-svgrepo-com.png" />
     <Content Include="Assets\man-toilet-icon.png" />
     <Content Include="Assets\men-restroom-sign-svgrepo-com.png" />
     <Content Include="Assets\men-s-formal-wear-collection.jpg" />
     <Content Include="Assets\old-fedora-hat.jpg" />
+    <Content Include="Assets\pair-of-gloves-svgrepo-com.png" />
     <Content Include="Assets\pants-svgrepo-com.png" />
     <Content Include="Assets\pants.jpg" />
     <Content Include="Assets\parka-coat-svgrepo-com.png" />
@@ -241,6 +246,8 @@
     <Content Include="Assets\shopping-cart-14-svgrepo-com.png" />
     <Content Include="Assets\shopping-cart-empty-side-view-svgrepo-com.png" />
     <Content Include="Assets\shopping-cart-svgrepo-com.png" />
+    <Content Include="Assets\sleeveless-sleeveless-svgrepo-com-two.png" />
+    <Content Include="Assets\sleeveless-sleeveless-svgrepo-com.png" />
     <Content Include="Assets\slit-skirt-svgrepo-com.png" />
     <Content Include="Assets\sport-faculty-svgrepo-com.png" />
     <Content Include="Assets\sports-shoes-2-svgrepo-com.png" />
@@ -253,6 +260,7 @@
     <Content Include="Assets\woman-svgrepo-com.png" />
     <Content Include="Assets\woman-svgrepo-com.svg" />
     <Content Include="Assets\women-accesories-svgrepo-com.png" />
+    <Content Include="Assets\women-sleeveless-shirt-svgrepo-com.png" />
     <Content Include="Assets\women-toilet-icon.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

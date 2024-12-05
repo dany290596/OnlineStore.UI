@@ -27,10 +27,15 @@
             Grid.Column="0"
             Grid.ColumnSpan="2">
             <Rectangle
-                Fill="#98FF98" 
                 Width="1920" Height="65" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FF9933" Offset="0"/>
+                        <GradientStop Color="#FF5722" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
             </Rectangle>
             <TextBlock
                 Name="Text11"
@@ -149,9 +154,16 @@
                         </Rectangle>
                     </Grid>
                     <Grid
-                        Background="#98FF98"
                         Grid.Row="5"
                         Grid.Column="0">
+                        <Grid.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#FF5722" Offset="0"/>
+                                <!-- Rojo Brillante -->
+                                <GradientStop Color="#FF9933" Offset="1"/>
+                                <!-- Naranja Neón -->
+                            </LinearGradientBrush>
+                        </Grid.Background>
                         <StackPanel                
                             Orientation="Horizontal">
                             <TextBlock
@@ -392,14 +404,19 @@
                         CornerRadius="100"
                         Width="70" 
                         Height="70" 
-                        Background="#98FF98" 
                         Foreground="White"         
                         Margin="0,0,0,20" 
                         Command="{Binding CommandGoBack}">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF5722" Offset="0" />
+                            <GradientStop Color="#FF9933" Offset="1" />
+                        </LinearGradientBrush>
+                    </Button.Background>
                     <Button.Content>
-                        <Image 
-                                Width="40"
-                                Source="ms-appx:///Assets//arrow-go-back-svgrepo-com.png" />
+                        <Image
+                            Width="40"
+                            Source="ms-appx:///Assets//arrow-go-back-svgrepo-com.png" />
                     </Button.Content>
                 </Button>
             </RelativePanel>
@@ -410,16 +427,21 @@
                     RelativePanel.AlignHorizontalCenterWithPanel="True"
                     RelativePanel.AlignVerticalCenterWithPanel="True"
                     Margin="0, 0, 0, 0">
-                <Button                
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Bottom"
-                        CornerRadius="100"
-                        Width="70" 
-                        Height="70" 
-                        Background="#98FF98" 
-                        Foreground="White"         
-                        Margin="0,0,0,20" 
-                        Command="{Binding CommandGoBack}">
+                <Button             
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Bottom"
+                    CornerRadius="100"
+                    Width="70" 
+                    Height="70" 
+                    Foreground="White"         
+                    Margin="0,0,0,20" 
+                    Command="{Binding CommandGoBack}">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF5722" Offset="0" />
+                            <GradientStop Color="#FF9933" Offset="1" />
+                        </LinearGradientBrush>
+                    </Button.Background>
                     <Button.Content>
                         <Image 
                                 Width="40"
