@@ -752,22 +752,22 @@
                     </Grid>
 
                     <Grid
-            Visibility="{Binding IsPanelVisibleFootwear, Mode=TwoWay}"
-            Grid.Row="9"            
-            Grid.Column="0"
-            Grid.ColumnSpan="4"            
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
-            Margin="5">
+                        Visibility="{Binding IsPanelVisibleFootwear, Mode=TwoWay}"
+                        Grid.Row="9"            
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"            
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5">
                         <Grid
-                Grid.Row="2"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Stretch">
+                            Grid.Row="2"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch">
                             <ScrollViewer 
-                    VerticalScrollBarVisibility="Auto">
+                                VerticalScrollBarVisibility="Auto">
                                 <Grid 
-                        x:Name="CardGridFootwear" 
-                        Margin="10">
+                                    x:Name="CardGridFootwear" 
+                                    Margin="10">
                                 </Grid>
                             </ScrollViewer>
                         </Grid>

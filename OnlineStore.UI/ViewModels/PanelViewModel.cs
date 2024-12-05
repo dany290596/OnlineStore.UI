@@ -1,4 +1,5 @@
-﻿using OnlineStore.UI.Models;
+﻿using Newtonsoft.Json;
+using OnlineStore.UI.Models;
 using OnlineStore.UI.Views;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace OnlineStore.UI.ViewModels
 {
@@ -23,6 +25,7 @@ namespace OnlineStore.UI.ViewModels
 
         public PanelViewModel()
         {
+            ProductDetail = StorageShoppingCart();
             _modalShoppingCartPage = new ModalShoppingCartPage();
             MenClothing = new ObservableCollection<Panel>
             {
@@ -222,6 +225,66 @@ namespace OnlineStore.UI.ViewModels
             {
                 SelectedCategory = category;
             }
+        }
+
+        public void CloseDialog(Models.Product product)
+        {
+            if (ProductDetail != null)
+                if (ProductDetail.Count() > 0)
+                {
+                    var searchProduct = ProductDetail.FirstOrDefault(f => f.Shopping.Id == product.Id);
+                    if (searchProduct == null)
+                    {
+                        ProductDetail productDetail = new ProductDetail();
+                        productDetail.Id = Guid.NewGuid();
+                        productDetail.Name = product.Name;
+                        productDetail.Shopping = new Shopping()
+                        {
+                            Id = product.Id,
+                            Estado = product.Estado,
+                            Name = product.Name,
+                            Price = product.Price,
+                            Stock = product.Stock
+                        };
+                        productDetail.TotalProduct = 1;
+                        productDetail.TotalPriceProduct = 1 * product.Price;
+                        productDetail.Estado = 1;
+                        ProductDetail.Add(productDetail);
+                        var json = JsonConvert.SerializeObject(ProductDetail);
+                        ApplicationData.Current.LocalSettings.Values["StorageShopping"] = json;
+                        SyncShoppingCart();
+                    }
+                    else
+                    {
+                        double totalPriceProduct = 1 * product.Price;
+                        searchProduct.TotalProduct = searchProduct.TotalProduct + 1;
+                        searchProduct.TotalPriceProduct = searchProduct.TotalPriceProduct + totalPriceProduct;
+                        var json = JsonConvert.SerializeObject(ProductDetail);
+                        ApplicationData.Current.LocalSettings.Values["StorageShopping"] = json;
+                        SyncShoppingCart();
+                    }
+                }
+                else
+                {
+                    ProductDetail productDetail = new ProductDetail();
+                    productDetail.Id = Guid.NewGuid();
+                    productDetail.Name = product.Name;
+                    productDetail.Shopping = new Shopping()
+                    {
+                        Id = product.Id,
+                        Estado = product.Estado,
+                        Name = product.Name,
+                        Price = product.Price,
+                        Stock = product.Stock
+                    }; ;
+                    productDetail.TotalProduct = 1;
+                    productDetail.TotalPriceProduct = 1 * product.Price;
+                    productDetail.Estado = 1;
+                    ProductDetail.Add(productDetail);
+                    var json = JsonConvert.SerializeObject(ProductDetail);
+                    ApplicationData.Current.LocalSettings.Values["StorageShopping"] = json;
+                    SyncShoppingCart();
+                }
         }
     }
 }

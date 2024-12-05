@@ -31,7 +31,7 @@ namespace OnlineStore.UI.ViewModels
             {
                 ProductDetail.Remove(productDetail);
                 var json = JsonConvert.SerializeObject(ProductDetail);
-                ApplicationData.Current.LocalSettings.Values["StorageShoppingCart"] = json;
+                ApplicationData.Current.LocalSettings.Values["StorageShopping"] = json;
                 if (_dialog != null)
                 {
                     if (ProductDetail.Count() > 0)

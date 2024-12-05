@@ -65,7 +65,7 @@ namespace OnlineStore.UI.Views
                                     {
                                         if (viewModel.SelectedCategory.Product.Count() > 0)
                                         {
-                                            InitializeCardGrid(viewModel.SelectedCategory);
+                                            InitializeCardGrid(viewModel.SelectedCategory, viewModel);
                                         }
                                     }
                                     else
@@ -181,7 +181,7 @@ namespace OnlineStore.UI.Views
             CardGridFootwear.Children.Clear();
         }
 
-        private void InitializeCardGrid(Models.Panel panel)
+        private void InitializeCardGrid(Models.Panel panel, PanelViewModel viewModel)
         {
             ClearCardGrid();
 
@@ -525,6 +525,26 @@ namespace OnlineStore.UI.Views
 
                 // Aplicar el gradiente al fondo del botón
                 addToCartButton.Background = gradientBrush;
+
+                // Evento Click para agregar al carrito
+                addToCartButton.Click += (sender, e) =>
+                {
+                    // Crear un nuevo producto a partir de la tarjeta
+                    //Shopping shopping = new Shopping
+                    //{
+                    //    Name = card.Name,
+                    //    Price = card.Price,
+                    //};
+                    if (card != null) {
+                        viewModel.CloseDialog(card);
+                    }
+                    // Agregar el producto al carrito
+                    //shoppingCart.AddProduct(productToAdd);
+
+                    // Opcional: Mostrar un mensaje o actualizar UI (Ejemplo: notificación de éxito)
+                    //var messageDialog = new Windows.UI.Popups.MessageDialog($"{productToAdd.Name} ha sido agregado al carrito.");
+                    //messageDialog.ShowAsync();
+                };
 
                 // Añadir el botón al StackPanel
                 stackPanel.Children.Add(addToCartButton);

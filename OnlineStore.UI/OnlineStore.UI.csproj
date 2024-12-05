@@ -134,6 +134,7 @@
     <Compile Include="Models\ProductDetail.cs" />
     <Compile Include="Models\ProductType.cs" />
     <Compile Include="Models\Quantity.cs" />
+    <Compile Include="Models\Shopping.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\SubCategory.cs" />
     <Compile Include="Services\NavigationService.cs" />

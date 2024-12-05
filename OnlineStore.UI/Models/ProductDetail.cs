@@ -8,7 +8,7 @@ namespace OnlineStore.UI.Models
 {
     public class ProductDetail : BaseEntity
     {
-        public Product Product { get; set; }
+        public Shopping Shopping { get; set; }
         public string Name { get; set; }
         public double TotalProduct { get; set; }
         public double TotalPriceProduct { get; set; }

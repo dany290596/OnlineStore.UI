@@ -103,7 +103,6 @@
                             <Grid
                                 Width="150">
                                 <Button    
-                                    Background="#98FF98"
                                     Width="40"
                                     Height="40"
                                     MaxWidth="40" 
@@ -114,6 +113,12 @@
                                     HorizontalAlignment="Center"
                                     Command="{Binding DataContext.CommandGoRemove, ElementName=ParentGrid}"
                                     CommandParameter="{Binding}">
+                                    <Button.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#FF5722" Offset="0" />
+                                            <GradientStop Color="#FF9933" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Button.Background>
                                     <Button.Content>
                                         <Image 
                                         Width="20"

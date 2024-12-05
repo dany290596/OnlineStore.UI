@@ -97,13 +97,13 @@ namespace OnlineStore.UI.ViewModels
             {
                 if (ProductDetail.Count() > 0)
                 {
-                    var searchProduct = ProductDetail.FirstOrDefault(f => f.Product.Id == Product.Id);
+                    var searchProduct = ProductDetail.FirstOrDefault(f => f.Shopping.Id == Product.Id);
                     if (searchProduct == null)
                     {
                         ProductDetail productDetail = new ProductDetail();
                         productDetail.Id = Guid.NewGuid();
                         productDetail.Name = Product.Name;
-                        productDetail.Product = Product;
+                        //productDetail.Product = Product;
                         productDetail.TotalProduct = quantity.Id;
                         productDetail.TotalPriceProduct = quantity.Id * Product.Price;
                         productDetail.Estado = 1;
@@ -127,7 +127,7 @@ namespace OnlineStore.UI.ViewModels
                     ProductDetail productDetail = new ProductDetail();
                     productDetail.Id = Guid.NewGuid();
                     productDetail.Name = Product.Name;
-                    productDetail.Product = Product;
+                    //productDetail.Product = Product;
                     productDetail.TotalProduct = quantity.Id;
                     productDetail.TotalPriceProduct = quantity.Id * Product.Price;
                     productDetail.Estado = 1;
