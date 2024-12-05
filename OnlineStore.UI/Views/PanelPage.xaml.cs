@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.UI.Xaml.Shapes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -14,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Drawing;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -175,7 +178,7 @@ namespace OnlineStore.UI.Views
             // Limpiar los elementos hijos del Grid
             CardGrid.Children.Clear();
             CardGridWomenClothing.Children.Clear();
-            CardGridFootwear.Children.Clear();
+            CardGridFootwear.Children.Clear();            
         }
 
         private void InitializeCardGrid(Models.Panel panel)
@@ -264,19 +267,214 @@ namespace OnlineStore.UI.Views
                     Foreground = new SolidColorBrush(Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34)),
                     TextWrapping = TextWrapping.Wrap
                 });
+
+                #region SECCIÓN - DESCRIPCIÓN
                 stackPanel.Children.Add(new TextBlock
                 {
                     Text = card.Description,
                     FontSize = 10,
-                    //TextAlignment = TextAlignment.Justify,
                     TextWrapping = TextWrapping.Wrap
                 });
+                #endregion
 
-                // Añadir el precio
+                #region SECCIÓN - TALLA
+                if (card.Size != null)
+                {
+                    if (card.Size.Count() > 0)
+                    {
+                        // Crear un StackPanel para mostrar la selección de talla
+                        StackPanel sizeSelectionPanel = new StackPanel
+                        {
+                            Orientation = Orientation.Vertical,
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            Margin = new Windows.UI.Xaml.Thickness(0, 10, 0, 10)
+                        };
+
+                        // Mostrar la talla seleccionada
+                        TextBlock selectedSizeTextBlock = new TextBlock
+                        {
+                            Name = "SelectedSizeTextBlock",  // Para acceder luego al texto
+                            Text = "Talla: ",
+                            VerticalAlignment = VerticalAlignment.Center,
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            FontSize = 10,
+                            Foreground = new SolidColorBrush(Windows.UI.Colors.Gray),
+                            Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 10)
+                        };
+
+                        sizeSelectionPanel.Children.Add(selectedSizeTextBlock);
+
+                        // Crear un StackPanel para los botones de tallas
+                        StackPanel sizePanel = new StackPanel
+                        {
+                            Orientation = Orientation.Horizontal,
+                            HorizontalAlignment = HorizontalAlignment.Stretch,
+                            Spacing = 5
+                        };
+
+                        // Añadir las tallas como botones o cuadros con borde
+                        foreach (var size in card.Size)  // card.Sizes es una lista de tamaños disponibles
+                        {
+                            Button sizeButton = new Button
+                            {
+                                FontSize = 10,
+                                Content = size,
+                                VerticalAlignment = VerticalAlignment.Center,
+                                HorizontalAlignment = HorizontalAlignment.Center,
+                                Padding = new Windows.UI.Xaml.Thickness(10),
+                                BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGray),
+                                Background = new SolidColorBrush(Windows.UI.Colors.White),
+                                BorderThickness = new Windows.UI.Xaml.Thickness(1),
+                                CornerRadius = new Windows.UI.Xaml.CornerRadius(8),
+                                HorizontalContentAlignment = HorizontalAlignment.Center,
+                                VerticalContentAlignment = VerticalAlignment.Center,
+                                Margin = new Windows.UI.Xaml.Thickness(0)
+                            };
+
+                            // Cambiar el color del botón al pasar el mouse por encima
+                            sizeButton.PointerEntered += (sender, e) =>
+                            {
+                                sizeButton.Background = new SolidColorBrush(Windows.UI.Colors.LightGray);
+                            };
+
+                            sizeButton.PointerExited += (sender, e) =>
+                            {
+                                sizeButton.Background = new SolidColorBrush(Windows.UI.Colors.White);
+                            };
+
+                            // Añadir el evento para cambiar el texto de la talla seleccionada
+                            sizeButton.Click += (sender, e) =>
+                            {
+                                selectedSizeTextBlock.Text = "Talla seleccionada: " + size;
+
+                                // Cambiar el fondo del botón de talla seleccionada con gradiente
+                                var gradient = new Windows.UI.Xaml.Media.LinearGradientBrush
+                                {
+                                    StartPoint = new Windows.Foundation.Point(0, 0),
+                                    EndPoint = new Windows.Foundation.Point(1, 1),
+                                    GradientStops =
+                                    {
+                                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34), Offset = 0.0 }, // Naranja
+                                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 33, 150, 243), Offset = 1.0 }  // Azul
+                                    }
+                                };
+
+                                // Cambiar el fondo del botón de talla seleccionada a un color sólido
+                                sizeButton.Background = new SolidColorBrush(Windows.UI.Colors.Orange); // Color sólido
+
+                                // Restaurar los colores de los demás botones
+                                foreach (var btn in sizePanel.Children.OfType<Button>())
+                                {
+                                    if (btn != sizeButton)
+                                    {
+                                        btn.Background = new SolidColorBrush(Windows.UI.Colors.White);
+                                    }
+                                }
+                            };
+
+                            // Añadir el botón de talla al panel
+                            sizePanel.Children.Add(sizeButton);
+                        }
+
+                        // Añadir el panel de tallas al StackPanel
+                        sizeSelectionPanel.Children.Add(sizePanel);
+
+                        // Añadir el panel de tallas (con el texto y los botones) al StackPanel
+                        stackPanel.Children.Add(sizeSelectionPanel);
+                    }
+                }
+                #endregion
+
+                #region SECCIÓN - COLOR
+                if (card.AvailableColor != null)
+                {
+                    if (card.AvailableColor.Count() > 0)
+                    {
+                        StackPanel colorSelectionPanel = new StackPanel
+                        {
+                            Orientation = Orientation.Vertical,
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            Margin = new Windows.UI.Xaml.Thickness(0, 10, 0, 10)
+                        };
+                       
+                        // Mostrar el color seleccionado en un cuadro
+                        TextBlock selectedColorTextBlock = new TextBlock
+                        {
+                            Text = "Color: ",
+                            VerticalAlignment = VerticalAlignment.Center,
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            Foreground = new SolidColorBrush(Windows.UI.Colors.Gray),
+                            FontSize = 10,
+                            Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 10)
+                        };
+
+                        colorSelectionPanel.Children.Add(selectedColorTextBlock);
+
+                        StackPanel colorPanel = new StackPanel
+                        {
+                            Orientation = Orientation.Horizontal,
+                            HorizontalAlignment = HorizontalAlignment.Stretch,
+                            Spacing = 5
+                        };
+
+                        foreach (var colorHex in card.AvailableColor)
+                        {
+                            Button colorButton = new Button
+                            {
+                                VerticalAlignment = VerticalAlignment.Center,
+                                HorizontalAlignment = HorizontalAlignment.Center,
+                                Background = new SolidColorBrush(ColorHelper.FromArgb(
+                                    255,
+                                    Convert.ToByte(colorHex.Substring(1, 2), 16),
+                                    Convert.ToByte(colorHex.Substring(3, 2), 16),
+                                    Convert.ToByte(colorHex.Substring(5, 2), 16))),
+                                //Width = 40,
+                                //Height = 40,
+                                Margin = new Windows.UI.Xaml.Thickness(0),
+                                BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGray),
+                                Padding = new Windows.UI.Xaml.Thickness(10),
+                                BorderThickness = new Windows.UI.Xaml.Thickness(1),
+                                CornerRadius = new Windows.UI.Xaml.CornerRadius(5),
+                                HorizontalContentAlignment = HorizontalAlignment.Center,
+                                VerticalContentAlignment = VerticalAlignment.Center,
+                            };
+                            colorButton.Click += (s, e) =>
+                            {                                
+                                //stackPanel.Children.Remove(selectedColorBox);
+                                card.SelectedColor = colorHex;
+
+                                // Actualizar el cuadro de color con el color hexadecimal seleccionado
+                                if (!string.IsNullOrEmpty(colorHex))
+                                {
+                                    var cleanHex = colorHex.StartsWith("#") ? colorHex.Substring(1) : colorHex;
+
+                                    if (cleanHex.Length == 6)
+                                    {
+                                        var color = ColorHelper.FromArgb(
+                                            255,
+                                            (byte)Convert.ToInt32(cleanHex.Substring(0, 2), 16),
+                                            (byte)Convert.ToInt32(cleanHex.Substring(2, 2), 16),
+                                            (byte)Convert.ToInt32(cleanHex.Substring(4, 2), 16)
+                                        );
+                                        selectedColorTextBlock.Text = "Color seleccionado: " + color;
+                                    }
+                                }
+                            };
+
+                            colorPanel.Children.Add(colorButton);
+                        }
+
+                        colorSelectionPanel.Children.Add(colorPanel);
+                        stackPanel.Children.Add(colorSelectionPanel);
+                    }
+                }
+                #endregion
+
+                #region SECCIÓN - PRECIO
                 stackPanel.Children.Add(new TextBlock
                 {
                     Text = $"${card.Price:F2}",  // Mostrar el precio con 2 decimales
-                    FontSize = 18,
+                    FontSize = 20,
                     //FontWeight = Windows.UI.Text.FontWeights.Bold,
                     Foreground = new SolidColorBrush(Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34)),
                     VerticalAlignment = VerticalAlignment.Center,
@@ -284,7 +482,9 @@ namespace OnlineStore.UI.Views
                     Margin = new Windows.UI.Xaml.Thickness(0, 10, 0, 0),  // Margen superior
                     TextWrapping = TextWrapping.Wrap
                 });
+                #endregion
 
+                #region SECCIÓN - EXISTENCIAS
                 // Crear un TextBlock para mostrar las existencias (debajo del precio)
                 stackPanel.Children.Add(new TextBlock
                 {
@@ -297,7 +497,9 @@ namespace OnlineStore.UI.Views
                     FontSize = 10,
                     TextWrapping = TextWrapping.Wrap
                 });
+                #endregion
 
+                #region SECCIÓN - BOTÓN ::: AGREGAR AL CARRITO
                 // Crear un botón en la parte inferior
                 Button addToCartButton = new Button
                 {
@@ -326,7 +528,7 @@ namespace OnlineStore.UI.Views
 
                 // Añadir el botón al StackPanel
                 stackPanel.Children.Add(addToCartButton);
-
+                #endregion
 
                 cardBorder.Child = stackPanel;
 
@@ -437,6 +639,125 @@ namespace OnlineStore.UI.Views
                     TextWrapping = TextWrapping.Wrap
                 });
 
+                if (card.Size != null)
+                {
+                    if (card.Size.Count() > 0)
+                    {
+                        // Crear un StackPanel para mostrar la selección de talla
+                        StackPanel sizeSelectionPanel = new StackPanel
+                        {
+                            Orientation = Orientation.Vertical,
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            Margin = new Windows.UI.Xaml.Thickness(0, 10, 0, 10)
+                        };
+
+                        // Texto "Talla:"
+                        TextBlock sizeLabel = new TextBlock
+                        {
+                            Text = "Talla:",
+                            FontWeight = Windows.UI.Text.FontWeights.Bold,
+                            FontSize = 10,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 5)
+                        };
+
+                        sizeSelectionPanel.Children.Add(sizeLabel);
+
+                        // Mostrar la talla seleccionada
+                        TextBlock selectedSizeTextBlock = new TextBlock
+                        {
+                            Name = "SelectedSizeTextBlock",  // Para acceder luego al texto
+                            Text = "Selecciona una talla",
+                            VerticalAlignment = VerticalAlignment.Center,
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            FontSize = 10,
+                            Foreground = new SolidColorBrush(Windows.UI.Colors.Gray),
+                            Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 10)
+                        };
+
+                        sizeSelectionPanel.Children.Add(selectedSizeTextBlock);
+
+                        // Crear un StackPanel para los botones de tallas
+                        StackPanel sizePanel = new StackPanel
+                        {
+                            Orientation = Orientation.Horizontal,
+                            HorizontalAlignment = HorizontalAlignment.Stretch,
+                            Spacing = 5
+                        };
+
+                        // Añadir las tallas como botones o cuadros con borde
+                        foreach (var size in card.Size)  // card.Sizes es una lista de tamaños disponibles
+                        {
+                            Button sizeButton = new Button
+                            {
+                                FontSize = 10,
+                                Content = size,
+                                VerticalAlignment = VerticalAlignment.Center,
+                                HorizontalAlignment = HorizontalAlignment.Center,
+                                Padding = new Windows.UI.Xaml.Thickness(10),
+                                BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGray),
+                                Background = new SolidColorBrush(Windows.UI.Colors.White),
+                                BorderThickness = new Windows.UI.Xaml.Thickness(1),
+                                CornerRadius = new Windows.UI.Xaml.CornerRadius(8),
+                                HorizontalContentAlignment = HorizontalAlignment.Center,
+                                VerticalContentAlignment = VerticalAlignment.Center,
+                                Margin = new Windows.UI.Xaml.Thickness(0)
+                            };
+
+                            // Cambiar el color del botón al pasar el mouse por encima
+                            sizeButton.PointerEntered += (sender, e) =>
+                            {
+                                sizeButton.Background = new SolidColorBrush(Windows.UI.Colors.LightGray);
+                            };
+
+                            sizeButton.PointerExited += (sender, e) =>
+                            {
+                                sizeButton.Background = new SolidColorBrush(Windows.UI.Colors.White);
+                            };
+
+                            // Añadir el evento para cambiar el texto de la talla seleccionada
+                            sizeButton.Click += (sender, e) =>
+                            {
+                                selectedSizeTextBlock.Text = "Talla seleccionada: " + size;
+
+                                // Cambiar el fondo del botón de talla seleccionada con gradiente
+                                var gradient = new Windows.UI.Xaml.Media.LinearGradientBrush
+                                {
+                                    StartPoint = new Windows.Foundation.Point(0, 0),
+                                    EndPoint = new Windows.Foundation.Point(1, 1),
+                                    GradientStops =
+                                    {
+                                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34), Offset = 0.0 }, // Naranja
+                                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 33, 150, 243), Offset = 1.0 }  // Azul
+                                    }
+                                };
+
+                                // Cambiar el fondo del botón de talla seleccionada a un color sólido
+                                sizeButton.Background = new SolidColorBrush(Windows.UI.Colors.Orange); // Color sólido
+
+                                // Restaurar los colores de los demás botones
+                                foreach (var btn in sizePanel.Children.OfType<Button>())
+                                {
+                                    if (btn != sizeButton)
+                                    {
+                                        btn.Background = new SolidColorBrush(Windows.UI.Colors.White);
+                                    }
+                                }
+                            };
+
+                            // Añadir el botón de talla al panel
+                            sizePanel.Children.Add(sizeButton);
+                        }
+
+                        // Añadir el panel de tallas al StackPanel
+                        sizeSelectionPanel.Children.Add(sizePanel);
+
+                        // Añadir el panel de tallas (con el texto y los botones) al StackPanel
+                        stackPanel.Children.Add(sizeSelectionPanel);
+                    }
+                }
+
                 // Añadir el precio
                 stackPanel.Children.Add(new TextBlock
                 {
@@ -491,7 +812,6 @@ namespace OnlineStore.UI.Views
 
                 // Añadir el botón al StackPanel
                 stackPanel.Children.Add(addToCartButton);
-
 
                 cardBorder.Child = stackPanel;
 
@@ -601,6 +921,125 @@ namespace OnlineStore.UI.Views
                     //TextAlignment = TextAlignment.Justify,
                     TextWrapping = TextWrapping.Wrap
                 });
+
+                if (card.Size != null)
+                {
+                    if (card.Size.Count() > 0)
+                    {
+                        // Crear un StackPanel para mostrar la selección de talla
+                        StackPanel sizeSelectionPanel = new StackPanel
+                        {
+                            Orientation = Orientation.Vertical,
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            Margin = new Windows.UI.Xaml.Thickness(0, 10, 0, 10)
+                        };
+
+                        // Texto "Talla:"
+                        TextBlock sizeLabel = new TextBlock
+                        {
+                            Text = "Talla:",
+                            FontWeight = Windows.UI.Text.FontWeights.Bold,
+                            FontSize = 10,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 5)
+                        };
+
+                        sizeSelectionPanel.Children.Add(sizeLabel);
+
+                        // Mostrar la talla seleccionada
+                        TextBlock selectedSizeTextBlock = new TextBlock
+                        {
+                            Name = "SelectedSizeTextBlock",  // Para acceder luego al texto
+                            Text = "Selecciona una talla",
+                            VerticalAlignment = VerticalAlignment.Center,
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            FontSize = 10,
+                            Foreground = new SolidColorBrush(Windows.UI.Colors.Gray),
+                            Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 10)
+                        };
+
+                        sizeSelectionPanel.Children.Add(selectedSizeTextBlock);
+
+                        // Crear un StackPanel para los botones de tallas
+                        StackPanel sizePanel = new StackPanel
+                        {
+                            Orientation = Orientation.Horizontal,
+                            HorizontalAlignment = HorizontalAlignment.Stretch,
+                            Spacing = 5
+                        };
+
+                        // Añadir las tallas como botones o cuadros con borde
+                        foreach (var size in card.Size)  // card.Sizes es una lista de tamaños disponibles
+                        {
+                            Button sizeButton = new Button
+                            {
+                                FontSize = 10,
+                                Content = size,
+                                VerticalAlignment = VerticalAlignment.Center,
+                                HorizontalAlignment = HorizontalAlignment.Center,
+                                Padding = new Windows.UI.Xaml.Thickness(10),
+                                BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGray),
+                                Background = new SolidColorBrush(Windows.UI.Colors.White),
+                                BorderThickness = new Windows.UI.Xaml.Thickness(1),
+                                CornerRadius = new Windows.UI.Xaml.CornerRadius(8),
+                                HorizontalContentAlignment = HorizontalAlignment.Center,
+                                VerticalContentAlignment = VerticalAlignment.Center,
+                                Margin = new Windows.UI.Xaml.Thickness(0)
+                            };
+
+                            // Cambiar el color del botón al pasar el mouse por encima
+                            sizeButton.PointerEntered += (sender, e) =>
+                            {
+                                sizeButton.Background = new SolidColorBrush(Windows.UI.Colors.LightGray);
+                            };
+
+                            sizeButton.PointerExited += (sender, e) =>
+                            {
+                                sizeButton.Background = new SolidColorBrush(Windows.UI.Colors.White);
+                            };
+
+                            // Añadir el evento para cambiar el texto de la talla seleccionada
+                            sizeButton.Click += (sender, e) =>
+                            {
+                                selectedSizeTextBlock.Text = "Talla seleccionada: " + size;
+
+                                // Cambiar el fondo del botón de talla seleccionada con gradiente
+                                var gradient = new Windows.UI.Xaml.Media.LinearGradientBrush
+                                {
+                                    StartPoint = new Windows.Foundation.Point(0, 0),
+                                    EndPoint = new Windows.Foundation.Point(1, 1),
+                                    GradientStops =
+                                    {
+                                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34), Offset = 0.0 }, // Naranja
+                                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 33, 150, 243), Offset = 1.0 }  // Azul
+                                    }
+                                };
+
+                                // Cambiar el fondo del botón de talla seleccionada a un color sólido
+                                sizeButton.Background = new SolidColorBrush(Windows.UI.Colors.Orange); // Color sólido
+
+                                // Restaurar los colores de los demás botones
+                                foreach (var btn in sizePanel.Children.OfType<Button>())
+                                {
+                                    if (btn != sizeButton)
+                                    {
+                                        btn.Background = new SolidColorBrush(Windows.UI.Colors.White);
+                                    }
+                                }
+                            };
+
+                            // Añadir el botón de talla al panel
+                            sizePanel.Children.Add(sizeButton);
+                        }
+
+                        // Añadir el panel de tallas al StackPanel
+                        sizeSelectionPanel.Children.Add(sizePanel);
+
+                        // Añadir el panel de tallas (con el texto y los botones) al StackPanel
+                        stackPanel.Children.Add(sizeSelectionPanel);
+                    }
+                }
 
                 // Añadir el precio
                 stackPanel.Children.Add(new TextBlock

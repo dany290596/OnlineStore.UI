@@ -17,6 +17,12 @@ namespace OnlineStore.UI.Models
         public Guid ProductTypeId { get; set; }
         public bool IsButtonEnabled { get { return OnStock(Stock); } }
         public List<string> ImageUrl { get; set; }
+        public List<string> Size { get; set; }
+        //public List<string> Color { get; set; } // Colores disponibles
+        public List<string> AvailableSize { get; set; } = new List<string>();
+        public List<string> AvailableColor { get; set; } = new List<string>(); // Colores disponibles
+        public string SelectedSize { get; set; } // Talla seleccionada
+        public string SelectedColor { get; set; } // Color seleccionado
 
         public ProductType ProductType { get; set; }
 
