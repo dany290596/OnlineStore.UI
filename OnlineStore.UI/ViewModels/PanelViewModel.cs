@@ -1,4 +1,5 @@
 ﻿using OnlineStore.UI.Models;
+using OnlineStore.UI.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,6 +23,7 @@ namespace OnlineStore.UI.ViewModels
 
         public PanelViewModel()
         {
+            _modalShoppingCartPage = new ModalShoppingCartPage();
             MenClothing = new ObservableCollection<Panel>
             {
                 new Panel {

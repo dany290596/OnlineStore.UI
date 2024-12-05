@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="¡Lo que quieres, a punto de ser tuyo!"
-    PrimaryButtonText="Preview"
+    PrimaryButtonText="Preview"    
     PrimaryButtonCommand="{Binding CommandCloseModalGoPreview}"
     SecondaryButtonText="Seguir comprando"
     xmlns:viewModels="using:OnlineStore.UI.ViewModels"
@@ -36,7 +36,18 @@
         </Grid.ColumnDefinitions>
 
         <!-- Encabezados en un Grid -->
-        <Grid Grid.Row="0" Grid.ColumnSpan="4" Background="#98FF98" Margin="0,0,0,10">
+        <Grid 
+            Grid.Row="0" 
+            Grid.ColumnSpan="4" 
+            Margin="0,0,0,10">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#FF5722" Offset="0"/>
+                    <!-- Rojo Brillante -->
+                    <GradientStop Color="#FF9933" Offset="1"/>
+                    <!-- Naranja Neón -->
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -47,25 +58,30 @@
             <!-- Encabezados -->
             <TextBlock 
                 FontSize="10"
-                Foreground="#1e3050" 
+                Foreground="#fff" 
                 Grid.Column="0" Grid.ColumnSpan="1" Text="Nombre" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5"/>
             <TextBlock 
                 FontSize="10"
-                Foreground="#1e3050" 
+                Foreground="#fff" 
                 Grid.Column="1" Grid.ColumnSpan="1" Text="N.o de productos" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5"/>
             <TextBlock 
                 FontSize="10"
-                Foreground="#1e3050" 
+                Foreground="#fff" 
                 Grid.Column="2" Grid.ColumnSpan="1" Text="Precio total" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5"/>
             <TextBlock 
                 FontSize="10"
-                Foreground="#1e3050" 
+                Foreground="#fff" 
                 Grid.Column="3" Grid.ColumnSpan="1" Text="Acción" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5"/>
         </Grid>
-        <ScrollViewer  Grid.Row="1" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Auto" Height="200">
+        <ScrollViewer  
+            Grid.Row="1" 
+            Grid.ColumnSpan="4" 
+            VerticalScrollBarVisibility="Auto" 
+            Width="Auto"
+            Height="200">
             <GridView        
-    ItemsSource="{Binding ProductDetail}"
-    IsItemClickEnabled="True">
+                ItemsSource="{Binding ProductDetail}"
+                IsItemClickEnabled="True">
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="models:ProductDetail">
                         <StackPanel Orientation="Horizontal">
@@ -86,18 +102,18 @@
                                 Text="{Binding TotalPriceProductMXN}" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <Grid
                                 Width="150">
-                                <Button     
-                                Background="#98FF98"
-                                Width="40"
-                                Height="40"
-                                MaxWidth="40" 
-                                MaxHeight="40"
-                                CornerRadius="100"
+                                <Button    
+                                    Background="#98FF98"
+                                    Width="40"
+                                    Height="40"
+                                    MaxWidth="40" 
+                                    MaxHeight="40"
+                                    CornerRadius="100"
                                     Padding="5"
-                                VerticalAlignment="Center" 
-                                HorizontalAlignment="Center"
-                                Command="{Binding DataContext.CommandGoRemove, ElementName=ParentGrid}"
-                                CommandParameter="{Binding}">
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Center"
+                                    Command="{Binding DataContext.CommandGoRemove, ElementName=ParentGrid}"
+                                    CommandParameter="{Binding}">
                                     <Button.Content>
                                         <Image 
                                         Width="20"
@@ -178,9 +194,6 @@
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
-
         </ScrollViewer>
-
-
     </Grid>
 </ContentDialog>

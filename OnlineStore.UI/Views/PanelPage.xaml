@@ -43,104 +43,160 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
+                    
                     <!--
-        <Image 
-            Source="ms-appx:///Assets/boutique.png" 
-            Width="50" 
-            Height="50" 
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center" 
-            Grid.Row="0" 
-            Grid.Column="0" 
-            Grid.ColumnSpan="4" 
-            Margin="0, 0"/>
-        -->
-                    <!--
-        <StackPanel 
-            Grid.Row="1"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            VerticalAlignment="Top" 
-            HorizontalAlignment="Stretch" 
-            Margin="5, 5, 5, 5">
-            <TextBox
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                x:Name="SearchBox" 
-                PlaceholderText="Buscar artículos..." 
-                Background="#FFFFFF" 
-                BorderBrush="#DDDDDD" 
-                BorderThickness="1" 
-                Height="50"/>
-        </StackPanel>
-        <StackPanel 
-            Grid.Row="1"
-            Grid.Column="3"
-            Grid.ColumnSpan="1"
-            VerticalAlignment="Top" 
-            HorizontalAlignment="Stretch" 
-            Margin="0, 5, 5, 5">
-            <Button
-                Background="#ffbad0"
-                Height="50">
-                <Button.Content>
-                    <SymbolIcon 
-                        Symbol="Find"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Foreground="Black" 
+                    <Image 
+                        Source="ms-appx:///Assets/boutique.png" 
                         Width="50" 
-                        Height="50"/>
-                </Button.Content>
-            </Button>
-        </StackPanel>
-        -->
-                    <MenuBar            
-            VerticalAlignment="Top" 
-            Height="50"
-            Grid.Row="0" 
-            Grid.Column="0"
-            Grid.ColumnSpan="4">
+                        Height="50" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" 
+                        Grid.Row="0" 
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="4" 
+                        Margin="0, 0"/>
+                    -->
+                    <!--
+                    <StackPanel 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Stretch" 
+                        Margin="5, 5, 5, 5">
+                        <TextBox
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            x:Name="SearchBox" 
+                            PlaceholderText="Buscar artículos..." 
+                            Background="#FFFFFF" 
+                            BorderBrush="#DDDDDD" 
+                            BorderThickness="1" 
+                            Height="50"/>
+                    </StackPanel>
+                    <StackPanel 
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="1"
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Stretch" 
+                        Margin="0, 5, 5, 5">
+                        <Button
+                            Background="#ffbad0"
+                            Height="50">
+                            <Button.Content>
+                                <SymbolIcon 
+                                    Symbol="Find"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="Black" 
+                                    Width="50" 
+                                    Height="50"/>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                    -->
+                    
+                    <Grid
+                        VerticalAlignment="Top"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4">
+                        <Rectangle 
+                            Width="1920" Height="65" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#FF9933" Offset="0"/>
+                                    <GradientStop Color="#FF5722" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Button
+                            Margin="0, 0, 10, 0"
+                            Background="Transparent"
+                            Width="60"
+                            Height="60"
+                            MaxWidth="60" 
+                            MaxHeight="60"
+                            CornerRadius="100"
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Right"
+                            Command="{Binding CommandGoShoppingCart}">
+                            <Button.Content>
+                                <Image 
+                                    Width="45"
+                                    Source="ms-appx:///Assets//euro-bag-svgrepo-com.png" />
+                            </Button.Content>
+                        </Button>
+                        <Grid 
+                            Width="25" 
+                            Height="25"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0, 2, 11, 0"
+                            Background="Red"
+                            CornerRadius="100"
+                            BorderBrush="Red"
+                            BorderThickness="1">
+                            <TextBlock 
+                                Text="{Binding ShoppingCartCount, Mode=OneWay}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                FontSize="11" />
+                        </Grid>
                         <!--
-            <MenuBarItem 
-                Title="Categorías" 
-                Foreground="#f55287">
-                <MenuFlyoutSubItem 
-                    Text="Ropa">
-                    <MenuFlyoutItem Text="Camisas"/>
-                    <MenuFlyoutItem Text="Pantalones"/>
-                    <MenuFlyoutItem Text="Chaquetas"/>
-                </MenuFlyoutSubItem>
-                <MenuFlyoutSubItem 
-                    Text="Accesorios">
-                    <MenuFlyoutItem Text="Zapatos"/>
-                    <MenuFlyoutItem Text="Bolsos"/>
-                </MenuFlyoutSubItem>
-                <MenuFlyoutItem 
-                    Text="Ofertas Especiales"/>
-            </MenuBarItem>
-            -->
+                    <MenuBar
+                        VerticalAlignment="Top" 
+                        Height="50"
+                        Grid.Row="0" 
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4">
+                    -->
                         <!--
-            <MenuBarItem 
-                Title="Carrito" 
-                Foreground="#f55287">
-                <MenuFlyoutItem 
-                    Text="Ver Carrito"/>
-                <MenuFlyoutItem 
-                    Text="Finalizar Compra"/>
-            </MenuBarItem>
+                        <MenuBarItem 
+                            Title="Categorías" 
+                            Foreground="#f55287">
+                            <MenuFlyoutSubItem 
+                                Text="Ropa">
+                                <MenuFlyoutItem Text="Camisas"/>
+                                <MenuFlyoutItem Text="Pantalones"/>
+                                <MenuFlyoutItem Text="Chaquetas"/>
+                            </MenuFlyoutSubItem>
+                            <MenuFlyoutSubItem 
+                                Text="Accesorios">
+                                <MenuFlyoutItem Text="Zapatos"/>
+                                <MenuFlyoutItem Text="Bolsos"/>
+                            </MenuFlyoutSubItem>
+                            <MenuFlyoutItem 
+                                Text="Ofertas Especiales"/>
+                        </MenuBarItem>
+                        -->
+                                    <!--
+                        <MenuBarItem 
+                            Title="Carrito" 
+                            Foreground="#f55287">
+                            <MenuFlyoutItem 
+                                Text="Ver Carrito"/>
+                            <MenuFlyoutItem 
+                                Text="Finalizar Compra"/>
+                        </MenuBarItem>
 
-            <MenuBarItem 
-                Title="Mi Cuenta" 
-                Foreground="#f55287">
-                <MenuFlyoutItem 
-                    Text="Iniciar Sesión"/>
-                <MenuFlyoutItem 
-                    Text="Registrarse"/>
-                <MenuFlyoutItem 
-                    Text="Cerrar Sesión"/>
-            </MenuBarItem>
-            -->
+                        <MenuBarItem 
+                            Title="Mi Cuenta" 
+                            Foreground="#f55287">
+                            <MenuFlyoutItem 
+                                Text="Iniciar Sesión"/>
+                            <MenuFlyoutItem 
+                                Text="Registrarse"/>
+                            <MenuFlyoutItem 
+                                Text="Cerrar Sesión"/>
+                        </MenuBarItem>
+                        -->
+                    <!--
                         <MenuBar.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                 <GradientStop Color="#FF9933" Offset="0" />
@@ -148,19 +204,21 @@
                             </LinearGradientBrush>
                         </MenuBar.Background>
                     </MenuBar>
-
+                    -->
+                    </Grid>
+                    
                     <Grid
-            Grid.Row="1"
-            Grid.Column="0"
-            Grid.ColumnSpan="4"
-            Margin="0, 0">
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Margin="0, 0">
                         <TextBlock 
-                Margin="5"
-                Text="Ropa de Hombres"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                FontSize="13"
-                FontWeight="Bold">
+                            Margin="5"
+                            Text="Ropa de Hombres"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="13"
+                            FontWeight="Bold">
                             <TextBlock.Foreground>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                     <!-- Definir los colores del gradiente -->
