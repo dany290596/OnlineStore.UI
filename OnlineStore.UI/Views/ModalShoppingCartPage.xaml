@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="¡Lo que quieres, a punto de ser tuyo!"
-    PrimaryButtonText="Preview"    
+    PrimaryButtonText="Resumen de compras"    
     PrimaryButtonCommand="{Binding CommandCloseModalGoPreview}"
     SecondaryButtonText="Seguir comprando"
     xmlns:viewModels="using:OnlineStore.UI.ViewModels"

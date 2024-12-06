@@ -124,8 +124,9 @@
                             VerticalAlignment="Center">
                             <Rectangle.Fill>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#FF9933" Offset="0"/>
-                                    <GradientStop Color="#FF5722" Offset="1"/>
+                                    <GradientStop Color="#00BFFF" Offset="0" />
+                                    <GradientStop Color="#FF00FF" Offset="0.5" />
+                                    <GradientStop Color="#FFFF00" Offset="1" />
                                 </LinearGradientBrush>
                             </Rectangle.Fill>
                         </Rectangle>
@@ -314,8 +315,8 @@
                                                     Tapped="OnCategoryClick">
                                                     <Button.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                                            <GradientStop Color="#FF5722" Offset="0" />
-                                                            <GradientStop Color="#FF9933" Offset="1" />
+                                                            <GradientStop Color="#00BFFF" Offset="0" />
+                                                            <GradientStop Color="#8A2BE2" Offset="1" />
                                                         </LinearGradientBrush>
                                                     </Button.Background>
                                                     <Button.Content>
@@ -590,8 +591,8 @@
                                                     Tapped="OnCategoryClick">
                                                     <Button.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                                            <GradientStop Color="#FF5722" Offset="0" />
-                                                            <GradientStop Color="#FF9933" Offset="1" />
+                                                            <GradientStop Color="#1E90FF" Offset="0" />
+                                                            <GradientStop Color="#00FF7F" Offset="1" />
                                                         </LinearGradientBrush>
                                                     </Button.Background>
                                                     <Button.Content>
@@ -740,8 +741,8 @@
                                                     Tapped="OnCategoryClick">
                                                     <Button.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                                            <GradientStop Color="#FF5722" Offset="0" />
-                                                            <GradientStop Color="#FF9933" Offset="1" />
+                                                            <GradientStop Color="#FF073A" Offset="0" />
+                                                            <GradientStop Color="#FFEB3B" Offset="1" />
                                                         </LinearGradientBrush>
                                                     </Button.Background>
                                                     <Button.Content>
@@ -891,8 +892,8 @@
                                                     Tapped="OnCategoryClick">
                                                     <Button.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                                            <GradientStop Color="#FF5722" Offset="0" />
-                                                            <GradientStop Color="#FF9933" Offset="1" />
+                                                            <GradientStop Color="#00BFFF" Offset="0" />
+                                                            <GradientStop Color="#FF00FF" Offset="1" />
                                                         </LinearGradientBrush>
                                                     </Button.Background>
                                                     <Button.Content>

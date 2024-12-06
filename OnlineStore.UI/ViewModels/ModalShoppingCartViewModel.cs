@@ -50,7 +50,7 @@ namespace OnlineStore.UI.ViewModels
                         Content = new TextBlock
                         {
                             TextWrapping = TextWrapping.Wrap,
-                            Text = "El artículo " + productDetail.Name + " ha sido retirado de tu carrito.",
+                            Text = "El artículo " + productDetail.Name + " ha sido retirado de tu bolsa.",
                             TextAlignment = TextAlignment.Center, // Centrar el texto
                             VerticalAlignment = VerticalAlignment.Center,
                             Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 20)

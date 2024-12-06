@@ -521,8 +521,8 @@ namespace OnlineStore.UI.Views
                     EndPoint = new Windows.Foundation.Point(1, 1),
                     GradientStops =
                     {
-                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34), Offset = 0.0 },
-                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34), Offset = 1.0 }
+                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 0, 191, 255), Offset = 0.0 },
+                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 138, 43, 226), Offset = 1.0 }
                     }
                 };
 
@@ -913,8 +913,8 @@ namespace OnlineStore.UI.Views
                     EndPoint = new Windows.Foundation.Point(1, 1),
                     GradientStops =
                     {
-                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34), Offset = 0.0 },
-                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34), Offset = 1.0 }
+                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 30, 144, 255), Offset = 0.0 },
+                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 0, 255, 127), Offset = 1.0 }
                     }
                 };
 
@@ -1305,8 +1305,8 @@ namespace OnlineStore.UI.Views
                     EndPoint = new Windows.Foundation.Point(1, 1),
                     GradientStops =
                     {
-                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34), Offset = 0.0 },
-                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34), Offset = 1.0 }
+                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 7, 58), Offset = 0.0 },
+                        new Windows.UI.Xaml.Media.GradientStop { Color = Windows.UI.ColorHelper.FromArgb(255, 255, 235, 59), Offset = 1.0 }
                     }
                 };
 
