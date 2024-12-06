@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Drawing;
+using Windows.UI.Popups;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -104,7 +105,7 @@ namespace OnlineStore.UI.Views
                                     {
                                         if (viewModel.SelectedCategory.Product.Count() > 0)
                                         {
-                                            InitializeCardGridWomenClothing(viewModel.SelectedCategory);
+                                            InitializeCardGridWomenClothing(viewModel.SelectedCategory, viewModel);
                                         }
                                     }
                                     else
@@ -143,7 +144,7 @@ namespace OnlineStore.UI.Views
                                     {
                                         if (viewModel.SelectedCategory.Product.Count() > 0)
                                         {
-                                            InitializeCardGridFootwear(viewModel.SelectedCategory);
+                                            InitializeCardGridFootwear(viewModel.SelectedCategory, viewModel);
                                         }
                                     }
                                     else
@@ -257,6 +258,7 @@ namespace OnlineStore.UI.Views
                 // Añadir la línea al StackPanel
                 stackPanel.Children.Add(separatorLine);
 
+                #region SECCIÓN - TITULO
                 // Añadir el título, la descripción, precio y existencias
                 stackPanel.Children.Add(new TextBlock
                 {
@@ -267,6 +269,7 @@ namespace OnlineStore.UI.Views
                     Foreground = new SolidColorBrush(Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34)),
                     TextWrapping = TextWrapping.Wrap
                 });
+                #endregion
 
                 #region SECCIÓN - DESCRIPCIÓN
                 stackPanel.Children.Add(new TextBlock
@@ -503,7 +506,7 @@ namespace OnlineStore.UI.Views
                 // Crear un botón en la parte inferior
                 Button addToCartButton = new Button
                 {
-                    Content = "Agregar al carrito",
+                    Content = "Agregar a la bolsa",
                     VerticalAlignment = VerticalAlignment.Bottom,
                     HorizontalAlignment = HorizontalAlignment.Stretch,
                     Height = 30,
@@ -527,23 +530,29 @@ namespace OnlineStore.UI.Views
                 addToCartButton.Background = gradientBrush;
 
                 // Evento Click para agregar al carrito
-                addToCartButton.Click += (sender, e) =>
+                addToCartButton.Click += async (sender, e) =>
                 {
-                    // Crear un nuevo producto a partir de la tarjeta
-                    //Shopping shopping = new Shopping
-                    //{
-                    //    Name = card.Name,
-                    //    Price = card.Price,
-                    //};
-                    if (card != null) {
+                    if (card != null)
+                    {
                         viewModel.CloseDialog(card);
                     }
-                    // Agregar el producto al carrito
-                    //shoppingCart.AddProduct(productToAdd);
 
-                    // Opcional: Mostrar un mensaje o actualizar UI (Ejemplo: notificación de éxito)
-                    //var messageDialog = new Windows.UI.Popups.MessageDialog($"{productToAdd.Name} ha sido agregado al carrito.");
-                    //messageDialog.ShowAsync();
+                    ContentDialog contentDialog = new ContentDialog
+                    {
+                        Title = "¡Excelente elección!",
+                        Content = new TextBlock
+                        {
+                            TextWrapping = TextWrapping.Wrap,
+                            Text = card.Name + " ha sido añadido a tu bolsa.\n¡Vas muy bien!",
+                            TextAlignment = TextAlignment.Center, // Centrar el texto
+                            VerticalAlignment = VerticalAlignment.Center,
+                            Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 20)
+                        },
+                        CloseButtonText = "Cerrar",
+                        CloseButtonStyle = (Style)this.Resources["GradientButtonStyle"]
+                    };
+
+                    await contentDialog.ShowAsync();
                 };
 
                 // Añadir el botón al StackPanel
@@ -565,7 +574,7 @@ namespace OnlineStore.UI.Views
             }
         }
 
-        private void InitializeCardGridWomenClothing(Models.Panel panel)
+        private void InitializeCardGridWomenClothing(Models.Panel panel, PanelViewModel viewModel)
         {
             ClearCardGrid();
 
@@ -641,6 +650,7 @@ namespace OnlineStore.UI.Views
                 // Añadir la línea al StackPanel
                 stackPanel.Children.Add(separatorLine);
 
+                #region SECCIÓN - TITULO
                 // Añadir el título, la descripción, precio y existencias
                 stackPanel.Children.Add(new TextBlock
                 {
@@ -651,6 +661,7 @@ namespace OnlineStore.UI.Views
                     Foreground = new SolidColorBrush(Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34)),
                     TextWrapping = TextWrapping.Wrap
                 });
+                #endregion
 
                 #region SECCIÓN - DESCRIPCIÓN
                 stackPanel.Children.Add(new TextBlock
@@ -887,7 +898,7 @@ namespace OnlineStore.UI.Views
                 // Crear un botón en la parte inferior
                 Button addToCartButton = new Button
                 {
-                    Content = "Agregar al carrito",
+                    Content = "Agregar a la bolsa",
                     VerticalAlignment = VerticalAlignment.Bottom,
                     HorizontalAlignment = HorizontalAlignment.Stretch,
                     Height = 30,
@@ -910,6 +921,32 @@ namespace OnlineStore.UI.Views
                 // Aplicar el gradiente al fondo del botón
                 addToCartButton.Background = gradientBrush;
 
+                // Evento Click para agregar al carrito
+                addToCartButton.Click += async (sender, e) =>
+                {
+                    if (card != null)
+                    {
+                        viewModel.CloseDialog(card);
+                    }
+
+                    ContentDialog contentDialog = new ContentDialog
+                    {
+                        Title = "¡Excelente elección!",
+                        Content = new TextBlock
+                        {
+                            TextWrapping = TextWrapping.Wrap,
+                            Text = card.Name + " ha sido añadido a tu bolsa.\n¡Vas muy bien!",
+                            TextAlignment = TextAlignment.Center, // Centrar el texto
+                            VerticalAlignment = VerticalAlignment.Center,
+                            Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 20)
+                        },
+                        CloseButtonText = "Cerrar",
+                        CloseButtonStyle = (Style)this.Resources["GradientButtonStyle"]
+                    };
+
+                    await contentDialog.ShowAsync();
+                };
+
                 // Añadir el botón al StackPanel
                 stackPanel.Children.Add(addToCartButton);
                 #endregion
@@ -929,7 +966,7 @@ namespace OnlineStore.UI.Views
             }
         }
 
-        private void InitializeCardGridFootwear(Models.Panel panel)
+        private void InitializeCardGridFootwear(Models.Panel panel, PanelViewModel viewModel)
         {
             ClearCardGrid();
 
@@ -1005,6 +1042,7 @@ namespace OnlineStore.UI.Views
                 // Añadir la línea al StackPanel
                 stackPanel.Children.Add(separatorLine);
 
+                #region SECCIÓN - TITULO
                 // Añadir el título, la descripción, precio y existencias
                 stackPanel.Children.Add(new TextBlock
                 {
@@ -1015,6 +1053,7 @@ namespace OnlineStore.UI.Views
                     Foreground = new SolidColorBrush(Windows.UI.ColorHelper.FromArgb(255, 255, 87, 34)),
                     TextWrapping = TextWrapping.Wrap
                 });
+                #endregion
 
                 #region SECCIÓN - DESCRIPCIÓN
                 stackPanel.Children.Add(new TextBlock
@@ -1250,8 +1289,8 @@ namespace OnlineStore.UI.Views
                 #region SECCIÓN - BOTÓN ::: AGREGAR AL CARRITO
                 // Crear un botón en la parte inferior
                 Button addToCartButton = new Button
-                {
-                    Content = "Agregar al carrito",
+                {                    
+                    Content = "Agregar a la bolsa",
                     VerticalAlignment = VerticalAlignment.Bottom,
                     HorizontalAlignment = HorizontalAlignment.Stretch,
                     Height = 30,
@@ -1273,6 +1312,32 @@ namespace OnlineStore.UI.Views
 
                 // Aplicar el gradiente al fondo del botón
                 addToCartButton.Background = gradientBrush;
+
+                // Evento Click para agregar al carrito
+                addToCartButton.Click += async (sender, e) =>
+                {
+                    if (card != null)
+                    {
+                        viewModel.CloseDialog(card);
+                    }
+
+                    ContentDialog contentDialog = new ContentDialog
+                    {                        
+                        Title = "¡Excelente elección!",
+                        Content = new TextBlock
+                        {
+                            TextWrapping = TextWrapping.Wrap,
+                            Text = card.Name + " ha sido añadido a tu bolsa.\n¡Vas muy bien!",
+                            TextAlignment = TextAlignment.Center, // Centrar el texto
+                            VerticalAlignment = VerticalAlignment.Center,
+                            Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 20)
+                        },
+                        CloseButtonText = "Cerrar",
+                        CloseButtonStyle = (Style)this.Resources["GradientButtonStyle"]
+                    };
+
+                    await contentDialog.ShowAsync();
+                };
 
                 // Añadir el botón al StackPanel
                 stackPanel.Children.Add(addToCartButton);

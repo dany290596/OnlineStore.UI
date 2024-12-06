@@ -209,6 +209,8 @@
     <Content Include="Assets\coat-jacket-svgrepo-com.png" />
     <Content Include="Assets\cursor-hand-click-svgrepo-com.png" />
     <Content Include="Assets\delete-2-svgrepo-com.png" />
+    <Content Include="Assets\delete-2-svgrepo-com.thw.png" />
+    <Content Include="Assets\eeeee.jpg" />
     <Content Include="Assets\euro-bag-svgrepo-com.png" />
     <Content Include="Assets\female-beauty-brown-cap-summer.jpg" />
     <Content Include="Assets\female-person-svgrepo-com.png" />
@@ -250,11 +252,16 @@
     <Content Include="Assets\sleeveless-sleeveless-svgrepo-com.png" />
     <Content Include="Assets\slit-skirt-svgrepo-com.png" />
     <Content Include="Assets\sport-faculty-svgrepo-com.png" />
+    <Content Include="Assets\sportive-shoe-svgrepo-com.png" />
     <Content Include="Assets\sports-shoes-2-svgrepo-com.png" />
     <Content Include="Assets\suit-svgrepo-com.png" />
     <Content Include="Assets\sunglasses-svgrepo-com.png" />
     <Content Include="Assets\sweatshirt-svgrepo-com.png" />
     <Content Include="Assets\team-svgrepo-com.png" />
+    <Content Include="Assets\textura-frente.png" />
+    <Content Include="Assets\trousers.png" />
+    <Content Include="Assets\ttttt.jpg" />
+    <Content Include="Assets\ttttt.png" />
     <Content Include="Assets\two-men-standing-svgrepo-com.png" />
     <Content Include="Assets\watch-round-svgrepo-com.png" />
     <Content Include="Assets\woman-svgrepo-com.png" />

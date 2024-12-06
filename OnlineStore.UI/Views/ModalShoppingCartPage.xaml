@@ -15,10 +15,35 @@
     MaxWidth="1920"
     MaxHeight="1080"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ContentDialog.Resources>
+        <!-- Definir el estilo de botón con gradiente -->
+        <Style x:Key="GradientButtonStyle" TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FF9933" Offset="0" />
+                        <GradientStop Color="#FF5722" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Padding" Value="12,6" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+    </ContentDialog.Resources>
+    <ContentDialog.PrimaryButtonStyle>
+        <StaticResource ResourceKey="GradientButtonStyle" />
+    </ContentDialog.PrimaryButtonStyle>
+    <ContentDialog.SecondaryButtonStyle>
+        <StaticResource ResourceKey="GradientButtonStyle" />
+    </ContentDialog.SecondaryButtonStyle>
     <ContentDialog.DataContext>
         <viewModels:ModalShoppingCartViewModel />
     </ContentDialog.DataContext>
-    <Grid x:Name="ParentGrid">
+    <Grid 
+        BorderBrush="LightGray"
+        BorderThickness="1"
+        x:Name="ParentGrid">
         <!-- Definir las filas para los encabezados y el área desplazable -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -39,7 +64,9 @@
         <Grid 
             Grid.Row="0" 
             Grid.ColumnSpan="4" 
-            Margin="0,0,0,10">
+            Margin="0,0,0,10"
+            BorderBrush="LightGray"
+            BorderThickness="1">
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                     <GradientStop Color="#FF5722" Offset="0"/>
@@ -122,7 +149,7 @@
                                     <Button.Content>
                                         <Image 
                                         Width="20"
-                                        Source="ms-appx:///Assets//delete-2-svgrepo-com.png" />
+                                        Source="ms-appx:///Assets//delete-2-svgrepo-com.thw.png" />
                                     </Button.Content>
                                 </Button>
                             </Grid>

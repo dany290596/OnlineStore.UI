@@ -15,6 +15,20 @@
     </Page.DataContext>
     <Page.Resources>
         <helper:BooleanToGridLengthConverter x:Key="BooleanToGridLengthConverter"/>
+        <!-- Definir el estilo de botón con gradiente -->
+        <Style x:Key="GradientButtonStyle" TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FF9933" Offset="0" />
+                        <GradientStop Color="#FF5722" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Padding" Value="12,6" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
     </Page.Resources>
 
     <Grid>
@@ -128,8 +142,8 @@
                             Command="{Binding CommandGoShoppingCart}">
                             <Button.Content>
                                 <Image 
-                                    Width="45"
-                                    Source="ms-appx:///Assets//euro-bag-svgrepo-com.png" />
+                                    Width="40"
+                                    Source="ms-appx:///Assets//shopping-bag-black-silhouette-svgrepo-com.png" />
                             </Button.Content>
                         </Button>
                         <Grid 

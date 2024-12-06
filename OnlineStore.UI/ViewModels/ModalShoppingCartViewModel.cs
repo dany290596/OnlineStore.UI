@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Storage;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace OnlineStore.UI.ViewModels
@@ -25,7 +26,7 @@ namespace OnlineStore.UI.ViewModels
             CommandGoRemove = new Helpers.RelayCommand<ProductDetail>(NavigateToGoRemove);
         }
 
-        private void NavigateToGoRemove(ProductDetail productDetail)
+        private async void NavigateToGoRemove(ProductDetail productDetail)
         {
             if (productDetail != null)
             {
@@ -43,6 +44,22 @@ namespace OnlineStore.UI.ViewModels
                         SharedService.Instance.ShoppingCartCount = 0;
                     }
                     _dialog.Hide();
+                    ContentDialog contentDialog = new ContentDialog
+                    {
+                        Title = "¡Listo!",
+                        Content = new TextBlock
+                        {
+                            TextWrapping = TextWrapping.Wrap,
+                            Text = "El artículo " + productDetail.Name + " ha sido retirado de tu carrito.",
+                            TextAlignment = TextAlignment.Center, // Centrar el texto
+                            VerticalAlignment = VerticalAlignment.Center,
+                            Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 20)
+                        },
+                        CloseButtonText = "Cerrar",
+                        //CloseButtonStyle = (Style)this.Resources["GradientButtonStyle"]
+                    };
+
+                    await contentDialog.ShowAsync();
                 }
             }
         }

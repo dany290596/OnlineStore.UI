@@ -9,5 +9,19 @@
         <!-- Define your resources here -->
         <service:NavigationService x:Key="NavigationService" />
         <helper:StringToStringConverter x:Key="StringConverter"/>
+        <!-- Definir el estilo de botón con gradiente -->
+        <Style x:Key="GradientButtonStyle" TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FF9933" Offset="0" />
+                        <GradientStop Color="#FF5722" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Padding" Value="12,6" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
     </Application.Resources>
 </Application>
