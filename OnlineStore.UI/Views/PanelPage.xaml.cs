@@ -246,6 +246,7 @@ namespace OnlineStore.UI.Views
 
                 stackPanel.Children.Add(imageCarousel);
 
+                #region SECCIÓN - SEPARADOR
                 // Línea horizontal separadora entre el carrusel y la información
                 Border separatorLine = new Border
                 {
@@ -257,6 +258,7 @@ namespace OnlineStore.UI.Views
 
                 // Añadir la línea al StackPanel
                 stackPanel.Children.Add(separatorLine);
+                #endregion
 
                 #region SECCIÓN - TITULO
                 // Añadir el título, la descripción, precio y existencias
@@ -638,6 +640,7 @@ namespace OnlineStore.UI.Views
 
                 stackPanel.Children.Add(imageCarousel);
 
+                #region SECCIÓN - SEPARADOR
                 // Línea horizontal separadora entre el carrusel y la información
                 Border separatorLine = new Border
                 {
@@ -649,6 +652,7 @@ namespace OnlineStore.UI.Views
 
                 // Añadir la línea al StackPanel
                 stackPanel.Children.Add(separatorLine);
+                #endregion
 
                 #region SECCIÓN - TITULO
                 // Añadir el título, la descripción, precio y existencias
@@ -1030,6 +1034,7 @@ namespace OnlineStore.UI.Views
 
                 stackPanel.Children.Add(imageCarousel);
 
+                #region SECCIÓN - SEPARADOR
                 // Línea horizontal separadora entre el carrusel y la información
                 Border separatorLine = new Border
                 {
@@ -1041,6 +1046,7 @@ namespace OnlineStore.UI.Views
 
                 // Añadir la línea al StackPanel
                 stackPanel.Children.Add(separatorLine);
+                #endregion
 
                 #region SECCIÓN - TITULO
                 // Añadir el título, la descripción, precio y existencias

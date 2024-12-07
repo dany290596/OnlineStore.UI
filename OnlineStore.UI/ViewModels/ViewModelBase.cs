@@ -22,7 +22,7 @@ namespace OnlineStore.UI.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
-        public ObservableCollection<ProductDetail> ProductDetail { get; set; }
+        public List<ProductDetail> ProductDetail { get; set; }
 
         public ICommand CommandCloseModal { get; }
         public ICommand CommandCloseModalGoPreview { get; }
@@ -33,7 +33,7 @@ namespace OnlineStore.UI.ViewModels
         public ViewModelBase()
         {
             SharedService.Instance.OnShoppingCartCountChanged += OnShoppingCartCountChanged;
-            SyncShoppingCart();            
+            SyncShoppingCart();
             CommandCloseModal = new RelayCommand<CarouselItem>(CloseModal);
             CommandCloseModalGoPreview = new RelayCommand(CloseModalGoPreview);
             CommandGoShoppingCart = new RelayCommand(NavigateToGoShoppingCart);
@@ -118,14 +118,14 @@ namespace OnlineStore.UI.ViewModels
             await _modalShoppingCartPage.ShowAsync();
         }
 
-        public ObservableCollection<ProductDetail> StorageShoppingCart()
+        public List<ProductDetail> StorageShoppingCart()
         {
             if (ApplicationData.Current.LocalSettings.Values.ContainsKey("StorageShopping"))
             {
                 var json = ApplicationData.Current.LocalSettings.Values["StorageShopping"] as string;
-                return JsonConvert.DeserializeObject<ObservableCollection<ProductDetail>>(json);
+                return JsonConvert.DeserializeObject<List<ProductDetail>>(json);
             }
-            return new ObservableCollection<ProductDetail>();
+            return new List<ProductDetail>();
         }
 
         public void SyncShoppingCart()
