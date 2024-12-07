@@ -105,128 +105,190 @@ namespace OnlineStore.UI.ViewModels
                 Padding = new Windows.UI.Xaml.Thickness(0)
             };
 
-            // Crear el encabezado de la tabla
-            StackPanel encabezadoPanel = new StackPanel
+            // Verificar si no hay artículos en la compra
+            if (articulos == null || articulos.Count == 0)
             {
-                Orientation = Orientation.Horizontal,
-                Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 5),
-                Padding = new Windows.UI.Xaml.Thickness(5),
-                BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGray),
-                BorderThickness = new Windows.UI.Xaml.Thickness(1),
-                Background = new LinearGradientBrush
+                // Mostrar mensaje si no hay artículos
+                TextBlock mensaje = new TextBlock
                 {
-                    StartPoint = new Point(0, 0),
-                    EndPoint = new Point(1, 1),
-                    GradientStops =
+                    Text = "No hay artículos en esta compra.",
+                    FontSize = 16,
+                    Foreground = new SolidColorBrush(Windows.UI.Colors.Black),
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    Margin = new Windows.UI.Xaml.Thickness(0),
+                    TextAlignment = TextAlignment.Center,
+                };
+
+                // Crear una card para el mensaje
+                Border card = new Border
+                {
+                    Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 255, 255)), // Verde Primario
+                    BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGray), // Verde más oscuro
+                    BorderThickness = new Windows.UI.Xaml.Thickness(1),
+                    // CornerRadius = new Windows.UI.Xaml.CornerRadius(10),
+                    Padding = new Windows.UI.Xaml.Thickness(20),
+                    Margin = new Windows.UI.Xaml.Thickness(0)
+                };
+
+                // Agregar el mensaje dentro de la card
+                card.Child = mensaje;
+
+                // Agregar la card al StackPanel
+                stackPanel.Children.Add(card);
+            }
+            else
+            {
+                // Crear el encabezado de la tabla
+                StackPanel encabezadoPanel = new StackPanel
+                {
+                    CornerRadius = new Windows.UI.Xaml.CornerRadius(0),
+                    Orientation = Orientation.Horizontal,
+                    Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 5),
+                    Padding = new Windows.UI.Xaml.Thickness(5),
+                    BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGray),
+                    BorderThickness = new Windows.UI.Xaml.Thickness(1),
+                    Background = new LinearGradientBrush
+                    {
+                        StartPoint = new Point(0, 0),
+                        EndPoint = new Point(1, 1),
+                        GradientStops =
                     {
                         new GradientStop { Color = Windows.UI.Colors.Indigo, Offset = 1 },
                         new GradientStop { Color = Windows.UI.Colors.Crimson, Offset = 0 },
                     }
-                },
-            };
-
-            // Crear y agregar los encabezados
-            encabezadoPanel.Children.Add(new TextBlock
-            {
-                Text = "Artículo",
-                FontSize = 16,
-                FontWeight = Windows.UI.Text.FontWeights.Bold,
-                Foreground = new SolidColorBrush(Windows.UI.Colors.White),
-                Width = 200,
-                TextAlignment = TextAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Left
-            });
-            encabezadoPanel.Children.Add(new TextBlock
-            {
-                Text = "Cantidad",
-                FontSize = 16,
-                FontWeight = Windows.UI.Text.FontWeights.Bold,
-                Foreground = new SolidColorBrush(Windows.UI.Colors.White),
-                Width = 100,
-                TextAlignment = TextAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center
-            });
-            encabezadoPanel.Children.Add(new TextBlock
-            {
-                Text = "Total",
-                FontSize = 16,
-                FontWeight = Windows.UI.Text.FontWeights.Bold,
-                Foreground = new SolidColorBrush(Windows.UI.Colors.White),
-                Width = 100,
-                TextAlignment = TextAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center
-            });
-
-            // Agregar el encabezado al StackPanel principal
-            stackPanel.Children.Add(encabezadoPanel);
-
-            // Crear un ListView para mostrar la lista de artículos
-            ListView listView = new ListView
-            {
-                Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 20),
-                // Background = new SolidColorBrush(Windows.UI.ColorHelper.FromArgb(255, 237, 237, 237)), // Fondo gris claro para el ListView
-                BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGray),
-                BorderThickness = new Windows.UI.Xaml.Thickness(1),
-                Padding = new Windows.UI.Xaml.Thickness(0)
-            };
-
-            // Añadir un StackPanel para cada artículo
-            foreach (var articulo in articulos)
-            {
-                StackPanel itemPanel = new StackPanel
-                {
-                    Orientation = Orientation.Horizontal,
-                    Margin = new Windows.UI.Xaml.Thickness(5)
+                    },
                 };
 
-                // Crear y agregar el TextBlock para mostrar el nombre del artículo
-                TextBlock nombreTextBlock = new TextBlock
+                // Crear y agregar los encabezados
+                encabezadoPanel.Children.Add(new TextBlock
                 {
-                    Width = 200,
-                    Text = articulo.Name,
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 12,
+                    Text = "Artículo",
+                    FontSize = 16,
                     FontWeight = Windows.UI.Text.FontWeights.Bold,
-                    Foreground = new SolidColorBrush(Windows.UI.Colors.Black),
-                    VerticalAlignment = VerticalAlignment.Center
-                };
-                itemPanel.Children.Add(nombreTextBlock);
-
-                // Crear y agregar el TextBlock para mostrar la cantidad
-                TextBlock cantidadTextBlock = new TextBlock
-                {
-                    Width = 100,
-                    Text = articulo.TotalProduct.ToString(),
+                    Foreground = new SolidColorBrush(Windows.UI.Colors.White),
+                    Width = 200,
                     TextAlignment = TextAlignment.Center,
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 12,
-                };
-                itemPanel.Children.Add(cantidadTextBlock);
-
-                // Crear y agregar el TextBlock para mostrar el precio
-                TextBlock precioTextBlock = new TextBlock
+                    HorizontalAlignment = HorizontalAlignment.Left
+                });
+                encabezadoPanel.Children.Add(new TextBlock
                 {
+                    Text = "Cantidad",
+                    FontSize = 16,
+                    FontWeight = Windows.UI.Text.FontWeights.Bold,
+                    Foreground = new SolidColorBrush(Windows.UI.Colors.White),
                     Width = 100,
-                    Text = articulo.TotalPriceProduct.ToString("C2"),
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 12,
+                    TextAlignment = TextAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                });
+                encabezadoPanel.Children.Add(new TextBlock
+                {
+                    Text = "Total",
+                    FontSize = 16,
+                    FontWeight = Windows.UI.Text.FontWeights.Bold,
+                    Foreground = new SolidColorBrush(Windows.UI.Colors.White),
+                    Width = 100,
+                    TextAlignment = TextAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                });
+
+                // Agregar el encabezado al StackPanel principal
+                stackPanel.Children.Add(encabezadoPanel);
+
+                // Crear un ListView para mostrar la lista de artículos
+                ListView listView = new ListView
+                {
+                    Margin = new Windows.UI.Xaml.Thickness(0, 0, 0, 20),
+                    // Background = new SolidColorBrush(Windows.UI.ColorHelper.FromArgb(255, 237, 237, 237)), // Fondo gris claro para el ListView
+                    BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGray),
+                    BorderThickness = new Windows.UI.Xaml.Thickness(1),
+                    Padding = new Windows.UI.Xaml.Thickness(0)
                 };
-                itemPanel.Children.Add(precioTextBlock);
 
-                // Crear y agregar el TextBlock para mostrar el total
-                //TextBlock totalTextBlock = new TextBlock
-                //{
-                //    Width = 100,
-                //    Text = articulo.TotalPriceProduct.ToString("C2")
-                //};
-                //itemPanel.Children.Add(totalTextBlock);
+                // Crear un StackPanel para las cards de cada artículo
+                StackPanel cardStackPanel = new StackPanel
+                {
+                    Orientation = Orientation.Vertical,
+                    Spacing = 10 // Espacio entre las cards
+                };
 
-                // Agregar el StackPanel al ListView
-                listView.Items.Add(itemPanel);
+                // Añadir un StackPanel para cada artículo
+                foreach (var articulo in articulos)
+                {
+                    // Crear la card (Border)
+                    Border card = new Border
+                    {
+                        Background = new SolidColorBrush(Windows.UI.ColorHelper.FromArgb(255, 237, 237, 237)),
+                        BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGray),
+                        BorderThickness = new Windows.UI.Xaml.Thickness(1),
+                        CornerRadius = new Windows.UI.Xaml.CornerRadius(0),
+                        Padding = new Windows.UI.Xaml.Thickness(10),
+                        Margin = new Windows.UI.Xaml.Thickness(0)
+                    };
+
+                    // Crear un Grid dentro de la card para organizar el contenido
+                    Grid cardGrid = new Grid
+                    {
+                        ColumnDefinitions =
+                    {
+                        new ColumnDefinition { Width = new Windows.UI.Xaml.GridLength(200) },
+                        new ColumnDefinition { Width = new Windows.UI.Xaml.GridLength(100) },
+                        new ColumnDefinition { Width = new Windows.UI.Xaml.GridLength(100) },
+                        new ColumnDefinition { Width = new Windows.UI.Xaml.GridLength(100) }
+                    }
+                    };
+
+                    // Crear y agregar el TextBlock para mostrar el nombre del artículo
+                    cardGrid.Children.Add(new TextBlock
+                    {
+                        Width = 200,
+                        Text = articulo.Name,
+                        TextWrapping = TextWrapping.Wrap,
+                        FontSize = 12,
+                        FontWeight = Windows.UI.Text.FontWeights.Bold,
+                        Foreground = new SolidColorBrush(Windows.UI.Colors.Black),
+                        VerticalAlignment = VerticalAlignment.Center
+                    });
+                    Grid.SetColumn((FrameworkElement)cardGrid.Children.Last(), 0); // Columna 0
+
+                    // Crear y agregar el TextBlock para mostrar la cantidad
+                    cardGrid.Children.Add(new TextBlock
+                    {
+                        Width = 100,
+                        Text = articulo.TotalProduct.ToString(),
+                        TextAlignment = TextAlignment.Center,
+                        TextWrapping = TextWrapping.Wrap,
+                        FontSize = 12,
+                    });
+                    Grid.SetColumn((FrameworkElement)cardGrid.Children.Last(), 1); // Columna 1
+
+                    // Crear y agregar el TextBlock para mostrar el precio
+                    cardGrid.Children.Add(new TextBlock
+                    {
+                        Width = 100,
+                        Text = articulo.TotalPriceProduct.ToString("C2"),
+                        TextWrapping = TextWrapping.Wrap,
+                        FontSize = 12,
+                    });
+                    Grid.SetColumn((FrameworkElement)cardGrid.Children.Last(), 2); // Columna 2
+
+                    // Crear y agregar el TextBlock para mostrar el total
+                    //TextBlock totalTextBlock = new TextBlock
+                    //{
+                    //    Width = 100,
+                    //    Text = articulo.TotalPriceProduct.ToString("C2")
+                    //};
+                    //itemPanel.Children.Add(totalTextBlock);
+
+                    // Agregar el StackPanel al ListView
+                    card.Child = cardGrid;
+
+                    // Añadir la card al StackPanel de cards
+                    cardStackPanel.Children.Add(card);
+                }
+
+                // Agregar el ListView al StackPanel principal
+                stackPanel.Children.Add(cardStackPanel);
             }
-
-            // Agregar el ListView al StackPanel principal
-            stackPanel.Children.Add(listView);
 
             // Calcular el total de la compra
             double totalCompra = articulos.Sum(a => a.TotalPriceProduct);

@@ -90,7 +90,7 @@
             <TextBlock 
                 FontSize="10"
                 Foreground="#fff" 
-                Grid.Column="1" Grid.ColumnSpan="1" Text="N.o de productos" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5"/>
+                Grid.Column="1" Grid.ColumnSpan="1" Text="Cantidad" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5"/>
             <TextBlock 
                 FontSize="10"
                 Foreground="#fff" 
