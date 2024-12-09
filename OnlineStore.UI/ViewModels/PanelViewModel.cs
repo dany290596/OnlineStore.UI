@@ -270,9 +270,10 @@ namespace OnlineStore.UI.ViewModels
             }
         }
 
-        public void CloseDialog(Models.Product product)
+        public void CloseDialog(Product product, int selectedArticle)
         {
             if (ProductDetail != null)
+            {
                 if (ProductDetail.Count() > 0)
                 {
                     var searchProduct = ProductDetail.FirstOrDefault(f => f.Shopping.Id == product.Id);
@@ -288,8 +289,8 @@ namespace OnlineStore.UI.ViewModels
                             Price = product.Price,
                             Stock = product.Stock
                         };
-                        productDetail.TotalProduct = 1;
-                        productDetail.TotalPriceProduct = 1 * product.Price;
+                        productDetail.TotalProduct = selectedArticle;
+                        productDetail.TotalPriceProduct = selectedArticle * product.Price;
                         productDetail.Estado = 1;
                         ProductDetail.Add(productDetail);
                         var json = JsonConvert.SerializeObject(ProductDetail);
@@ -298,8 +299,8 @@ namespace OnlineStore.UI.ViewModels
                     }
                     else
                     {
-                        double totalPriceProduct = 1 * product.Price;
-                        searchProduct.TotalProduct = searchProduct.TotalProduct + 1;
+                        double totalPriceProduct = selectedArticle * product.Price;
+                        searchProduct.TotalProduct = searchProduct.TotalProduct + selectedArticle;
                         searchProduct.TotalPriceProduct = searchProduct.TotalPriceProduct + totalPriceProduct;
                         var json = JsonConvert.SerializeObject(ProductDetail);
                         ApplicationData.Current.LocalSettings.Values["StorageShopping"] = json;
@@ -317,15 +318,16 @@ namespace OnlineStore.UI.ViewModels
                         Name = product.Name,
                         Price = product.Price,
                         Stock = product.Stock
-                    }; ;
-                    productDetail.TotalProduct = 1;
-                    productDetail.TotalPriceProduct = 1 * product.Price;
+                    };
+                    productDetail.TotalProduct = selectedArticle;
+                    productDetail.TotalPriceProduct = selectedArticle * product.Price;
                     productDetail.Estado = 1;
                     ProductDetail.Add(productDetail);
                     var json = JsonConvert.SerializeObject(ProductDetail);
                     ApplicationData.Current.LocalSettings.Values["StorageShopping"] = json;
                     SyncShoppingCart();
                 }
+            }
         }
     }
 }

@@ -534,24 +534,47 @@ namespace OnlineStore.UI.Views
                 // Evento Click para agregar al carrito
                 addToCartButton.Click += async (sender, e) =>
                 {
-                    if (card != null)
-                    {
-                        viewModel.CloseDialog(card);
-                    }
-
                     ContentDialog contentDialog = new ContentDialog
                     {
                         Title = "¡Excelente elección!",
-                        Content = new TextBlock
+                        Content = new StackPanel
                         {
-                            TextWrapping = TextWrapping.Wrap,
-                            Text = card.Name + " ha sido añadido a tu bolsa.\n¡Vas muy bien!",
-                            TextAlignment = TextAlignment.Center, // Centrar el texto
-                            VerticalAlignment = VerticalAlignment.Center,
-                            Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 20)
+                            Orientation = Orientation.Vertical,
+                            Children =
+                            {
+                                new ComboBox
+                                {
+                                    Name = "ComboBoxArticle",
+                                    Margin = new Windows.UI.Xaml.Thickness(0, 10, 0, 10),
+                                    ItemsSource = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 },
+                                    SelectedIndex = 0,
+                                    HorizontalAlignment = HorizontalAlignment.Stretch
+                                }
+                            }
                         },
-                        CloseButtonText = "Cerrar",
-                        CloseButtonStyle = (Style)this.Resources["GradientButtonStyle"]
+                        SecondaryButtonText = "Confirmar compra",
+                        PrimaryButtonText = "Seguir comprando",
+                        SecondaryButtonStyle = CrearEstiloBoton(),
+                        PrimaryButtonStyle = CrearEstiloBoton()
+                    };
+
+                    contentDialog.Tag = card;
+                    contentDialog.SecondaryButtonClick += (senderg, ef) =>
+                    {
+                        var article = senderg.Content as StackPanel;
+                        if (article != null)
+                        {
+                            var articuloComboBox = article.Children
+                                .OfType<ComboBox>()
+                                .FirstOrDefault(c => c.Name == "ComboBoxArticle");
+
+                            if (articuloComboBox != null)
+                            {
+                                int selectedArticle = (int)articuloComboBox.SelectedItem;
+                                System.Diagnostics.Debug.WriteLine($"Artículo seleccionado: {selectedArticle}");
+                                viewModel.CloseDialog(card, selectedArticle);
+                            }
+                        }
                     };
 
                     await contentDialog.ShowAsync();
@@ -928,24 +951,47 @@ namespace OnlineStore.UI.Views
                 // Evento Click para agregar al carrito
                 addToCartButton.Click += async (sender, e) =>
                 {
-                    if (card != null)
-                    {
-                        viewModel.CloseDialog(card);
-                    }
-
                     ContentDialog contentDialog = new ContentDialog
                     {
                         Title = "¡Excelente elección!",
-                        Content = new TextBlock
+                        Content = new StackPanel
                         {
-                            TextWrapping = TextWrapping.Wrap,
-                            Text = card.Name + " ha sido añadido a tu bolsa.\n¡Vas muy bien!",
-                            TextAlignment = TextAlignment.Center, // Centrar el texto
-                            VerticalAlignment = VerticalAlignment.Center,
-                            Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 20)
+                            Orientation = Orientation.Vertical,
+                            Children =
+                            {
+                                new ComboBox
+                                {
+                                    Name = "ComboBoxArticle",
+                                    Margin = new Windows.UI.Xaml.Thickness(0, 10, 0, 10),
+                                    ItemsSource = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 },
+                                    SelectedIndex = 0,
+                                    HorizontalAlignment = HorizontalAlignment.Stretch
+                                }
+                            }
                         },
-                        CloseButtonText = "Cerrar",
-                        CloseButtonStyle = (Style)this.Resources["GradientButtonStyle"]
+                        SecondaryButtonText = "Confirmar compra",
+                        PrimaryButtonText = "Seguir comprando",
+                        SecondaryButtonStyle = CrearEstiloBoton(),
+                        PrimaryButtonStyle = CrearEstiloBoton()
+                    };
+
+                    contentDialog.Tag = card;
+                    contentDialog.SecondaryButtonClick += (senderg, ef) =>
+                    {
+                        var article = senderg.Content as StackPanel;
+                        if (article != null)
+                        {
+                            var articuloComboBox = article.Children
+                                .OfType<ComboBox>()
+                                .FirstOrDefault(c => c.Name == "ComboBoxArticle");
+
+                            if (articuloComboBox != null)
+                            {
+                                int selectedArticle = (int)articuloComboBox.SelectedItem;
+                                System.Diagnostics.Debug.WriteLine($"Artículo seleccionado: {selectedArticle}");
+                                viewModel.CloseDialog(card, selectedArticle);
+                            }
+                        }
                     };
 
                     await contentDialog.ShowAsync();
@@ -1295,7 +1341,7 @@ namespace OnlineStore.UI.Views
                 #region SECCIÓN - BOTÓN ::: AGREGAR AL CARRITO
                 // Crear un botón en la parte inferior
                 Button addToCartButton = new Button
-                {                    
+                {
                     Content = "Agregar a la bolsa",
                     VerticalAlignment = VerticalAlignment.Bottom,
                     HorizontalAlignment = HorizontalAlignment.Stretch,
@@ -1322,24 +1368,47 @@ namespace OnlineStore.UI.Views
                 // Evento Click para agregar al carrito
                 addToCartButton.Click += async (sender, e) =>
                 {
-                    if (card != null)
-                    {
-                        viewModel.CloseDialog(card);
-                    }
-
                     ContentDialog contentDialog = new ContentDialog
-                    {                        
+                    {
                         Title = "¡Excelente elección!",
-                        Content = new TextBlock
+                        Content = new StackPanel
                         {
-                            TextWrapping = TextWrapping.Wrap,
-                            Text = card.Name + " ha sido añadido a tu bolsa.\n¡Vas muy bien!",
-                            TextAlignment = TextAlignment.Center, // Centrar el texto
-                            VerticalAlignment = VerticalAlignment.Center,
-                            Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 20)
+                            Orientation = Orientation.Vertical,
+                            Children =
+                            {
+                                new ComboBox
+                                {
+                                    Name = "ComboBoxArticle",
+                                    Margin = new Windows.UI.Xaml.Thickness(0, 10, 0, 10),
+                                    ItemsSource = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 },
+                                    SelectedIndex = 0,
+                                    HorizontalAlignment = HorizontalAlignment.Stretch
+                                }
+                            }
                         },
-                        CloseButtonText = "Cerrar",
-                        CloseButtonStyle = (Style)this.Resources["GradientButtonStyle"]
+                        SecondaryButtonText = "Confirmar compra",
+                        PrimaryButtonText = "Seguir comprando",
+                        SecondaryButtonStyle = CrearEstiloBoton(),
+                        PrimaryButtonStyle = CrearEstiloBoton()
+                    };
+
+                    contentDialog.Tag = card;
+                    contentDialog.SecondaryButtonClick += (senderg, ef) =>
+                    {
+                        var article = senderg.Content as StackPanel;
+                        if (article != null)
+                        {
+                            var articuloComboBox = article.Children
+                                .OfType<ComboBox>()
+                                .FirstOrDefault(c => c.Name == "ComboBoxArticle");
+
+                            if (articuloComboBox != null)
+                            {
+                                int selectedArticle = (int)articuloComboBox.SelectedItem;
+                                System.Diagnostics.Debug.WriteLine($"Artículo seleccionado: {selectedArticle}");
+                                viewModel.CloseDialog(card, selectedArticle);
+                            }
+                        }
                     };
 
                     await contentDialog.ShowAsync();
@@ -1362,6 +1431,58 @@ namespace OnlineStore.UI.Views
                 // Añadir el Border al Grid
                 CardGridFootwear.Children.Add(cardBorder);
             }
+        }
+
+        // Método para crear el estilo con gradiente para el botón
+        private Windows.UI.Xaml.Style CrearEstiloBoton()
+        {
+            // Crear un estilo para el botón
+            var estiloBoton = new Windows.UI.Xaml.Style(typeof(Button))
+            {
+                Setters =
+                {
+                    // Definir el fondo del botón con un gradiente lineal
+                    new Setter
+                    {
+                        Property = Button.BackgroundProperty,
+                        Value = new LinearGradientBrush
+                        {
+                            StartPoint = new Windows.Foundation.Point(0, 0),
+                            EndPoint = new Windows.Foundation.Point(1, 1),
+                            GradientStops =
+                            {
+                                new GradientStop { Color = Windows.UI.Colors.Indigo, Offset = 0 },
+                                new GradientStop { Color = Windows.UI.Colors.Crimson, Offset = 1 }
+                            }
+                        }
+                    },
+                    // Establecer color del texto del botón en blanco
+                    new Setter
+                    {
+                        Property = Button.ForegroundProperty,
+                        Value = new SolidColorBrush(Windows.UI.Colors.White)
+                    },
+                    // Hacer el borde del botón redondeado
+                    new Setter
+                    {
+                        Property = Button.BorderBrushProperty,
+                        Value = new SolidColorBrush(Windows.UI.Colors.Transparent)
+                    },
+                    // Establecer el grosor del borde
+                    //new Setter
+                    //{
+                    //    Property = Button.BorderThicknessProperty,
+                    //    Value = new Windows.UI.Xaml.Thickness(0)
+                    //},
+                    // Establecer el radio de esquina para un borde redondeado
+                    //new Setter
+                    //{
+                    //    Property = Button.CornerRadiusProperty,
+                    //    Value = new Windows.UI.Xaml.CornerRadius(5)
+                    //}
+                }
+            };
+            return estiloBoton;
         }
     }
 }

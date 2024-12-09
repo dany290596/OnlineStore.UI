@@ -248,11 +248,11 @@
                         </TextBlock>
                     </Grid>
 
-                    <Grid            
+                    <Grid
                         Grid.Row="2"
                         Grid.Column="0"
                         Grid.ColumnSpan="4"
-                        Margin="0, 0">
+                        Margin="0, 0, 0, 15">
                         <ScrollViewer
                             HorizontalScrollMode="Enabled" 
                             VerticalScrollMode="Disabled" 
@@ -310,8 +310,8 @@
                                                     Foreground="White"   
                                                     CornerRadius="100"
                                                     FontSize="11" 
-                                                    Width="80"
-                                                    Height="80"
+                                                    Width="90"
+                                                    Height="90"
                                                     Tapped="OnCategoryClick">
                                                     <Button.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -484,10 +484,10 @@
                 -->
 
                             <ScrollViewer
-                    VerticalScrollBarVisibility="Auto">
+                                VerticalScrollBarVisibility="Auto">
                                 <Grid
-                        x:Name="CardGrid" 
-                        Margin="10">
+                                    x:Name="CardGrid" 
+                                    Margin="10">
                                 </Grid>
                             </ScrollViewer>
                         </Grid>
@@ -528,7 +528,7 @@
                         Grid.Row="5"
                         Grid.Column="0"
                         Grid.ColumnSpan="4"
-                        Margin="0, 0">
+                        Margin="0, 0, 0, 15">
                         <ScrollViewer
                             HorizontalScrollMode="Enabled" 
                             VerticalScrollMode="Disabled" 
@@ -586,8 +586,8 @@
                                                     Foreground="White"   
                                                     CornerRadius="100"
                                                     FontSize="11" 
-                                                    Width="80"
-                                                    Height="80"
+                                                    Width="90"
+                                                    Height="90"
                                                     Tapped="OnCategoryClick">
                                                     <Button.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -678,7 +678,7 @@
                         Grid.Row="8"
                         Grid.Column="0"
                         Grid.ColumnSpan="4"
-                        Margin="0, 0">
+                        Margin="0, 0, 0, 15">
                         <ScrollViewer
                             HorizontalScrollMode="Enabled" 
                             VerticalScrollMode="Disabled" 
@@ -736,8 +736,8 @@
                                                     Foreground="White"   
                                                     CornerRadius="100"
                                                     FontSize="11" 
-                                                    Width="80"
-                                                    Height="80"
+                                                    Width="90"
+                                                    Height="90"
                                                     Tapped="OnCategoryClick">
                                                     <Button.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -829,7 +829,7 @@
                         Grid.Row="11"
                         Grid.Column="0"
                         Grid.ColumnSpan="4"
-                        Margin="0, 0">
+                        Margin="0, 0, 0, 15">
                         <ScrollViewer
                             HorizontalScrollMode="Enabled" 
                             VerticalScrollMode="Disabled" 
@@ -887,8 +887,8 @@
                                                     Foreground="White"   
                                                     CornerRadius="100"
                                                     FontSize="11" 
-                                                    Width="80"
-                                                    Height="80"
+                                                    Width="90"
+                                                    Height="90"
                                                     Tapped="OnCategoryClick">
                                                     <Button.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
