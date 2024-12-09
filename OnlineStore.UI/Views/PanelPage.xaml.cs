@@ -222,6 +222,8 @@ namespace OnlineStore.UI.Views
                 };
 
                 StackPanel stackPanel = new StackPanel();
+
+                #region SECCIÓN - CARRUSEL
                 // Crear un FlipView para mostrar varias imágenes en forma de carrusel
                 FlipView imageCarousel = new FlipView
                 {
@@ -245,6 +247,7 @@ namespace OnlineStore.UI.Views
                 }
 
                 stackPanel.Children.Add(imageCarousel);
+                #endregion
 
                 #region SECCIÓN - SEPARADOR
                 // Línea horizontal separadora entre el carrusel y la información
@@ -559,7 +562,7 @@ namespace OnlineStore.UI.Views
                     };
 
                     contentDialog.Tag = card;
-                    contentDialog.SecondaryButtonClick += (senderg, ef) =>
+                    contentDialog.SecondaryButtonClick += async (senderg, ef) =>
                     {
                         var article = senderg.Content as StackPanel;
                         if (article != null)
@@ -573,6 +576,24 @@ namespace OnlineStore.UI.Views
                                 int selectedArticle = (int)articuloComboBox.SelectedItem;
                                 System.Diagnostics.Debug.WriteLine($"Artículo seleccionado: {selectedArticle}");
                                 viewModel.CloseDialog(card, selectedArticle);
+
+                                contentDialog.Hide();
+                                ContentDialog cdcsdsc = new ContentDialog
+                                {
+                                    Title = "¡Excelente elección!",
+                                    Content = new TextBlock
+                                    {
+                                        TextWrapping = TextWrapping.Wrap,
+                                        Text = "El artículo " + card.Name + " ha sido agregado a tu bolsa.",
+                                        TextAlignment = TextAlignment.Center, // Centrar el texto
+                                        VerticalAlignment = VerticalAlignment.Center,
+                                        Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 20)
+                                    },
+                                    CloseButtonText = "Cerrar",
+                                    CloseButtonStyle = CrearEstiloBoton()
+                                };
+
+                                await cdcsdsc.ShowAsync();
                             }
                         }
                     };
@@ -639,6 +660,8 @@ namespace OnlineStore.UI.Views
                 };
 
                 StackPanel stackPanel = new StackPanel();
+
+                #region SECCIÓN - CARRUSEL
                 // Crear un FlipView para mostrar varias imágenes en forma de carrusel
                 FlipView imageCarousel = new FlipView
                 {
@@ -662,6 +685,7 @@ namespace OnlineStore.UI.Views
                 }
 
                 stackPanel.Children.Add(imageCarousel);
+                #endregion
 
                 #region SECCIÓN - SEPARADOR
                 // Línea horizontal separadora entre el carrusel y la información
@@ -976,7 +1000,7 @@ namespace OnlineStore.UI.Views
                     };
 
                     contentDialog.Tag = card;
-                    contentDialog.SecondaryButtonClick += (senderg, ef) =>
+                    contentDialog.SecondaryButtonClick += async (senderg, ef) =>
                     {
                         var article = senderg.Content as StackPanel;
                         if (article != null)
@@ -990,6 +1014,24 @@ namespace OnlineStore.UI.Views
                                 int selectedArticle = (int)articuloComboBox.SelectedItem;
                                 System.Diagnostics.Debug.WriteLine($"Artículo seleccionado: {selectedArticle}");
                                 viewModel.CloseDialog(card, selectedArticle);
+
+                                contentDialog.Hide();
+                                ContentDialog cdcsdsc = new ContentDialog
+                                {
+                                    Title = "¡Excelente elección!",
+                                    Content = new TextBlock
+                                    {
+                                        TextWrapping = TextWrapping.Wrap,
+                                        Text = "El artículo " + card.Name + " ha sido agregado a tu bolsa.",
+                                        TextAlignment = TextAlignment.Center, // Centrar el texto
+                                        VerticalAlignment = VerticalAlignment.Center,
+                                        Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 20)
+                                    },
+                                    CloseButtonText = "Cerrar",
+                                    CloseButtonStyle = CrearEstiloBoton()
+                                };
+
+                                await cdcsdsc.ShowAsync();
                             }
                         }
                     };
@@ -1056,6 +1098,8 @@ namespace OnlineStore.UI.Views
                 };
 
                 StackPanel stackPanel = new StackPanel();
+
+                #region SECCIÓN - CARRUSEL
                 // Crear un FlipView para mostrar varias imágenes en forma de carrusel
                 FlipView imageCarousel = new FlipView
                 {
@@ -1079,6 +1123,7 @@ namespace OnlineStore.UI.Views
                 }
 
                 stackPanel.Children.Add(imageCarousel);
+                #endregion
 
                 #region SECCIÓN - SEPARADOR
                 // Línea horizontal separadora entre el carrusel y la información
@@ -1393,7 +1438,7 @@ namespace OnlineStore.UI.Views
                     };
 
                     contentDialog.Tag = card;
-                    contentDialog.SecondaryButtonClick += (senderg, ef) =>
+                    contentDialog.SecondaryButtonClick += async (senderg, ef) =>
                     {
                         var article = senderg.Content as StackPanel;
                         if (article != null)
@@ -1407,6 +1452,24 @@ namespace OnlineStore.UI.Views
                                 int selectedArticle = (int)articuloComboBox.SelectedItem;
                                 System.Diagnostics.Debug.WriteLine($"Artículo seleccionado: {selectedArticle}");
                                 viewModel.CloseDialog(card, selectedArticle);
+
+                                contentDialog.Hide();
+                                ContentDialog cdcsdsc = new ContentDialog
+                                {
+                                    Title = "¡Excelente elección!",
+                                    Content = new TextBlock
+                                    {
+                                        TextWrapping = TextWrapping.Wrap,
+                                        Text = "El artículo " + card.Name + " ha sido agregado a tu bolsa.",
+                                        TextAlignment = TextAlignment.Center, // Centrar el texto
+                                        VerticalAlignment = VerticalAlignment.Center,
+                                        Margin = new Windows.UI.Xaml.Thickness(0, 20, 0, 20)
+                                    },
+                                    CloseButtonText = "Cerrar",
+                                    CloseButtonStyle = CrearEstiloBoton()
+                                };
+
+                                await cdcsdsc.ShowAsync();
                             }
                         }
                     };
