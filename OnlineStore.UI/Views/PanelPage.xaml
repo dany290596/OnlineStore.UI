@@ -31,7 +31,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid>
+    <Grid x:Name="MainGrid">
         <ScrollViewer VerticalAlignment="Top" HorizontalScrollMode="Auto" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Width="Auto" Height="700">
             <StackPanel>
                 <Grid
@@ -119,17 +119,29 @@
                         Grid.Column="0"
                         Grid.ColumnSpan="4">
                         <Rectangle 
+                            x:Name="GradientRectangle"
                             Width="1920" Height="65" 
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center">
                             <Rectangle.Fill>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#00BFFF" Offset="0" />
-                                    <GradientStop Color="#FF00FF" Offset="0.5" />
-                                    <GradientStop Color="#FFFF00" Offset="1" />
+                                    <GradientStop x:Name="GradientStop1" Color="#00BFFF" Offset="0" />
+                                    <GradientStop x:Name="GradientStop2" Color="#FF00FF" Offset="0.5" />
+                                    <GradientStop x:Name="GradientStop3" Color="#FFFF00" Offset="1" />
                                 </LinearGradientBrush>
                             </Rectangle.Fill>
                         </Rectangle>
+                        <!-- Texto llamativo superpuesto -->
+                        <TextBlock
+                            x:Name="TitleTextBlock"
+                            Text="¡Explora, Descubre y Enamórate!"
+                            FontSize="24"
+                            FontWeight="Bold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TextWrapping= "Wrap"
+                            Foreground="White">
+                        </TextBlock>
                         <Button
                             Margin="0, 0, 10, 0"
                             Background="Transparent"
